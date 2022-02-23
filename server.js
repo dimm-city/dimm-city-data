@@ -1,3 +1,5 @@
 const strapi = require('@strapi/strapi');
 
-strapi().start();
+strapi({
+    dir: __dirname + '/'
+}).start();

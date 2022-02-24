@@ -1,6 +1,9 @@
 {
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
-        ".vscode{,/**}"
+        ".vscode{,/**}",
+        "Dockerfile",
+        ".env.example",
+        "eslint*"
     ]
 }

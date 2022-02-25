@@ -6,10 +6,10 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "NODE_ENV=production strapi build",
+    "build": "strapi build",
     "strapi": "strapi",
     "start:prod": "NODE_ENV=production npx pm2 start server.js --no-daemon",
-    "build:dev": "strapi build"
+    "build:prod": "NODE_ENV=production strapi build"
   },
   "dependencies": {
     "@strapi/plugin-graphql": "^4.1.0",

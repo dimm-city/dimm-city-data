@@ -10,4 +10,4 @@ node_modules
 .env.example
 .gitignore
 Dockerfile
-README.md
+/*.md

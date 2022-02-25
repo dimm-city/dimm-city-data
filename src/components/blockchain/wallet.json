@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blockchain_wallets",
+  "info": {
+    "displayName": "wallet",
+    "icon": "braille"
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "network": {
+      "type": "enumeration",
+      "enum": [
+        "etherum"
+      ],
+      "required": true,
+      "default": "etherum"
+    }
+  }
+}

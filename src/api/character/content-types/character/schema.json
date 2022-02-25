@@ -125,6 +125,48 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::race.race"
+    },
+    "faction": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::faction.faction",
+      "inversedBy": "members"
+    },
+    "playerCharacter": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "selectedAbilities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ability.ability"
+    },
+    "historicalEvents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::historical-event.historical-event",
+      "inversedBy": "characters"
+    },
+    "selectedSkillTrees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::skill-tree.skill-tree"
+    },
+    "currentLocation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::location.location"
     }
   }
 }

@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "worlds",
+  "info": {
+    "singularName": "world",
+    "pluralName": "worlds",
+    "displayName": "World",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::location.location",
+      "mappedBy": "world"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

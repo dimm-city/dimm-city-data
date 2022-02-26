@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * twine-story router.
+ * wallet router.
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::twine-story.twine-story');
+module.exports = createCoreRouter('api::wallet.wallet');

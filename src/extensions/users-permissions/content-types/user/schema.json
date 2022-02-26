@@ -64,9 +64,9 @@
       "configurable": false
     },
     "wallets": {
-      "type": "component",
-      "repeatable": true,
-      "component": "blockchain.wallet"
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wallet.wallet"
     }
   }
 }

@@ -17,6 +17,12 @@
     },
     "configuration": {
       "type": "json"
+    },
+    "characterReleases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::character-release.character-release",
+      "mappedBy": "blockchain"
     }
   }
 }

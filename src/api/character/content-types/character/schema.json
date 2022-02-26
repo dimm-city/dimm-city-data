@@ -168,12 +168,6 @@
       "relation": "oneToOne",
       "target": "api::location.location"
     },
-    "release": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::release.release",
-      "inversedBy": "characters"
-    },
     "tokenId": {
       "pluginOptions": {
         "i18n": {
@@ -186,6 +180,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::character-role.character-role"
+    },
+    "release": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::character-release.character-release",
+      "inversedBy": "characters"
     }
   }
 }

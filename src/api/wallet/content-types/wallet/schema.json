@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wallets",
+  "info": {
+    "singularName": "wallet",
+    "pluralName": "wallets",
+    "displayName": "Wallet",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "blockchain": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blockchain.blockchain"
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

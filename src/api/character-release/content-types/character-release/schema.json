@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "releases",
+  "collectionName": "character_releases",
   "info": {
-    "singularName": "release",
-    "pluralName": "releases",
-    "displayName": "Release",
+    "singularName": "character-release",
+    "pluralName": "character-releases",
+    "displayName": "Character Release",
     "description": ""
   },
   "options": {
@@ -23,8 +23,7 @@
         }
       },
       "type": "string",
-      "required": true,
-      "unique": true
+      "required": true
     },
     "slug": {
       "pluginOptions": {
@@ -50,6 +49,18 @@
         }
       },
       "type": "string"
+    },
+    "characters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::character.character",
+      "mappedBy": "release"
+    },
+    "blockchain": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::blockchain.blockchain",
+      "inversedBy": "characterReleases"
     }
   }
 }

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- *  game controller
+ *  wallet controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::game.game');
+module.exports = createCoreController('api::wallet.wallet');

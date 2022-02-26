@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "twine_stories",
+  "collectionName": "stories",
   "info": {
-    "singularName": "twine-story",
-    "pluralName": "twine-stories",
-    "displayName": "Twine Story",
+    "singularName": "story",
+    "pluralName": "stories",
+    "displayName": "Story",
     "description": ""
   },
   "options": {
@@ -113,7 +113,29 @@
       "targetField": "name",
       "required": true
     },
-    "owner": {
+    "system": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "SugarCube2",
+        "WAA",
+        "Quest",
+        "Ink"
+      ]
+    },
+    "configuration": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "json"
+    },
+    "owners": {
       "type": "component",
       "repeatable": true,
       "pluginOptions": {
@@ -121,7 +143,7 @@
           "localized": false
         }
       },
-      "component": "blockchain.wallet"
+      "component": "blockchain.ownership"
     }
   }
 }

@@ -52,8 +52,17 @@
     },
     "abilities": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::ability.ability"
+      "relation": "manyToMany",
+      "target": "api::ability.ability",
+      "inversedBy": "skillTrees"
+    },
+    "shortDescription": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
     }
   }
 }

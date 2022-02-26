@@ -83,6 +83,12 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "skillTrees": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::skill-tree.skill-tree",
+      "mappedBy": "abilities"
     }
   }
 }

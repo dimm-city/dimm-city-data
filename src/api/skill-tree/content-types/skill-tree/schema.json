@@ -35,16 +35,6 @@
       "type": "richtext",
       "required": true
     },
-    "abilities": {
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "skills.skill-tree-abilities"
-    },
     "slug": {
       "pluginOptions": {
         "i18n": {
@@ -59,6 +49,11 @@
       "relation": "manyToMany",
       "target": "api::character-role.character-role",
       "inversedBy": "skillTrees"
+    },
+    "abilities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ability.ability"
     }
   }
 }

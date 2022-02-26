@@ -53,7 +53,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::skill-tree.skill-tree",
-      "inversedBy": "characterRoles"
+      "mappedBy": "characterRoles"
     }
   }
 }

@@ -92,6 +92,15 @@
       "relation": "oneToMany",
       "target": "api::historical-event.historical-event",
       "mappedBy": "location"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }

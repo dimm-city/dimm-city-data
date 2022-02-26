@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "abilities",
+  "collectionName": "releases",
   "info": {
-    "singularName": "ability",
-    "pluralName": "abilities",
-    "displayName": "Ability",
+    "singularName": "release",
+    "pluralName": "releases",
+    "displayName": "Release",
     "description": ""
   },
   "options": {
@@ -26,18 +26,14 @@
       "required": true,
       "unique": true
     },
-    "mainImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
+    "slug": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "type": "uid",
+      "required": true
     },
     "description": {
       "pluginOptions": {
@@ -47,24 +43,19 @@
       },
       "type": "richtext"
     },
-    "shortDescription": {
+    "contractAddress": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "text",
-      "required": false
+      "type": "string"
     },
-    "slug": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "uid",
-      "targetField": "name",
-      "required": true
+    "characters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::character.character",
+      "mappedBy": "release"
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "abilities",
+  "collectionName": "character_roles",
   "info": {
-    "singularName": "ability",
-    "pluralName": "abilities",
-    "displayName": "Ability",
+    "singularName": "character-role",
+    "pluralName": "character-roles",
+    "displayName": "Character Role",
     "description": ""
   },
   "options": {
@@ -22,22 +22,24 @@
           "localized": true
         }
       },
-      "type": "string",
-      "required": true,
-      "unique": true
+      "type": "string"
     },
-    "mainImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
+    "slug": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "type": "uid",
+      "targetField": "name"
+    },
+    "shortDescription": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
     },
     "description": {
       "pluginOptions": {
@@ -47,24 +49,11 @@
       },
       "type": "richtext"
     },
-    "shortDescription": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text",
-      "required": false
-    },
-    "slug": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "uid",
-      "targetField": "name",
-      "required": true
+    "skillTrees": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::skill-tree.skill-tree",
+      "inversedBy": "characterRoles"
     }
   }
 }

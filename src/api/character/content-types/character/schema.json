@@ -167,6 +167,25 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::location.location"
+    },
+    "release": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::release.release",
+      "inversedBy": "characters"
+    },
+    "tokenId": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid"
+    },
+    "characterRoles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::character-role.character-role"
     }
   }
 }

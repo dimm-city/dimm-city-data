@@ -102,6 +102,26 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::race.race"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "owner": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "blockchain.wallet"
     }
   }
 }

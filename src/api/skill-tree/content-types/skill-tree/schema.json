@@ -44,6 +44,21 @@
         }
       },
       "component": "skills.skill-tree-abilities"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "name"
+    },
+    "characterRoles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::character-role.character-role",
+      "inversedBy": "skillTrees"
     }
   }
 }

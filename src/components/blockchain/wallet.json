@@ -2,7 +2,8 @@
   "collectionName": "components_blockchain_wallets",
   "info": {
     "displayName": "wallet",
-    "icon": "braille"
+    "icon": "braille",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,13 +11,10 @@
       "type": "string",
       "required": true
     },
-    "network": {
-      "type": "enumeration",
-      "enum": [
-        "etherum"
-      ],
-      "required": true,
-      "default": "etherum"
+    "blockchain": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blockchain.blockchain"
     }
   }
 }

@@ -254,6 +254,11 @@
       },
       "type": "integer",
       "min": 0
+    },
+    "cybernetics": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ability.ability"
     }
   }
 }

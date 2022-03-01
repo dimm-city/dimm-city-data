@@ -173,6 +173,11 @@
       },
       "type": "uid",
       "targetField": "name"
+    },
+    "abilities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ability.ability"
     }
   }
 }

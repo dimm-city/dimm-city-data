@@ -89,6 +89,16 @@
       "relation": "manyToMany",
       "target": "api::skill-tree.skill-tree",
       "mappedBy": "abilities"
+    },
+    "cybernetic": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

@@ -177,7 +177,7 @@
       },
       "type": "uid"
     },
-    "characterRoles": {
+    "roles": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::character-role.character-role"
@@ -259,6 +259,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::ability.ability"
+    },
+    "items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item.item"
     }
   }
 }

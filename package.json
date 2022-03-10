@@ -12,12 +12,21 @@
     "build:prod": "NODE_ENV=production strapi build"
   },
   "dependencies": {
+    "@azure/storage-blob": "^12.8.0",
     "@strapi/plugin-graphql": "^4.1.0",
     "@strapi/plugin-i18n": "4.1.0",
     "@strapi/plugin-users-permissions": "4.1.0",
     "@strapi/strapi": "4.1.0",
+    "handlebars": "^4.7.7",
     "mysql": "^2.18.1",
-    "sqlite3": "5.0.2"
+    "node-fetch": "^3.2.2",
+    "sqlite3": "5.0.2",    
+    "@truffle/hdwallet-provider": "^1.7.0",
+    "ethers": "^5.5.2",    
+    "node-cache": "^5.1.2",    
+    "pify": "^5.0.0",
+    "truffle-contract": "^4.0.31",
+    "web3": "^1.6.1"
   },
   "author": {
     "name": "ITLackey"

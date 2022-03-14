@@ -121,6 +121,7 @@ async function getCharacterMetadata(typeKey, releaseKey, id) {
   return output;
 }
 async function getCurrentMetadata(typeKey, releaseKey, id) {
+  console.log("getting current metadata", typeKey, releaseKey, id);
   let result = {};
   const containerClient = blobServiceClient.getContainerClient(`${container}`);
   let blobResponse;
@@ -128,18 +129,18 @@ async function getCurrentMetadata(typeKey, releaseKey, id) {
   result = currentCache.get(`${typeKey}-${releaseKey}-${id}`);
 
   if (!result) {
-    try {
-      const modClient = containerClient.getBlobClient(
-        `${typeKey}/${releaseKey}/mods/${id}.json`
-      );
-      blobResponse = await modClient.download();
-    } catch (error) {
-      //HACK: exists seems to always return true, so using a catch
-      const blobClient = containerClient.getBlobClient(
-        `${typeKey}/${releaseKey}/${id}.json`
-      );
-      blobResponse = await blobClient.download();
-    }
+    // try {
+    //   const modClient = containerClient.getBlobClient(
+    //     `${typeKey}/${releaseKey}/mods/${id}.json`
+    //   );
+    //   blobResponse = await modClient.download();
+    // } catch (error) {
+    // //HACK: exists seems to always return true, so using a catch
+    const blobClient = containerClient.getBlobClient(
+      `${typeKey}/${releaseKey}/${id}.json`
+    );
+    blobResponse = await blobClient.download();
+    //}
     const data = (
       await streamToBuffer(blobResponse.readableStreamBody)
     ).toString();

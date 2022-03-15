@@ -50,17 +50,17 @@
       },
       "type": "string"
     },
-    "characters": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::character.character",
-      "mappedBy": "release"
-    },
     "blockchain": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::blockchain.blockchain",
       "inversedBy": "characterReleases"
+    },
+    "tokens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::token.token",
+      "mappedBy": "release"
     }
   }
 }

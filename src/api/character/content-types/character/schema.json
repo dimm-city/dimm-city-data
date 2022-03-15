@@ -182,12 +182,6 @@
       "relation": "oneToMany",
       "target": "api::character-role.character-role"
     },
-    "release": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::character-release.character-release",
-      "inversedBy": "characters"
-    },
     "weight": {
       "pluginOptions": {
         "i18n": {
@@ -264,6 +258,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::item.item"
+    },
+    "token": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::token.token",
+      "mappedBy": "character"
     }
   }
 }

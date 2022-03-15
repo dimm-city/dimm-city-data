@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Dimm City Archive data",
   "scripts": {
-    "develop": "strapi develop",
+    "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",

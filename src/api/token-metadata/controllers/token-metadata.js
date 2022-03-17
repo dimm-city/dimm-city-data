@@ -27,10 +27,6 @@ module.exports = {
         );
 
         const character = entries.at(0);
-
-        //ctx.body = Object.assign(output, character);
-        console.warn("get character", typeKey, releaseKey, id);
-   
         if (character) {
           console.warn("merge character", typeKey, releaseKey, id);
    
@@ -47,7 +43,7 @@ module.exports = {
           ctx.body = "Token not found";
         } else {
           ctx.response.status = 500;
-          ctx.body = "Failure in dimm city";
+          ctx.body = "Failure in dimm city\r\n"+ error.message;
         }
       }
     } catch (err) {

@@ -15,7 +15,7 @@ module.exports = {
    
       try {
         let output = await getCharacterMetadata(typeKey, releaseKey, id);
-
+        output.hasCharacter = false;
         ctx.response.set("content-type", "application/json");
 
         const entries = await strapi.entityService.findMany(
@@ -31,6 +31,7 @@ module.exports = {
           console.warn("merge character", typeKey, releaseKey, id);
    
           output.name = character.name;
+          output.hasCharacter = true;
         }
 
         ctx.body = output;

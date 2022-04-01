@@ -6,4 +6,5 @@
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::character.character');
+const service = createCoreService('api::character.character');
+module.exports = service;

@@ -61,6 +61,11 @@
       "relation": "oneToMany",
       "target": "api::token.token",
       "mappedBy": "release"
+    },
+    "race": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::race.race"
     }
   }
 }

@@ -288,6 +288,11 @@
         }
       },
       "type": "string"
+    },
+    "specialties": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specialty.specialty"
     }
   }
 }

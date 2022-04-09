@@ -110,7 +110,7 @@ module.exports = {
       await importTokenDataToCharacter(character, releaseKey, id);
 
       //publish records
-      character.publishedAt = new Date();
+      //ToDo: re-enable for release: character.publishedAt = new Date();
 
       const result = await strapi.entityService.create(
         "api::character.character",

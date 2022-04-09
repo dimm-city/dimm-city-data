@@ -67,6 +67,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::wallet.wallet"
+    },
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
     }
   }
 }

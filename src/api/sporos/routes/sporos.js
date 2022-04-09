@@ -9,5 +9,14 @@ module.exports = {
        middlewares: [],
      },
     },
+    {
+      method: 'POST',
+      path: '/sporos/update/:tokenId',
+      handler: 'sporos.update',
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+     },
   ],
 };

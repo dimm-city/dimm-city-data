@@ -18,7 +18,7 @@ async function importTokenDataToCharacter(character, releaseKey, id) {
   //set race
   character.race = release.race;
 
-  const service = strapi.service("api::sporos.metadata");  
+  const service = strapi.service("api::sporos.metadata");
   const token = await service.getOrCreateTokenData(release, id);
   character.tokenId = token.tokenId;
   character.token = token.id;
@@ -32,7 +32,7 @@ async function importTokenDataToCharacter(character, releaseKey, id) {
   //set images
   character.imageUrl = token.metadata.image;
   character.thumbnailUrl = token.metadata.thumbnail_uri;
-  
+
   //TODO: set items
 }
 
@@ -63,7 +63,7 @@ async function importTokenDataToCharacter(character, releaseKey, id) {
 //         release: release.id,
 //       },
 //     });
-    
+
 //   } else {
 //     token = tokens[0];
 //   }
@@ -89,13 +89,10 @@ module.exports = {
         message
       );
 
-      
-
       if (!message || !signer) throw new Error("Not authorized");
 
       //TODO: check ownership && state
       //if (!message || !signer || !owner || !alive) throw new Error("Not authorized");
-
 
       const character = ctx.request.body;
 
@@ -117,6 +114,66 @@ module.exports = {
         { data: character }
       );
 
+      ctx.body = result;
+    } catch (err) {
+      console.error(err);
+      ctx.body = JSON.stringify(err);
+      ctx.response.status = 500;
+    }
+  },
+  update: async (ctx, next) => {
+    try {
+      const tokenId = ctx.params.tokenId;
+
+      const message = ctx.header.authorization;
+      const signer = ethers.utils.verifyMessage(
+        "Sign this message to connect to your Dimm City profile.",
+        message
+      );
+
+      if (!message || !signer) throw new Error("Not authorized");
+
+      //TODO: check ownership && state
+      //if (!message || !signer || !owner || !alive) throw new Error("Not authorized");
+
+      // const characters = await strapi.entityService.findMany(
+      //   "api::character.character",
+      //   {
+      //     filters: { tokenId: tokenId },
+      //     populate: "*",
+      //   }
+      // );
+
+      // const currentData = characters.at(0);
+
+      const character = ctx.request.body;
+
+      //set defaults
+      if (character.pronouns <= "") character.pronouns = "they/them";
+      if (character.height <= 0 || character.height > 5) character.height = 1.2;
+      if (character.weight < 1 || character.weight > 100) character.weight = 27;
+      if (character.age < 1) character.age = 23;
+
+      const result = await strapi.entityService.update(
+        "api::character.character",
+        character.id,
+        {
+          data: {
+            name: character.name,
+            age: character.age,
+            pronouns: character.pronouns,
+            height: character.height,
+            weight: character.weight,
+            vibe: character.vibe,
+            beliefs: character.beliefs,
+            flaws: character.flaws,
+            dreams: character.dreams,
+            backstory: character.backstory,
+            created_by_id: currentData.created_by_id,
+            updatedAt: new Date(),
+          },
+        }
+      );
 
       ctx.body = result;
     } catch (err) {

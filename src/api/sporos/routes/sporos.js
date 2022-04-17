@@ -29,7 +29,7 @@ module.exports = {
     },
     {
       method: "GET",
-      path: "/images/sporos/:release/thumbnails/:id.png",
+      path: "/thumbnails/sporos/:release/:id.png",
       handler: "images.thumbnail",
       config: {
         policies: [],

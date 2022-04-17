@@ -11,12 +11,20 @@ const { BigNumber } = require("ethers");
 const connStr = process.env.storage_connection;
 const container = process.env.metadata_storage_container || "metadata";
 const mediaBaseUri =
-  process.env.storage_media_uri || "https://data.dimm.city/api/images";
+  process.env.storage_media_uri || "https://data.dimm.city/api/";
 
 const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
 
-const typeKey = "sporos";
 
+const mediaTypes = {
+  images: "images",
+  thumbnails: "thumbnails",
+  mp4: "mp4",
+};
+
+function formatMediaUrl(mediaType, releaseKey, id) {
+  return `${mediaBaseUri}/${mediaTypes[mediaType]}/sporos/${releaseKey}/${id}.png`;
+}
 async function getOriginalTokenMetadata(typeKey, releaseKey, id) {
   const contractService = strapi.service("api::sporos.contracts");
   const supply = await contractService.getTotalSupply(releaseKey);
@@ -64,18 +72,21 @@ async function getOrCreateTokenData(release, id, publish = false) {
 
     let metadata = await getOriginalTokenMetadata(typeKey, releaseKey, id);
 
-    const releaseMediaUri = `${mediaBaseUri}/${typeKey}/${releaseKey}`;
-
     //ToDo: add link to WebGL card and link to token on dimm.city
     //metadata.animation_url = "WebGL url";
     //metadata.external_url = `https://dimm.city/${typeKey}/${releaseKey}/${metadata.edition}`;
 
     //ToDo: use files.dimm.city once automated image protection is built
-    metadata.image = `${releaseMediaUri}/${metadata.edition}.png`;
-    metadata.thumbnail_uri = `${releaseMediaUri}/thumbnail/${metadata.edition}.png`;
+    metadata.image = formatMediaUrl(mediaTypes.images, releaseKey, id); // `${releaseMediaUri}/${metadata.edition}.png`;
+    metadata.thumbnail_uri = formatMediaUrl(
+      mediaTypes.thumbnails,
+      releaseKey,
+      id
+    );
+    //`${releaseMediaUri}/thumbnail/${metadata.edition}.png`;
     metadata.compiler = "Daemon";
     delete metadata.fullresulotion_uri;
-    
+
     token = await strapi.entityService.create("api::token.token", {
       data: {
         tokenId: tokenId,
@@ -91,15 +102,16 @@ async function getOrCreateTokenData(release, id, publish = false) {
   return token;
 }
 
-async function getMergedMetadata(release, id, releaseMediaUri) {
+async function getMergedMetadata(release, id) {
   let token = await getOrCreateTokenData(release, id, true);
 
   let output = token.metadata;
 
-  output.image = `${releaseMediaUri}/${id}.png`;
-  output.thumbnail_uri = `${releaseMediaUri}/thumbnails/${id}.png`;
+  output.image = formatMediaUrl(mediaTypes.images, release.slug, id);
+  output.thumbnail_uri = formatMediaUrl(mediaTypes.thumbnails, release.slug, id);
+
   if (output.animation_url) {
-    output.animation_url = `${releaseMediaUri}/${id}.mp4`;
+    output.animation_url = formatMediaUrl(mediaTypes.mp4, release.slug, id);
   }
 
   const entries = await strapi.entityService.findMany(
@@ -138,7 +150,6 @@ async function getMergedMetadata(release, id, releaseMediaUri) {
 
 module.exports = () => ({
   async getCharacterMetadata(release, id) {
-    const releaseMediaUri = `${mediaBaseUri}/${typeKey}/${release.slug}`;
     const releaseKey = release.slug;
     let state = CharacterStates.Unminted;
 
@@ -149,17 +160,17 @@ module.exports = () => ({
       state = await contractService.getTokenState(release.slug, id);
     }
 
-    let output = {}; 
+    let output = {};
 
     switch (state) {
       case CharacterStates.Alive:
-        output = await getMergedMetadata(release, id, releaseMediaUri);
+        output = await getMergedMetadata(release, id);
 
         break;
       case CharacterStates.Annihilated:
         Object.assign(output, {
           description: "This Sporo can no longer be contacted.",
-          image: `${releaseMediaUri}/dead.png`,
+          image: formatMediaUrl(mediaTypes.images, release.slug, 'destroyed'),
           attributes: [],
         });
         break;
@@ -169,7 +180,7 @@ module.exports = () => ({
       case CharacterStates.Lost:
         Object.assign(output, {
           description: "Has been lost in the ether...",
-          image: `${releaseMediaUri}/lost.png`,
+          image: formatMediaUrl(mediaTypes.images, release.slug, "lost"),
           attributes: [],
         });
         break;

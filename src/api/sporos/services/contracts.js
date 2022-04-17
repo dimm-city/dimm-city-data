@@ -20,7 +20,8 @@ function getSporosContractInstance(releaseKey) {
     process.env.provider_project_id
   );
   console.log(releaseKey);
-  const address = config.releases[releaseKey].address;
+  const release = config.releases[releaseKey];
+  const address = release.address;
   const contract = new ethers.Contract(address, ContractJson.abi, provider);
   contracts[releaseKey] = contract;
   return contract;

@@ -45,4 +45,31 @@ module.exports = () => ({
     }
     return output;
   },
+  async getThumbnail(releaseKey, id) {
+    const ext = "png";
+    const contractService = strapi.service("api::sporos.contracts");
+    const supply = await contractService.getTotalSupply(releaseKey);
+    if (!isNaN(id) && BigNumber.from(id) > BigNumber.from(supply)) {
+      throw new Error("404", {
+        statusCode: 404,
+      });
+    }
+    console.log("Get thumbnail");
+    const fileKey = `${releaseKey}_thumbnails/${id}.${ext}`; //_thumbnails
+    let output = currentCache.get(fileKey);
+
+    if (output == null) {
+      console.log("download image");
+      const containerClient = blobServiceClient.getContainerClient(
+        `${container}/sporos`
+      );
+      const blobClient = containerClient.getBlobClient(`${fileKey}`);
+      const downloadBlockBlobResponse = await blobClient.download();
+      output = await streamToBuffer(
+        downloadBlockBlobResponse.readableStreamBody
+      );
+      currentCache.set(`${fileKey}`, output);
+    }
+    return output;
+  },
 });

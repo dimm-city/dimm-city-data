@@ -10,6 +10,15 @@ module.exports = {
       },
     },
     {
+      method: "GET",
+      path: "/sporos/can-edit/:release-:id",
+      handler: "characters.canEdit",
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
+    {
       method: "POST",
       path: "/sporos/import/:release/:id",
       handler: "characters.import",
@@ -20,7 +29,7 @@ module.exports = {
     },
     {
       method: "POST",
-      path: "/sporos/update/:tokenId",
+      path: "/sporos/update/:release-:id",
       handler: "characters.update",
       config: {
         policies: [],

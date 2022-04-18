@@ -70,6 +70,18 @@ async function importTokenDataToCharacter(character, releaseKey, id) {
 //   return token;
 // }
 
+function getSigner(ctx) {
+  const message = ctx.header.authorization;
+  const signer = ethers.utils.verifyMessage(
+    "Sign this message to connect to your Dimm City profile.",
+    message
+  );
+
+  if (!message || !signer) throw new Error("Not authorized");
+
+  return signer;
+}
+
 function _getAttributeValue(token, attribKey) {
   const result = token.attributes.find(
     (a) => a.trait_type.toLowerCase() == attribKey.toLowerCase()
@@ -78,20 +90,29 @@ function _getAttributeValue(token, attribKey) {
 }
 
 module.exports = {
+  canEdit: async (ctx, next) => {
+    const releaseKey = ctx.params.release?.toLowerCase();
+    const id = ctx.params.id;
+
+    console.log("canEdit-ctrl", releaseKey, id);
+    const signer = getSigner(ctx);
+
+    const service = strapi.service("api::sporos.contracts");
+
+    return await service.canEditToken(signer, releaseKey, id);
+  },
   import: async (ctx, next) => {
     try {
-      const releaseKey = ctx.params.release;
+      const releaseKey = ctx.params.release?.toLowerCase();
       const id = ctx.params.id;
 
-      const message = ctx.header.authorization;
-      const signer = ethers.utils.verifyMessage(
-        "Sign this message to connect to your Dimm City profile.",
-        message
-      );
-
-      if (!message || !signer) throw new Error("Not authorized");
+      const { signer } = getSigner(ctx);
 
       //TODO: check ownership && state
+      const service = strapi.service("api::sporos.contracts");
+      const canEdit = await service.canEditToken(signer, releaseKey, id);
+      if (!canEdit)
+        throw new Error("You are not authorized to edit this character");
       //if (!message || !signer || !owner || !alive) throw new Error("Not authorized");
 
       const character = ctx.request.body;
@@ -123,28 +144,35 @@ module.exports = {
   },
   update: async (ctx, next) => {
     try {
-      const tokenId = ctx.params.tokenId;
+      const releaseKey = ctx.params.release?.toLowerCase();
+      const id = ctx.params.id;
 
-      const message = ctx.header.authorization;
-      const signer = ethers.utils.verifyMessage(
-        "Sign this message to connect to your Dimm City profile.",
-        message
+      const signer = getSigner(ctx);
+
+      const characters = await strapi.entityService.findMany(
+        "api::character.character",
+        {
+          filters: { tokenId: `${releaseKey}-${id}` },
+          populate: "*",
+        }
       );
 
-      if (!message || !signer) throw new Error("Not authorized");
+      const currentData = characters.at(0);
+
+      if (!currentData || !currentData.token)
+        throw new Error("No token associated with this character");
+
+      const service = strapi.service("api::sporos.contracts");
+
+      const canEdit = await service.canEditToken(
+        signer,
+        currentData.token.metadata.release.toLowerCase(),
+        currentData.token.metadata.edition
+      );
+      if (!canEdit)
+        throw new Error("You are not authorized to edit this character");
 
       //TODO: check ownership && state
-      //if (!message || !signer || !owner || !alive) throw new Error("Not authorized");
-
-      // const characters = await strapi.entityService.findMany(
-      //   "api::character.character",
-      //   {
-      //     filters: { tokenId: tokenId },
-      //     populate: "*",
-      //   }
-      // );
-
-      // const currentData = characters.at(0);
 
       const character = ctx.request.body;
 
@@ -182,5 +210,4 @@ module.exports = {
       ctx.response.status = 500;
     }
   },
-
 };

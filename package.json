@@ -26,7 +26,6 @@
     "pify": "^5.0.0",
     "sqlite3": "5.0.2",
     "strapi-provider-upload-azure-storage": "^2.0.0",
-    "truffle-contract": "^4.0.31",
     "web3": "^1.6.1"
   },
   "author": {

@@ -123,7 +123,7 @@ async function getMergedMetadata(release, id) {
   );
 
   const character = entries.at(0);
-  if (character) {
+  if (character && character.publishedAt) {
     output.name = character.name;
     output.dreams = character.dreams;
     output.description = character.vibe;

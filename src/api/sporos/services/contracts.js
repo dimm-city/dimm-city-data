@@ -27,7 +27,23 @@ function getSporosContractInstance(releaseKey) {
   return contract;
 }
 
+function hasContract(releaseKey) {
+  return config.releases[releaseKey] != null;
+}
+
 module.exports = () => ({
+  async canEditToken(signer, releaseKey, tokenId) {
+    if (!hasContract(releaseKey)) return false;
+    try {
+      const contract = getSporosContractInstance(releaseKey);
+      const owner = await contract.ownerOf(tokenId);
+      console.log("canEdit", owner, signer);
+      return owner === signer;
+    } catch (error) {
+      console.error("canEditToken failed:", error);
+      return false;
+    }
+  },
   async getTokenState(releaseKey, tokenId) {
     const contract = getSporosContractInstance(releaseKey);
     const isValid = await this.isValidToken(releaseKey, tokenId);

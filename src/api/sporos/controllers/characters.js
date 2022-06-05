@@ -106,7 +106,7 @@ module.exports = {
       const releaseKey = ctx.params.release?.toLowerCase();
       const id = ctx.params.id;
 
-      const { signer } = getSigner(ctx);
+      const signer = getSigner(ctx);
 
       //TODO: check ownership && state
       const service = strapi.service("api::sporos.contracts");
@@ -128,7 +128,8 @@ module.exports = {
       await importTokenDataToCharacter(character, releaseKey, id);
 
       //publish records
-      //ToDo: re-enable for release: character.publishedAt = new Date();
+      //ToDo: re-enable for release: 
+      character.publishedAt = new Date();
 
       const result = await strapi.entityService.create(
         "api::character.character",

@@ -2,7 +2,7 @@ module.exports = {
   routes: [
     {
       method: "GET",
-      path: "/metadata/:type/:release/:id",
+      path: "/metadata/:type/:release/:id.json",
       handler: "metadata.findOne",
       config: {
         policies: [],

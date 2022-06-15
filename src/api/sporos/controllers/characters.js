@@ -130,6 +130,7 @@ module.exports = {
       //publish records
       //ToDo: re-enable for release: 
       character.publishedAt = new Date();
+      character.playerCharacter = true;
 
       const result = await strapi.entityService.create(
         "api::character.character",

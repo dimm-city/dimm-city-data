@@ -34,6 +34,7 @@
   "strapi": {
     "uuid": "c5dd9c63-3d59-43f4-ad12-08bee6efa981"
   },
+  "telemetryDisabled": true,
   "engines": {
     "node": ">=12.x.x <=16.x.x",
     "npm": ">=6.0.0"

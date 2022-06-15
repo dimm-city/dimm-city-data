@@ -23,7 +23,10 @@ const mediaTypes = {
 };
 
 function formatMediaUrl(mediaType, releaseKey, id) {
-  return `${mediaBaseUri}/${mediaTypes[mediaType]}/sporos/${releaseKey}/${id}.png`;
+  //HACK: fix this!
+  let baseUri = process.env.NODE_ENV == "production" ? "https://data.dimm.city/api/" : process.env.storage_media_uri;
+
+  return `${baseUri}/${mediaTypes[mediaType]}/sporos/${releaseKey}/${id}.png`;
 }
 async function getOriginalTokenMetadata(typeKey, releaseKey, id) {
   const contractService = strapi.service("api::sporos.contracts");

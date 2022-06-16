@@ -15,7 +15,6 @@ const mediaBaseUri =
 
 const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
 
-
 const mediaTypes = {
   images: "images",
   thumbnails: "thumbnails",
@@ -24,7 +23,10 @@ const mediaTypes = {
 
 function formatMediaUrl(mediaType, releaseKey, id) {
   //HACK: fix this!
-  let baseUri = process.env.NODE_ENV == "production" ? "https://data.dimm.city/api/" : process.env.storage_media_uri;
+  let baseUri =
+    process.env.NODE_ENV == "production"
+      ? "https://data.dimm.city/api/"
+      : process.env.storage_media_uri;
 
   return `${baseUri}/${mediaTypes[mediaType]}/sporos/${releaseKey}/${id}.png`;
 }
@@ -111,7 +113,11 @@ async function getMergedMetadata(release, id) {
   let output = token.metadata;
 
   output.image = formatMediaUrl(mediaTypes.images, release.slug, id);
-  output.thumbnail_uri = formatMediaUrl(mediaTypes.thumbnails, release.slug, id);
+  output.thumbnail_uri = formatMediaUrl(
+    mediaTypes.thumbnails,
+    release.slug,
+    id
+  );
 
   if (output.animation_url) {
     output.animation_url = formatMediaUrl(mediaTypes.mp4, release.slug, id);
@@ -131,9 +137,16 @@ async function getMergedMetadata(release, id) {
     output.dreams = character.dreams;
     output.description = character.vibe;
     output.hasCharacter = true;
+    output.flaws = character.flaws;
+    output.beliefs = character.beliefs;
+    output.backstory = character.backstory;
     //TODO: complete character attributes
     //Tweak metadata for more robust support
     //https://docs.opensea.io/docs/metadata-standards
+    output.attributes.push({
+      value: true,
+      trait_type: "Has Citizen File",
+    });
     output.attributes.push({
       value: character.hp,
       trait_type: "HP",
@@ -145,6 +158,10 @@ async function getMergedMetadata(release, id) {
       display_type: "boost_number",
     });
   } else {
+    output.attributes.push({
+      value: false,
+      trait_type: "Has Citizen File",
+    });
     output.hasCharacter = false;
   }
 
@@ -173,7 +190,7 @@ module.exports = () => ({
       case CharacterStates.Annihilated:
         Object.assign(output, {
           description: "This Sporo can no longer be contacted.",
-          image: formatMediaUrl(mediaTypes.images, release.slug, 'destroyed'),
+          image: formatMediaUrl(mediaTypes.images, release.slug, "destroyed"),
           attributes: [],
         });
         break;

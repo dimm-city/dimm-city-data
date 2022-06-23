@@ -57,6 +57,10 @@
     "description": {
       "type": "richtext",
       "maxLength": 5000
+    },
+    "shortDescription": {
+      "type": "text",
+      "maxLength": 500
     }
   }
 }

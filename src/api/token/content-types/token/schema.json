@@ -29,6 +29,12 @@
       "relation": "manyToOne",
       "target": "api::character-release.character-release",
       "inversedBy": "tokens"
+    },
+    "journalEntries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::journal-entry.journal-entry",
+      "mappedBy": "token"
     }
   }
 }

@@ -20,6 +20,12 @@
     "address": {
       "type": "string",
       "required": true
+    },
+    "journalEntries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::journal-entry.journal-entry",
+      "mappedBy": "author"
     }
   }
 }

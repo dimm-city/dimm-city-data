@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "journal_entries",
+  "info": {
+    "singularName": "journal-entry",
+    "pluralName": "journal-entries",
+    "displayName": "Journal Entry",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "metadataUri": {
+      "type": "string"
+    },
+    "thumbnailUrl": {
+      "type": "string"
+    },
+    "videoUrl": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "audioUrl": {
+      "type": "string"
+    },
+    "contentUrl": {
+      "type": "string"
+    },
+    "token": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::token.token",
+      "inversedBy": "journalEntries"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::wallet.wallet",
+      "inversedBy": "journalEntries"
+    },
+    "slug": {
+      "type": "uid"
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "tags": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext",
+      "maxLength": 5000
+    }
+  }
+}

@@ -2,6 +2,15 @@ module.exports = {
   routes: [
     {
       method: "GET",
+      path: "/metadata/:type/:release/contract.json",
+      handler: "metadata.findContract",
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
+    {
+      method: "GET",
       path: "/metadata/:type/:release/:id.json",
       handler: "metadata.findOne",
       config: {

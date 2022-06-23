@@ -42,4 +42,30 @@ module.exports = {
       ctx.body = err;
     }
   },
+  findContract: async (ctx) => {
+    const releaseKey = ctx.params.release;
+    const typeKey = ctx.params.type;
+    if (typeKey.toLowerCase() === "sporos") {
+      const releases = await strapi.entityService.findMany(
+        "api::character-release.character-release",
+        {
+          filters: { slug: releaseKey },
+          populate: ["race"],
+        }
+      );
+      if (releases && releases.length == 1) {
+        ctx.body = releases[0].metadata;
+      } else {
+        ctx.response.status = 404;
+        ctx.body = {
+          message: "unknown contract",
+        };
+      }
+    } else {
+      ctx.response.status = 404;
+      ctx.body = {
+        message: "unknown contract",
+      };
+    }
+  },
 };

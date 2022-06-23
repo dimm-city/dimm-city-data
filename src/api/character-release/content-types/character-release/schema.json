@@ -66,6 +66,14 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::race.race"
+    },
+    "metadata": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "json"
     }
   }
 }

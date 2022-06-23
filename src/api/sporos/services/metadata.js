@@ -150,12 +150,12 @@ async function getMergedMetadata(release, id) {
     output.attributes.push({
       value: character.hp,
       trait_type: "HP",
-      display_type: "boost_number",
+      display_type: "number",
     });
     output.attributes.push({
       value: character.ap,
       trait_type: "AP",
-      display_type: "boost_number",
+      display_type: "number",
     });
   } else {
     output.attributes.push({

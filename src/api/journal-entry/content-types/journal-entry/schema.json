@@ -61,6 +61,16 @@
     "shortDescription": {
       "type": "text",
       "maxLength": 500
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "text",
+        "content",
+        "media"
+      ],
+      "default": "text",
+      "required": true
     }
   }
 }

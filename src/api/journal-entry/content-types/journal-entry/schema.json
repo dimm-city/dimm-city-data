@@ -71,6 +71,10 @@
       ],
       "default": "text",
       "required": true
+    },
+    "recordedAt": {
+      "type": "datetime",
+      "required": false
     }
   }
 }

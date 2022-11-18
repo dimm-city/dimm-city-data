@@ -1,14 +1,18 @@
 module.exports = ({ env }) => ({
+  "users-permissions": {
+    config: {
+      jwtSecret: env("JWT_SECRET"),
+    },
+  },
   upload: {
     config: {
       provider: "strapi-provider-upload-azure-storage",
       providerOptions: {
-        
-        account: env('storage_account'),
-        accountKey: env('storage_account_key'),
-        serviceBaseURL: env('storage_url'),
-        containerName: env('storage_container_name'),
-        cdnBaseURL: env('storage_cdn_url'),
+        account: env("storage_account"),
+        accountKey: env("storage_account_key"),
+        serviceBaseURL: env("storage_url"),
+        containerName: env("storage_container_name"),
+        cdnBaseURL: env("storage_cdn_url"),
 
         defaultPath: "assets",
         maxConcurrent: 10,

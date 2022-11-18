@@ -13,10 +13,10 @@
   },
   "dependencies": {
     "@azure/storage-blob": "^12.8.0",
-    "@strapi/plugin-graphql": "^4.1.0",
-    "@strapi/plugin-i18n": "^4.1.0",
-    "@strapi/plugin-users-permissions": "^4.1.0",
-    "@strapi/strapi": "^4.1.0",
+    "@strapi/plugin-graphql": "^4.5.1",
+    "@strapi/plugin-i18n": "^4.1.8",
+    "@strapi/plugin-users-permissions": "^4.5.1",
+    "@strapi/strapi": "^4.5.1",
     "@truffle/hdwallet-provider": "^1.7.0",
     "ethers": "^5.5.2",
     "handlebars": "^4.7.7",
@@ -24,7 +24,7 @@
     "node-cache": "^5.1.2",
     "node-fetch": "^3.2.2",
     "pify": "^5.0.0",
-    "sqlite3": "5.0.2",
+    "better-sqlite3": "7.4.6",
     "strapi-provider-upload-azure-storage": "^2.0.0",
     "web3": "^1.6.1"
   },

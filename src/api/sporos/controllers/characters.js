@@ -23,11 +23,22 @@ async function importTokenDataToCharacter(character, releaseKey, id) {
   character.tokenId = token.tokenId;
   character.token = token.id;
 
+  //set defaults
+  if (character.pronouns <= "") character.pronouns = "they/them";
+  if (character.height <= 0 || character.height > 5) character.height = 1.2;
+  if (character.weight < 1 || character.weight > 100) character.weight = 27;
+  if (character.age < 1) character.age = 23;
+
+
   //set fields from attributes
-  character.name = character.name || token.name;
+  character.name ||= token.name;
   character.eyes = _getAttributeValue(token.metadata, "eyes");
   character.clothing = _getAttributeValue(token.metadata, "clothing");
   character.skin = _getAttributeValue(token.metadata, "body");
+
+  //Set stats
+  character.ap ||= 10;
+  character.hp ||= 10;
 
   //set images
   character.imageUrl = token.metadata.image;
@@ -101,6 +112,49 @@ module.exports = {
 
     return await service.canEditToken(signer, releaseKey, id);
   },
+  // create: async (ctx, next) => {
+  //   try {
+  //     const releaseKey = ctx.params.release?.toLowerCase();
+  //     const id = ctx.params.id;
+
+  //     const signer = getSigner(ctx);
+
+  //     //TODO: check ownership && state
+  //     const service = strapi.service("api::sporos.contracts");
+  //     const canEdit = await service.canEditToken(signer, releaseKey, id);
+  //     if (!canEdit)
+  //       throw new Error("You are not authorized to edit this character");
+  //     //if (!message || !signer || !owner || !alive) throw new Error("Not authorized");
+
+  //     const character = ctx.request.body;
+
+  //     //set defaults
+  //     if (character.pronouns <= "") character.pronouns = "they/them";
+  //     if (character.height <= 0 || character.height > 5) character.height = 1.2;
+  //     if (character.weight < 1 || character.weight > 100) character.weight = 27;
+  //     if (character.age < 1) character.age = 23;
+  //     character.ap = 10;
+  //     character.hp = 10;
+
+  //     await importTokenDataToCharacter(character, releaseKey, id);
+
+  //     //publish records
+  //     //ToDo: re-enable for release:
+  //     character.publishedAt = new Date();
+  //     character.playerCharacter = true;
+
+  //     const result = await strapi.entityService.create(
+  //       "api::character.character",
+  //       { data: character }
+  //     );
+
+  //     ctx.body = result;
+  //   } catch (err) {
+  //     console.error(err);
+  //     ctx.body = JSON.stringify(err);
+  //     ctx.response.status = 500;
+  //   }
+  // },
   import: async (ctx, next) => {
     try {
       const releaseKey = ctx.params.release?.toLowerCase();
@@ -117,18 +171,10 @@ module.exports = {
 
       const character = ctx.request.body;
 
-      //set defaults
-      if (character.pronouns <= "") character.pronouns = "they/them";
-      if (character.height <= 0 || character.height > 5) character.height = 1.2;
-      if (character.weight < 1 || character.weight > 100) character.weight = 27;
-      if (character.age < 1) character.age = 23;
-      character.ap = 10;
-      character.hp = 10;
-
       await importTokenDataToCharacter(character, releaseKey, id);
 
       //publish records
-      //ToDo: re-enable for release: 
+      //ToDo: re-enable for release:
       character.publishedAt = new Date();
       character.playerCharacter = true;
 

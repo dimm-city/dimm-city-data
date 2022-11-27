@@ -144,6 +144,14 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::wallet.wallet"
+    },
+    "metadataBaseUri": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

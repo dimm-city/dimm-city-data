@@ -178,6 +178,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::ability.ability"
+    },
+    "characterReleases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::character-release.character-release",
+      "mappedBy": "races"
     }
   }
 }

@@ -62,10 +62,11 @@
       "target": "api::token.token",
       "mappedBy": "release"
     },
-    "race": {
+    "races": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::race.race"
+      "relation": "manyToMany",
+      "target": "api::race.race",
+      "inversedBy": "characterReleases"
     },
     "metadata": {
       "pluginOptions": {
@@ -74,6 +75,75 @@
         }
       },
       "type": "json"
+    },
+    "abi": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "json"
+    },
+    "totalSupply": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "maxSupply": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "price": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "decimal"
+    },
+    "imageUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "videoUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "thumbnailUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "tags": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wallet.wallet"
     }
   }
 }

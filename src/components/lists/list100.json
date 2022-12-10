@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_lists_list100s",
+  "info": {
+    "displayName": "List100",
+    "icon": "align-justify",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string",
+      "maxLength": 1000,
+      "required": true
+    }
+  }
+}

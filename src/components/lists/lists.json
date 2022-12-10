@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_lists_lists",
+  "info": {
+    "displayName": "Lists",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    }
+  }
+}

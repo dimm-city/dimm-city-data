@@ -1,14 +1,14 @@
 module.exports = [
   "strapi::errors",
   "strapi::security",
-  { name: "strapi::cors", config: {
-    enabled: true,
-    headers: "*",
-    origin: [
-      'https://dimm.city',
-      'https://localhost:5000',
-    ]
-  } },
+  {
+    name: "strapi::cors",
+    config: {
+      enabled: true,
+      headers: "*",
+      origin: ["https://dimm.city", "https://localhost:3000"],
+    },
+  },
   "strapi::poweredBy",
   "strapi::logger",
   "strapi::query",

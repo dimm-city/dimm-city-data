@@ -73,6 +73,9 @@
     },
     "lastname": {
       "type": "string"
+    },
+    "address": {
+      "type": "string"
     }
   }
 }

@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -26,6 +26,24 @@
       "relation": "oneToMany",
       "target": "api::journal-entry.journal-entry",
       "mappedBy": "author"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "seed": {
+      "type": "text",
+      "private": true,
+      "unique": false
+    },
+    "managed": {
+      "type": "boolean"
+    },
+    "key": {
+      "type": "string",
+      "private": true,
+      "unique": false
     }
   }
 }

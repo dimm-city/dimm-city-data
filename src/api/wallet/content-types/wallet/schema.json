@@ -49,6 +49,12 @@
     },
     "encKey": {
       "type": "password"
+    },
+    "characters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::character.character",
+      "mappedBy": "wallet"
     }
   }
 }

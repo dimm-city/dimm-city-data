@@ -293,6 +293,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::specialty.specialty"
+    },
+    "wallet": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::wallet.wallet",
+      "inversedBy": "characters"
     }
   }
 }

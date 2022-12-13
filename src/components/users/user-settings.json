@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_users_user_settings",
+  "info": {
+    "displayName": "UserSettings",
+    "icon": "user-ninja"
+  },
+  "options": {},
+  "attributes": {
+    "displayName": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "richtext"
+    }
+  }
+}

@@ -38,12 +38,17 @@
       "unique": false
     },
     "managed": {
-      "type": "boolean"
+      "type": "boolean",
+      "private": true,
+      "default": true
     },
     "key": {
       "type": "string",
       "private": true,
       "unique": false
+    },
+    "encKey": {
+      "type": "password"
     }
   }
 }

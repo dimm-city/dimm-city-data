@@ -68,14 +68,10 @@
       "relation": "oneToMany",
       "target": "api::wallet.wallet"
     },
-    "firstname": {
-      "type": "string"
-    },
-    "lastname": {
-      "type": "string"
-    },
-    "address": {
-      "type": "string"
+    "settings": {
+      "type": "component",
+      "repeatable": false,
+      "component": "users.user-settings"
     }
   }
 }

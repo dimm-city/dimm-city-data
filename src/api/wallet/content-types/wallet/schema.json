@@ -27,11 +27,6 @@
       "target": "api::journal-entry.journal-entry",
       "mappedBy": "author"
     },
-    "user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
-    },
     "seed": {
       "type": "text",
       "private": true,
@@ -54,6 +49,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::character.character",
+      "mappedBy": "wallet"
+    },
+    "tokens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::token.token",
       "mappedBy": "wallet"
     }
   }

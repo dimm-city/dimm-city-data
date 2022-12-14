@@ -35,6 +35,12 @@
       "relation": "oneToMany",
       "target": "api::journal-entry.journal-entry",
       "mappedBy": "token"
+    },
+    "wallet": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::wallet.wallet",
+      "inversedBy": "tokens"
     }
   }
 }

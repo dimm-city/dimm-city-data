@@ -21,6 +21,9 @@ module.exports = createCoreController("api::token.token", ({ strapi }) => ({
       populate: "*",
     });
     let token = entries.at(0);
+
+    //! ToDo: Check if token is minted...
+
     token = Object.assign(token, token.metadata);
     //const character = entries.at(0);
     if (token.character) {

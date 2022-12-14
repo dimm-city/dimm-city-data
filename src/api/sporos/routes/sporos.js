@@ -2,6 +2,15 @@ module.exports = {
   routes: [
     {
       method: "GET",
+      path: "/users/me/tokens",
+      handler: "tokens.userTokens",
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
+    {
+      method: "GET",
       path: "/metadata/:type/:release/contract.json",
       handler: "metadata.findContract",
       config: {

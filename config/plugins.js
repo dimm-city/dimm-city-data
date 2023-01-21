@@ -1,4 +1,8 @@
 module.exports = ({ env }) => ({
+  'chain-sync': {
+    enabled: true,
+    resolve: './src/plugins/chain-sync'
+  },
   "users-permissions": {
     config: {
       jwtSecret: env("JWT_SECRET"),

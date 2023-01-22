@@ -29,13 +29,14 @@ module.exports = {
         );
 
         const walletEntity = await strapi.entityService.create(
-          "api::wallet.wallet",
+          "plugin::chain-wallets.chain-wallet",
           {
             data: {
               managed: true,
               address: wallet.address,
               seed: wallet.mnemonic.phrase,
               key: wallet.privateKey,
+              encKey: wallet.privateKey,
               user: result,
               blockchain: {
                 id: 2,

@@ -13,10 +13,10 @@
     "bio": {
       "type": "richtext"
     },
-    "wallet": {
+    "wallets": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::wallet.wallet"
+      "relation": "oneToMany",
+      "target": "plugin::chain-wallets.chain-wallet"
     }
   }
 }

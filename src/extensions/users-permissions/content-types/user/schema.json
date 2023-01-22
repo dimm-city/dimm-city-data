@@ -63,11 +63,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "wallets": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::chain-wallets.chain-wallet"
-    },
     "settings": {
       "type": "component",
       "repeatable": false,

@@ -21,6 +21,7 @@ module.exports = ({ strapi }) => ({
       },
       populate: ["contracts"],
     });
+    let eventCount = 0;
     for (const network of networks.results) {
       // Connect to the Ethereum network
       const provider = new ethers.providers.InfuraProvider(
@@ -37,14 +38,13 @@ module.exports = ({ strapi }) => ({
         );
 
         // Get the current transaction count for the contract
-        const events = await smartContract.queryFilter({
-          fromBlockOrBlockhash: contract.lastSynced ?? 0,
-          toBlock: "latest",
-        });
+        const events = await smartContract.queryFilter(
+          "Transfer",
+          contract.lastSynced ?? 0
+        );
 
         // Check for new events
         for (const event of events) {
-          console.log(event, "****");
           if (event.event == "Transfer" && event.args) {
             // Get the address of the sender and receiver
             const from = event.args.from;
@@ -64,7 +64,6 @@ module.exports = ({ strapi }) => ({
                 },
               });
             }
-            console.log(to, from, tokenId, token, "*****");
             // Get the sender's wallet
             let senderWallets = await walletSvc.find({
               filters: { address: from },
@@ -98,13 +97,12 @@ module.exports = ({ strapi }) => ({
             contract.lastSynced = event.blockNumber;
           }
         }
-
+        eventCount += events.length;
         contractSvc.update(contract.id, {
           data: { lastSynced: contract.lastSynced },
         });
-
-        result `${networks.results.length} networks synced`;
       }
     }
+    return `${networks.results.length} networks synced, ${eventCount} events`;
   },
 });

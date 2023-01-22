@@ -45,7 +45,7 @@
       },
       "type": "richtext"
     },
-    "contractAddress": {
+    "address": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -149,6 +149,14 @@
         }
       },
       "type": "string"
+    },
+    "lastSynced": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer"
     }
   }
 }

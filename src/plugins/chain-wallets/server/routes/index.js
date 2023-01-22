@@ -1,7 +1,4 @@
-const { createCoreRouter } = require('@strapi/strapi').factories;
-const contract = require('./chain-contract');
 module.exports = {
-  //"chain-contract": contract,
   "content-api": {
     type: "content-api",
     routes: [
@@ -12,6 +9,12 @@ module.exports = {
         config: {
           policies: [],
         },
+      },
+      {
+        method: "GET",
+        path: "/chain-contracts",
+        handler: "plugin::chain-wallets.chain-contract.find",
+        config: {},
       },
     ],
   },

@@ -6,8 +6,10 @@
 
 async function updateTokens(ctx, next) {
   try {
+    console.time("updateTokens");
     const service = strapi.service("plugin::chain-wallets.metadata");
-    var result = await service.updateTokens();
+    var result = await service.syncWallets();
+    console.timeEnd("updateTokens");
     ctx.body = "Testing: " + JSON.stringify(result);
   } catch (err) {
     ctx.body = err;

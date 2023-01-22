@@ -1,0 +1,3 @@
+# Strapi plugin Chain Wallets
+
+A quick description of chain wallets...

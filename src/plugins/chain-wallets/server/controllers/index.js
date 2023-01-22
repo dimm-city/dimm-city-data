@@ -1,0 +1,10 @@
+'use strict';
+
+const metadata = require('./metadata');
+const { createCoreController } = require('@strapi/strapi').factories;
+
+module.exports = {
+  metadata,
+  "chain-token": createCoreController('plugin::chain-wallets.chain-token'),
+  "chain-contract": createCoreController('plugin::chain-wallets.chain-contract'),
+};

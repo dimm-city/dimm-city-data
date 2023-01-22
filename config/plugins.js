@@ -1,7 +1,7 @@
 module.exports = ({ env }) => ({
-  'chain-sync': {
+  'chain-wallets': {
     enabled: true,
-    resolve: './src/plugins/chain-sync'
+    resolve: './src/plugins/chain-wallets'
   },
   "users-permissions": {
     config: {

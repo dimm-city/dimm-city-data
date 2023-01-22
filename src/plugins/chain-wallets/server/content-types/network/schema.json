@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chain-networks",
+  "info": {
+    "singularName": "chain-network",
+    "pluralName": "chain-networks",
+    "displayName": "Chain Network",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true,
+    "privateAttributes": [
+      "configuration"
+    ]
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "configuration": {
+      "type": "json"
+    },
+    "chainId": {
+      "type": "integer"
+    },
+    "contracts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::chain-wallets.chain-contract",
+      "mappedBy": "network"
+    }
+  }
+}

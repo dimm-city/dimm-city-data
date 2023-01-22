@@ -15,7 +15,9 @@
     "tokenId": {
       "type": "uid"
     },
- 
+    "slug": {
+      "type": "uid"
+    },
     "metadata": {
       "type": "json"
     },

@@ -8,7 +8,18 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": true,
+    "privateAttributes": [
+      "createdAt",
+      "updatedAt",
+      "createdBy",
+      "updatedBy",
+      "abi",
+      "entityType",
+      "metadataExtender",
+      "entityInitializer",
+      "metadata"
+    ]
   },
   "pluginOptions": {
     "i18n": {
@@ -157,6 +168,30 @@
         }
       },
       "type": "integer"
+    },
+    "entityType": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "metadataExtender": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "entityInitializer": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
     }
   }
 }

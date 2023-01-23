@@ -15,12 +15,6 @@
     "tokenId": {
       "type": "uid"
     },
-    "character": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::character.character",
-      "inversedBy": "token"
-    },
     "metadata": {
       "type": "json"
     },

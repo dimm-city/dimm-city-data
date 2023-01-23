@@ -9,7 +9,18 @@
   },
   "options": {
     "draftAndPublish": false,
-    "privateAttributes": ["seed", "managed", "key", "encKey"]
+    "privateAttributes": [
+      "seed",
+      "managed",
+      "key",
+      "encKey",
+      "publishedAt",
+      "createdAt",
+      "updatedAt",
+      "publishedBy",
+      "createdBy",
+      "updatedBy"
+    ]
   },
   "pluginOptions": {},
   "attributes": {
@@ -45,6 +56,11 @@
       "relation": "oneToMany",
       "target": "plugin::chain-wallets.chain-token",
       "mappedBy": "wallet"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"      
     }
   }
 }

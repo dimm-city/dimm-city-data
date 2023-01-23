@@ -6,6 +6,55 @@
 const ethers = require("ethers");
 const ERC721 = require("../contracts/ERC721.json");
 module.exports = ({ strapi }) => ({
+  async mergeMetadata(tokenId, contract) {
+    const defaultMetadataExtender = "extendTokenMetadata";
+    let result = { attributes: [] };
+
+    const service = strapi.service("plugin::chain-wallets.chain-token");
+    const tokens = await service.find({
+      filters: {
+        tokenId: tokenId,
+        contract: {
+          slug: contract,
+        },
+      },
+      populate: "*",
+    });
+
+    if (tokens?.results.length > 0) {
+      const token = tokens.results.at(0);
+      result = token?.metadata ?? result;
+
+      const entitySvc = strapi.services[token.contract.entityType];
+
+      if (entitySvc) {
+        let entities = await entitySvc.find({
+          filters: {
+            token: {
+              id: token.id,
+            },
+          },
+        });
+
+        let entity;
+        if (entities?.results.length > 0) {
+          entity = entities.results.at(0);
+        }
+        const extenderName =
+          token.contract.metadataExtender ?? defaultMetadataExtender;
+        if (entitySvc[extenderName] instanceof Function) {
+          result = await entitySvc[extenderName](
+            token,
+            entity
+          );
+        }
+      }
+    } else {
+      result = null;
+    }
+    return result;
+  },
+
   // Function to check for transactions in multiple ERC-721 contracts
   async syncWallets() {
     const networkSvc = strapi.service("plugin::chain-wallets.chain-network");

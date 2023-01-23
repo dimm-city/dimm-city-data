@@ -7,15 +7,17 @@ module.exports = {
         path: "/test",
         handler: "metadata.index",
         config: {
-          policies: [],
+          policies: ["owns-token"],
         },
       },
       {
         method: "GET",
-        path: "/chain-contracts",
-        handler: "plugin::chain-wallets.chain-contract.find",
-        config: {},
-      },
+        path: "/metadata/:contract/:tokenId",
+        handler: "metadata.getTokenMetadata",
+        config: {
+          policies: [],
+        },
+      }
     ],
   },
 };

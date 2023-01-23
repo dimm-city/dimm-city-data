@@ -262,8 +262,7 @@
     "token": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::token.token",
-      "mappedBy": "character"
+      "target": "plugin::chain-wallets.chain-token"
     },
     "imageUrl": {
       "pluginOptions": {

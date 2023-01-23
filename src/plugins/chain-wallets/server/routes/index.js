@@ -5,7 +5,7 @@ module.exports = {
       {
         method: "GET",
         path: "/test",
-        handler: "metadata.index",
+        handler: "chain-metadata.index",
         config: {
           policies: ["owns-token"],
         },
@@ -13,7 +13,7 @@ module.exports = {
       {
         method: "GET",
         path: "/metadata/:contract/:tokenId",
-        handler: "metadata.getTokenMetadata",
+        handler: "chain-metadata.getTokenMetadata",
         config: {
           policies: [],
         },

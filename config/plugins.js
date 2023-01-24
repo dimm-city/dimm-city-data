@@ -1,7 +1,7 @@
 module.exports = ({ env }) => ({
-  'chain-wallets': {
+  "chain-wallets": {
     enabled: true,
-    resolve: './src/plugins/chain-wallets'
+    config: {},
   },
   "users-permissions": {
     config: {

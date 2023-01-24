@@ -25,9 +25,9 @@
     "node-cache": "^5.1.2",
     "node-fetch": "^3.2.2",
     "pify": "^5.0.0",
-    "strapi-plugin-chain-wallets": "*",
     "strapi-provider-upload-azure-storage": "^2.0.0",
-    "web3": "^1.6.1"
+    "web3": "^1.6.1",
+    "strapi-plugin-chain-wallets": "*"
   },
   "author": {
     "name": "ITLackey"

@@ -166,6 +166,9 @@ async function getCharacterMetadata(token, character) {
 }
 
 const service = createCoreService("api::character.character", ({ strapi }) => ({
+  async initializeEntity(token){
+    console.log('initializing character from token...');
+  },
   async extendTokenMetadata(token, character) {
     if (!character) {
       let characters = await super.find({

@@ -50,18 +50,6 @@
       },
       "type": "string"
     },
-    "blockchain": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::blockchain.blockchain",
-      "inversedBy": "characterReleases"
-    },
-    "tokens": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::token.token",
-      "mappedBy": "release"
-    },
     "races": {
       "type": "relation",
       "relation": "manyToMany",
@@ -140,11 +128,6 @@
       },
       "type": "string"
     },
-    "authors": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::wallet.wallet"
-    },
     "metadataBaseUri": {
       "pluginOptions": {
         "i18n": {
@@ -152,6 +135,11 @@
         }
       },
       "type": "string"
+    },
+    "contract": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::chain-wallets.chain-contract"
     }
   }
 }

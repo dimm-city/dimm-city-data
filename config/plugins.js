@@ -1,9 +1,14 @@
+let chainWalletConfig = {
+  enabled: true,
+  resolve: "../strapi-plugin-chain-wallets",
+  config: {},
+};
+if (process.env.NODE_ENV != "development") {
+  delete chainWalletConfig.resolve;
+}
+
 module.exports = ({ env }) => ({
-  "chain-wallets": {
-    enabled: true,
-    resolve: "../strapi-plugin-chain-wallets",
-    config: {},
-  },
+  "chain-wallets": chainWalletConfig,
   "users-permissions": {
     config: {
       jwtSecret: env("JWT_SECRET"),

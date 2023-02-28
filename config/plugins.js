@@ -1,5 +1,6 @@
 let chainWalletConfig = {
   enabled: true,
+  resolve: './node_modules/strapi-plugin-chain-wallets',
   config: {},
 };
 

@@ -71,7 +71,8 @@
     "wallets": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "plugin::chain-wallets.chain-wallet"
+      "target": "plugin::chain-wallets.chain-wallet",
+      "mappedBy": "user"
     }
   }
 }

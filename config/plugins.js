@@ -1,10 +1,10 @@
 let chainWalletConfig = {
   enabled: true,
-  resolve: "../strapi-plugin-chain-wallets",
   config: {},
 };
-if (process.env.NODE_ENV != "development") {
-  delete chainWalletConfig.resolve;
+
+if (process.env.NODE_ENV == "development") {
+  chainWalletConfig.resolve = "../strapi-plugin-chain-wallets";
 }
 
 module.exports = ({ env }) => ({

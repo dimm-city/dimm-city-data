@@ -106,13 +106,14 @@ coverage
 # Strapi
 ############################
 
-.env
 license.txt
 exports
 *.cache
 build
 .strapi-updater.json
 .tokens/
+.env
 .env.dev
 .env.prod
 .env.staging
+login.sh

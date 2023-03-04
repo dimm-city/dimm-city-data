@@ -259,11 +259,6 @@
       "relation": "oneToMany",
       "target": "api::item.item"
     },
-    "token": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::chain-wallets.chain-token"
-    },
     "imageUrl": {
       "pluginOptions": {
         "i18n": {
@@ -292,6 +287,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::specialty.specialty"
+    },
+    "token": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::chain-wallets.chain-token",
+      "inversedBy": "character"
     }
   }
 }

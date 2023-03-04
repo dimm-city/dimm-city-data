@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chain-tokens",
+  "info": {
+    "singularName": "chain-token",
+    "pluralName": "chain-tokens",
+    "displayName": "Chain Token",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true,
+    "privateAttributes": [
+      "createdAt",
+      "updatedAt",
+      "createdBy",
+      "updatedBy"
+    ]
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tokenId": {
+      "type": "uid"
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "contract": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::chain-wallets.chain-contract",
+      "inversedBy": "tokens"
+    },
+    "wallet": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::chain-wallets.chain-wallet",
+      "inversedBy": "tokens"
+    },
+    "character": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::character.character",
+      "inversedBy": "token"
+    }
+  }
+}

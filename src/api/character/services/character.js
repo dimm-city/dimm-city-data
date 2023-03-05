@@ -20,13 +20,8 @@ const CharacterStates = {
 };
 
 function formatMediaUrl(mediaType, releaseKey, id) {
-  //HACK: fix this!
-  let baseUri =
-    process.env.NODE_ENV == "production"
-      ? "https://data.dimm.city/api/"
-      : process.env.storage_media_uri;
-
-  return `${baseUri}/${mediaTypes[mediaType]}/sporos/${releaseKey}/${id}.png`;
+  let baseUri = strapi.config.server.url;
+  return `${baseUri}/api/chain-wallets/${mediaTypes[mediaType]}/${releaseKey}/${id}.png`;
 }
 
 async function getMergedMetadata(token, character) {
@@ -37,6 +32,9 @@ async function getMergedMetadata(token, character) {
     token.contract.slug,
     token.tokenId
   );
+  
+  output.fullresulotion_uri = output.image;
+
   output.thumbnail_uri = formatMediaUrl(
     mediaTypes.thumbnails,
     token.contract.slug,
@@ -129,7 +127,7 @@ async function getCharacterMetadata(token, character) {
       });
       break;
     case CharacterStates.Ethereal:
-      output = require("../lib/metadata/etheral.json");
+      output = require("../metadata/etheral.json");
       break;
     case CharacterStates.Lost:
       Object.assign(output, {
@@ -139,7 +137,7 @@ async function getCharacterMetadata(token, character) {
       });
       break;
     case CharacterStates.Unminted:
-      output = require("../lib/metadata/pack.json");
+      output = require("../metadata/pack.json");
       output.attributes = [
         {
           trait_type: "Status",
@@ -148,7 +146,7 @@ async function getCharacterMetadata(token, character) {
       ];
       break;
     case CharacterStates.Unopened:
-      output = require("../lib/metadata/pack.json");
+      output = require("../metadata/pack.json");
       break;
     default:
       break;

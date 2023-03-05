@@ -27,15 +27,15 @@ module.exports = {
         middlewares: [],
       },
     },
-    {
-      method: "GET",
-      path: "/sporos/can-edit/:release-:id",
-      handler: "characters.canEdit",
-      config: {
-        policies: [],
-        middlewares: [],
-      },
-    },
+    // {
+    //   method: "GET",
+    //   path: "/sporos/can-edit/:release-:id",
+    //   handler: "characters.canEdit",
+    //   config: {
+    //     policies: [],
+    //     middlewares: [],
+    //   },
+    // },
     {
       method: "POST",
       path: "/sporos/import/:release/:id",

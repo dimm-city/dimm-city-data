@@ -101,17 +101,17 @@ function _getAttributeValue(token, attribKey) {
 }
 
 module.exports = {
-  canEdit: async (ctx, next) => {
-    const releaseKey = ctx.params.release?.toLowerCase();
-    const id = ctx.params.id;
+  // canEdit: async (ctx, next) => {
+  //   const releaseKey = ctx.params.release?.toLowerCase();
+  //   const id = ctx.params.id;
 
-    console.log("canEdit-ctrl", releaseKey, id);
-    const signer = getSigner(ctx);
+  //   console.log("canEdit-ctrl", releaseKey, id);
+  //   const signer = getSigner(ctx);
 
-    const service = strapi.service("api::sporos.contracts");
+  //   const service = strapi.service("api::sporos.contracts");
 
-    return await service.canEditToken(signer, releaseKey, id);
-  },
+  //   return await service.canEditToken(signer, releaseKey, id);
+  // },
   // create: async (ctx, next) => {
   //   try {
   //     const releaseKey = ctx.params.release?.toLowerCase();

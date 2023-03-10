@@ -2,6 +2,15 @@ module.exports = {
   routes: [
     {
       method: "GET",
+      path: "/sporos/test",
+      handler: "images.test",
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
+    {
+      method: "GET",
       path: "/users/me/tokens",
       handler: "tokens.userTokens",
       config: {

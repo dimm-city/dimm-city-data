@@ -4,7 +4,31 @@
  * A set of functions called "actions" for `images`
  */
 
+const path = require("path");
+const fs = require("fs");
 module.exports = {
+  test: (ctx, next)=>{
+    const imagePathBase = strapi.plugin('chain-wallets').config('imagePath') ?? ".tokens";
+
+    //ToDo allow for different image loader/strategy
+    const imagePath = path.join(
+      path.resolve("."),
+      `${imagePathBase}/dcs1r1/1.png`
+    );
+    
+    console.log('IMAGE PATH: ' + imagePath + " => " + fs.existsSync(imagePath));
+
+    fs.stat(imagePath, function(err, stat) {
+      if (err == null) {
+        console.log('File exists');
+      } else if (err.code === 'ENOENT') {
+        // file does not exist
+        console.log('file does not exist');
+      } else {
+        console.log('Some other error: ', err.code);
+      }
+    });
+  },
   image: async (ctx, next) => {
     try {
       const releaseKey = ctx.params.release;

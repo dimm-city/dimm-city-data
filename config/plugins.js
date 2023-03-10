@@ -1,11 +1,14 @@
 let chainWalletConfig = {
   enabled: true,
   resolve: './node_modules/strapi-plugin-chain-wallets',
-  config: {},
+  config: {
+    imagePath: "/home/site/images"
+  },
 };
 
 if (process.env.NODE_ENV == "development") {
   chainWalletConfig.resolve = "../strapi-plugin-chain-wallets";
+  chainWalletConfig.config.imagePath = ".tokens";
 }
 
 module.exports = ({ env }) => ({

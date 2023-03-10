@@ -7,27 +7,55 @@
 const path = require("path");
 const fs = require("fs");
 module.exports = {
-  test: (ctx, next)=>{
-    const imagePathBase = strapi.plugin('chain-wallets').config('imagePath') ?? ".tokens";
-
-    //ToDo allow for different image loader/strategy
-    const imagePath = path.join(
-      path.resolve("."),
-      `${imagePathBase}/dcs1r1/1.png`
-    );
-    
-    console.log('IMAGE PATH: ' + imagePath + " => " + fs.existsSync(imagePath));
-
-    fs.stat(imagePath, function(err, stat) {
-      if (err == null) {
-        console.log('File exists');
-      } else if (err.code === 'ENOENT') {
-        // file does not exist
-        console.log('file does not exist');
-      } else {
-        console.log('Some other error: ', err.code);
+  test: async (ctx, next) => {
+    const tokens = await strapi.entityService.findMany(
+      "plugin::chain-wallets.chain-token",
+      {
+        limit: 1000,
+        start: 0,
       }
-    });
+    );
+    const entitySvc = strapi.services["api::character.character"];
+
+    for (let index = 0; index < tokens.length; index++) {
+      const result = tokens.at(index);
+
+      const entity = await entitySvc.find({
+        filters: {
+          tokenId: result.slug,
+        },
+      });
+
+      if (entity?.results?.length === 1) {
+        const id = entity?.results[0].id;
+
+        await strapi.entityService.update("api::character.character", id, {
+          data: {
+            token: result,
+          },
+        });
+      }
+    }
+    //const imagePathBase = strapi.plugin('chain-wallets').config('imagePath') ?? ".tokens";
+
+    // //ToDo allow for different image loader/strategy
+    // const imagePath = path.join(
+    //   path.resolve("."),
+    //   `${imagePathBase}/dcs1r1/1.png`
+    // );
+
+    // console.log('IMAGE PATH: ' + imagePath + " => " + fs.existsSync(imagePath));
+
+    // fs.stat(imagePath, function(err, stat) {
+    //   if (err == null) {
+    //     console.log('File exists');
+    //   } else if (err.code === 'ENOENT') {
+    //     // file does not exist
+    //     console.log('file does not exist');
+    //   } else {
+    //     console.log('Some other error: ', err.code);
+    //   }
+    // });
   },
   image: async (ctx, next) => {
     try {

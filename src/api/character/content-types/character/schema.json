@@ -292,7 +292,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::chain-wallets.chain-token",
-      "inversedBy": "character"
+      "mappedBy": "character"
     }
   }
 }

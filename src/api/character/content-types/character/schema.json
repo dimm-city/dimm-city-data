@@ -161,11 +161,6 @@
       },
       "type": "uid"
     },
-    "roles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::character-role.character-role"
-    },
     "weight": {
       "pluginOptions": {
         "i18n": {

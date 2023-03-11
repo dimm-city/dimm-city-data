@@ -1,9 +1,9 @@
 module.exports = ({ env }) => ({
   "chain-wallets": {
     enabled: true,
-    resolve: "./node_modules/strapi-plugin-chain-wallets",
+    resolve: '../strapi-plugin-chain-wallets',
     config: {
-      imagePath: "/home/site/images",
+      imagePath: ".tokens"
     },
   },
   "users-permissions": {

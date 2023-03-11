@@ -121,7 +121,7 @@ async function getMergedMetadata(token, character) {
 //       });
 //       break;
 //     case CharacterStates.Ethereal:
-//       output = require("../metadata/etheral.json");
+//       output = require("./metadata/etheral.json");
 //       break;
 //     case CharacterStates.Lost:
 //       Object.assign(output, {
@@ -131,7 +131,7 @@ async function getMergedMetadata(token, character) {
 //       });
 //       break;
 //     case CharacterStates.Unminted:
-//       output = require("../metadata/pack.json");
+//       output = require("./metadata/pack.json");
 //       output.attributes = [
 //         {
 //           trait_type: "Status",
@@ -140,7 +140,7 @@ async function getMergedMetadata(token, character) {
 //       ];
 //       break;
 //     case CharacterStates.Unopened:
-//       output = require("../metadata/pack.json");
+//       output = require("./metadata/pack.json");
 //       break;
 //     default:
 //       break;

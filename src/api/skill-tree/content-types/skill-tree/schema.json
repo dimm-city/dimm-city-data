@@ -44,12 +44,6 @@
       "type": "uid",
       "targetField": "name"
     },
-    "characterRoles": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::character-role.character-role",
-      "inversedBy": "skillTrees"
-    },
     "abilities": {
       "type": "relation",
       "relation": "manyToMany",
@@ -63,6 +57,12 @@
         }
       },
       "type": "text"
+    },
+    "specialty": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::specialty.specialty",
+      "inversedBy": "skillTrees"
     }
   }
 }

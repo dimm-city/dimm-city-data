@@ -78,6 +78,12 @@
         }
       },
       "type": "string"
+    },
+    "skillTrees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::skill-tree.skill-tree",
+      "mappedBy": "specialty"
     }
   }
 }

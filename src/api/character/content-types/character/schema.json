@@ -272,6 +272,16 @@
       "relation": "oneToOne",
       "target": "plugin::chain-wallets.chain-token",
       "mappedBy": "character"
+    },
+    "playerUpdated": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

@@ -21,6 +21,7 @@ function formatMediaUrl(mediaType, releaseKey, id) {
 async function getMergedMetadata(token, character) {
   let output = token.metadata ?? { attributes: [] };
 
+  output.external_url = `https://dimm.city/citizens/${token.contract.slug}-${token.tokenId}`;
   output.image = formatMediaUrl(
     mediaTypes.images,
     token.contract.slug,
@@ -29,7 +30,7 @@ async function getMergedMetadata(token, character) {
 
   output.fullresolution_uri = output.image;
 
-  output.thumbnail_uri = formatMediaUrl(
+  output.thumbnail_url = formatMediaUrl(
     mediaTypes.thumbnails,
     token.contract.slug,
     token.tokenId
@@ -43,7 +44,8 @@ async function getMergedMetadata(token, character) {
     );
   }
 
-  if (character && character.publishedAt) {
+
+  if (character && character.publishedAt && character.playerUpdated) {
     output.name = character.name;
     output.dreams = character.dreams;
     output.description = character.vibe;
@@ -159,20 +161,20 @@ async function getMergedMetadata(token, character) {
 
 module.exports = {
   async initializeEntity(token) {
-        const race = await strapi.entityService.findMany("api::race.race", {
-            filters: {
-                name: "Rabbits",
-            },
-        });
+    const race = await strapi.entityService.findMany("api::race.race", {
+      filters: {
+        name: "Rabbit",
+      },
+    });
     let output = {
       name: token?.metadata?.name,
-      backstory: token?.metadata?.description,
+      //backstory: token?.metadata?.description,
       playerCharacter: true,
       ap: 10,
       hp: 10,
       race: race,
-      skin: token.metadata.attributes.find(a => a.trait_type == "Body").value,
-      eyes: token.metadata.attributes.find(a => a.trait_type == "Eyes").value,
+      skin: token.metadata.attributes.find((a) => a.trait_type == "Body").value,
+      eyes: token.metadata.attributes.find((a) => a.trait_type == "Eyes").value,
     };
 
     return output;

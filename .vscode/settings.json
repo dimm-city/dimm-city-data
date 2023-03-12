@@ -13,12 +13,14 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "**/node_modules":true,
-        "**/.cache":true,
-        "**/.tmp":true,
-        "**/build":true
+        "**/node_modules/@strapi": false,
+        "**/node_modules": false,
+        "**/.cache": true,
+        "**/.tmp": true,
+        "**/build": true
     },
     "cSpell.words": [
+        "Dimm",
         "Sporos",
         "strapi"
     ]

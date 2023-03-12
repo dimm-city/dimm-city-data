@@ -33,18 +33,6 @@
     "contentUrl": {
       "type": "string"
     },
-    "token": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::token.token",
-      "inversedBy": "journalEntries"
-    },
-    "author": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::wallet.wallet",
-      "inversedBy": "journalEntries"
-    },
     "slug": {
       "type": "uid",
       "targetField": "title"

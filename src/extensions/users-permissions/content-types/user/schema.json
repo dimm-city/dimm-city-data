@@ -63,15 +63,16 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "wallets": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::wallet.wallet"
-    },
     "settings": {
       "type": "component",
       "repeatable": false,
       "component": "users.user-settings"
+    },
+    "wallets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::chain-wallets.chain-wallet",
+      "mappedBy": "user"
     }
   }
 }

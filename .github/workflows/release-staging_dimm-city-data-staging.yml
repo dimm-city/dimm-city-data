@@ -1,12 +1,12 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: dimm-city-data
+name: dimm-city-data-staging
 
 on:
   push:
     branches:
-      - main
+      - release/staging
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
       # - name: Set up Node.js version
       #   uses: actions/setup-node@v1
       #   with:
-      #     node-version: '16.x'
+      #     node-version: '18.x'
 
       # - name: npm install, build, and test
       #   run: |
@@ -30,7 +30,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: dimm-city-data
+          name: dimm-city-data-staging
           path: .
 
   deploy:
@@ -44,13 +44,13 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: dimm-city-data
+          name: dimm-city-data-staging
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'dimm-city-data'
+          app-name: 'dimm-city-data-staging'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F0A9A41E165C449CBF7EBD24164791AA }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DB79E56C0D2946269408BCBB60F8C225 }}
           package: .

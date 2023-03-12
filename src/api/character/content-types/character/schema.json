@@ -26,22 +26,6 @@
       "unique": false,
       "required": true
     },
-    "mainImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
     "age": {
       "pluginOptions": {
         "i18n": {
@@ -177,11 +161,6 @@
       },
       "type": "uid"
     },
-    "roles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::character-role.character-role"
-    },
     "weight": {
       "pluginOptions": {
         "i18n": {
@@ -259,12 +238,6 @@
       "relation": "oneToMany",
       "target": "api::item.item"
     },
-    "token": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::token.token",
-      "mappedBy": "character"
-    },
     "imageUrl": {
       "pluginOptions": {
         "i18n": {
@@ -294,11 +267,21 @@
       "relation": "oneToMany",
       "target": "api::specialty.specialty"
     },
-    "wallet": {
+    "token": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::wallet.wallet",
-      "inversedBy": "characters"
+      "relation": "oneToOne",
+      "target": "plugin::chain-wallets.chain-token",
+      "mappedBy": "character"
+    },
+    "playerUpdated": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

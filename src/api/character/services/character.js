@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
 /**
  * character service.
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require("@strapi/strapi").factories;
+module.exports = createCoreService("api::character.character");
 
-const service = createCoreService('api::character.character');
-module.exports = service;
+//TODO: add token refresh after update: https://api.opensea.io/api/v1/asset/<your_contract_address>/<token_id>/?force_update=true

@@ -5,6 +5,7 @@ module.exports = ({ env }) => ({
     config: {
       imagePath: "/home/site/images",
       verificationMessage: "sign into dimm city",
+      infuraProjectId: "0b07f1a101f54ca6b9e12334f21df3ba"
     },
   },
   "users-permissions": {

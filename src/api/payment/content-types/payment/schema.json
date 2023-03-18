@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Payment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "paymentId": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "unique": true,
+      "maxLength": 500
+    },
+    "token": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::chain-wallets.chain-token"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

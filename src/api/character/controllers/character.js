@@ -18,36 +18,41 @@ async function characterPurchased(ctx) {
       throw new Error(`Payment ${paymentId} was not successful`);
     }
 
-    const contractSvc = strapi.service("plugin::chain-wallets.chain-contract");
-    const walletSvc = strapi.service("plugin::chain-wallets.chain-wallet");
+    //check for processed payment
+    const paymentRecords = await strapi
+      .service("api::payment.payment")
+      .find({ paymentId });
 
+    if (false && paymentRecords?.results?.length > 0) {
+      throw new Error("Payment has already been processed");
+    }
     //const user = payment.metadata.user...populate.wallets
-    payment.metadata.slug = "dcta";
-    const contracts = await contractSvc.find({
-      filters: { slug: payment.metadata.slug },
-    });
-    const contract = contracts.results.at(0);
-    const adminWallet = await walletSvc.find({
+    //const toAddress = user.wallets.find(managed == true).address;
+
+    const slug = "dcta".toUpperCase(); //payment.metadata.slug ?? ;
+    const toAddress = "0x8464B5784E857207252BA992a76B77f07a7F96eb"; //payment.metadata.address ?? ;
+
+    const contractSvc = strapi.service("plugin::chain-wallets.chain-contract");
+    const tokenId = await contractSvc.mintToken(slug, toAddress);
+
+    const tokens = strapi.service("plugin::chain-wallets.chain-token").find({
       filters: {
-        address: "0x8464B5784E857207252BA992a76B77f07a7F96eb",
-        chain: contract.chain,
+        tokenId,
+        contract: {
+          slug,
+        },
       },
+      publishStatus: "preview",
     });
-    const smartContract = await contractSvc.getSmartContract(
-      contract,
-      adminWallet.results.at(0)
-    );
-    //const address = user.wallets.find(managed == true).address;
-    await smartContract.safeMint(
-      payment.metadata.address ?? "0x8464B5784E857207252BA992a76B77f07a7F96eb",
-      ""
-    );
-    await contractSvc.syncContract(contract);
+
+    const token = tokens?.results?.at(0); //TODO: token always null
 
     //mark payment as processed
-    //return tokenId
+    await strapi
+      .service("api::payment.payment")
+      .create({ data: { paymentId, user: ctx.state?.user, token } });
 
-    return { message: "Character created" };
+    return { message: "Character created", tokenId: tokenId };
   } catch (err) {
     console.error(err);
     return ctx.badRequest(`Error minting token: ${err.message}`);

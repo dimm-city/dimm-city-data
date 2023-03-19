@@ -99,8 +99,8 @@ module.exports = {
       ap: 10,
       hp: 10,
       race: race,
-      skin: token.metadata.attributes.find((a) => a.trait_type == "Body").value,
-      eyes: token.metadata.attributes.find((a) => a.trait_type == "Eyes").value,
+      skin: token.metadata.attributes?.find((a) => a.trait_type == "Body")?.value,
+      //eyes: token.metadata.attributes?.find((a) => a.trait_type == "Eyes")?.value,
     };
 
     return output;

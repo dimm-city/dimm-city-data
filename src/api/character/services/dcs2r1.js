@@ -89,11 +89,11 @@ module.exports = {
   async initializeEntity(token) {
     const race = await strapi.entityService.findMany("api::race.race", {
       filters: {
-        name: "Rabbit",
+        name: "Cat",
       },
     });
     let output = {
-      name: token?.metadata?.name,
+      name: token?.metadata?.name ?? `Cat #${token.metadata?.edition}`,
       //backstory: token?.metadata?.description,
       playerCharacter: true,
       ap: 10,

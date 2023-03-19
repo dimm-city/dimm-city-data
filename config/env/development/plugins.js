@@ -3,7 +3,7 @@ module.exports = ({ env }) => ({
     enabled: true,
     resolve: '../strapi-plugin-chain-wallets',
     config: {
-      imagePath: ".tokens"
+      assetPath: ".tokens"
     },
   },
   "users-permissions": {
@@ -13,16 +13,10 @@ module.exports = ({ env }) => ({
   },
   upload: {
     config: {
-      provider: "strapi-provider-upload-azure-storage",
       providerOptions: {
-        account: env("storage_account"),
-        accountKey: env("storage_account_key"),
-        serviceBaseURL: env("storage_url"),
-        containerName: env("storage_container_name"),
-        cdnBaseURL: env("storage_cdn_url"),
-
-        defaultPath: "assets",
-        maxConcurrent: 10,
+        localServer: {
+          maxage: 300000
+        },
       },
     },
   },

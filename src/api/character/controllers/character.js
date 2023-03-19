@@ -31,16 +31,17 @@ async function characterPurchased(ctx) {
 
     if (!payment.metadata.toAddress) {
       const walletSvc = strapi.service("plugin::chain-wallets.chain-wallet");
-      const userWallets = await walletSvc.getUserWallets(ctx.state.user); 
-
       const { results } = await contractSvc.find({
         filters: { slug: payment.metadata.slug },
       });
+
       const contract = results?.at(0);
-      const wallet = userWallets.results
-        .filter((w) => w.chain == contract?.chain)
-        .sort((a, b) => (a.primary ? 1 : -1))
-        .at(0);
+
+      const wallet = await walletSvc.getOrCreateUserWallet(
+        ctx.state.user,
+        contract.chain
+      );
+
       payment.metadata.toAddress = wallet.address;
     }
     const slug = payment.metadata.slug;
@@ -48,15 +49,17 @@ async function characterPurchased(ctx) {
 
     const tokenId = await contractSvc.mintToken(slug, toAddress);
 
-    const tokens = await strapi.service("plugin::chain-wallets.chain-token").find({
-      filters: {
-        tokenId,
-        contract: {
-          slug,
+    const tokens = await strapi
+      .service("plugin::chain-wallets.chain-token")
+      .find({
+        filters: {
+          tokenId,
+          contract: {
+            slug,
+          },
         },
-      },
-      publicationState: "preview",
-    });
+        publicationState: "preview",
+      });
 
     const token = tokens?.results?.at(0);
 

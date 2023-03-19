@@ -83,7 +83,7 @@ async function purchaseCompleted(ctx) {
       .service("api::payment.payment")
       .create({ data: { paymentId, user: ctx.state?.user, token } });
 
-    return { message: "Character created", tokenId: tokenId, token };
+    return { message: "Payment processed", tokenId: tokenId, token };
   } catch (err) {
     console.error(err);
     return ctx.badRequest(`Error minting token: ${err.message}`);

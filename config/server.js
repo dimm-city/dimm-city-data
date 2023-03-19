@@ -7,4 +7,8 @@ module.exports = ({ env }) => ({
   cron: {
     enabled: true
   },
+  webhooks: {
+    // Add this to not receive populated relations in webhooks
+    populateRelations: false,
+  },
 });

@@ -198,4 +198,5 @@ module.exports = {
     token = getMergedMetadata(token, character);
     return token;
   },
+ 
 };

@@ -26,16 +26,6 @@
       "unique": false,
       "required": true
     },
-    "age": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "integer",
-      "max": 999,
-      "min": 1
-    },
     "height": {
       "pluginOptions": {
         "i18n": {
@@ -282,6 +272,14 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "age": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

@@ -7,8 +7,8 @@ module.exports = ({ env }) => ({
       database: env('DATABASE_NAME', 'strapi'),
       user: env('DATABASE_USERNAME', 'strapi'),
       password: env('DATABASE_PASSWORD', 'strapi'),
-      ssl: false
+      ssl: { ca: fs.readFileSync("./database/DigiCertGlobalRootCA.crt.pem") },
     },
-    debug: true,
+    debug: false,
   },
 });

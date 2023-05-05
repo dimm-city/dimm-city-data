@@ -3,7 +3,7 @@ module.exports = ({ env }) => ({
     enabled: true,
     resolve: "./node_modules/strapi-plugin-chain-wallets",
     config: {
-      imagePath: "/home/site/images",
+      assetPath: "/home/site/tokens",
       verificationMessage: "sign into dimm city",
       infuraProjectId: "0b07f1a101f54ca6b9e12334f21df3ba"
     },
@@ -15,16 +15,10 @@ module.exports = ({ env }) => ({
   },
   upload: {
     config: {
-      provider: "strapi-provider-upload-azure-storage",
       providerOptions: {
-        account: env("storage_account"),
-        accountKey: env("storage_account_key"),
-        serviceBaseURL: env("storage_url"),
-        containerName: env("storage_container_name"),
-        cdnBaseURL: env("storage_cdn_url"),
-
-        defaultPath: "assets",
-        maxConcurrent: 10,
+        localServer: {
+          maxage: 300000
+        },
       },
     },
   },

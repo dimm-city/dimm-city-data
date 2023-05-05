@@ -10,52 +10,28 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "slug": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "uid",
       "targetField": "name"
     },
     "name": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "string",
       "required": true
     },
     "imageUrl": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "string"
     },
     "shortDescription": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "string"
     },
     "description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "richtext"
     },
     "skilltrees": {
@@ -64,19 +40,11 @@
       "target": "api::skill-tree.skill-tree"
     },
     "thumbnailUrl": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "string"
     },
     "videoUrl": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "string"
     },
     "skillTrees": {
@@ -84,6 +52,12 @@
       "relation": "oneToMany",
       "target": "api::skill-tree.skill-tree",
       "mappedBy": "specialty"
+    },
+    "characters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::character.character",
+      "mappedBy": "specialties"
     }
   }
 }

@@ -4,14 +4,6 @@ const mediaTypes = {
   thumbnails: "thumbnails",
   mp4: "mp4",
 };
-const CharacterStates = {
-  Annihilated: -128,
-  Unminted: -1,
-  Unopened: 1,
-  Alive: 10,
-  Ethereal: 20,
-  Lost: 127,
-};
 
 function formatMediaUrl(mediaType, releaseKey, id) {
   let baseUri = strapi.config.server.url;
@@ -27,8 +19,6 @@ async function getMergedMetadata(token, character) {
     token.contract.slug,
     token.tokenId
   );
-
-  output.fullresolution_uri = output.image;
 
   output.thumbnail_url = formatMediaUrl(
     mediaTypes.thumbnails,
@@ -89,92 +79,28 @@ async function getMergedMetadata(token, character) {
   }
 
   output.state = token.publishedAt
-    ? CharacterStates.Alive
-    : CharacterStates.Unminted;
+    ? "Alive"
+    : "Unminted";
   output.compiler = "Daemon";
   return output;
 }
-
-// //Kept only as an example of handling state for now
-// async function getCharacterMetadata(token, character) {
-//   //   const releaseKey = token.contract.slug;
-//   //   const id = token.tokenId;
-//   let state = CharacterStates.Alive; //.Unminted;
-
-//   //   const contractService = strapi.service("api::sporos.contracts");
-//   //   const isValid = await contractService.isValidToken(releaseKey, id);
-
-//   //   if (isValid) {
-//   //     state = await contractService.getTokenState(release.slug, id);
-//   //   }
-
-//   let output = {};
-
-//   switch (state) {
-//     case CharacterStates.Alive:
-//       output = await getMergedMetadata(token, character);
-
-//       break;
-//     case CharacterStates.Annihilated:
-//       Object.assign(output, {
-//         description: "This Sporo can no longer be contacted.",
-//         image: formatMediaUrl(mediaTypes.images, release.slug, "destroyed"),
-//         attributes: [],
-//       });
-//       break;
-//     case CharacterStates.Ethereal:
-//       output = require("./metadata/etheral.json");
-//       break;
-//     case CharacterStates.Lost:
-//       Object.assign(output, {
-//         description: "Has been lost in the ether...",
-//         image: formatMediaUrl(mediaTypes.images, release.slug, "lost"),
-//         attributes: [],
-//       });
-//       break;
-//     case CharacterStates.Unminted:
-//       output = require("./metadata/pack.json");
-//       output.attributes = [
-//         {
-//           trait_type: "Status",
-//           value: "Unminted",
-//         },
-//       ];
-//       break;
-//     case CharacterStates.Unopened:
-//       output = require("./metadata/pack.json");
-//       break;
-//     default:
-//       break;
-//   }
-
-//   // output.attributes = output.attributes
-//   //   ? output.attributes.filter((a) => a.trait_type != "Outline")
-//   //   : [];
-
-//   output.state = state;
-//   output.compiler = "Daemon";
-
-//   delete output.fullresolution_uri;
-//   return output;
-// }
 
 module.exports = {
   async initializeEntity(token) {
     const race = await strapi.entityService.findMany("api::race.race", {
       filters: {
-        name: "Rabbit",
+        name: "Cat",
       },
     });
     let output = {
-      name: token?.metadata?.name,
+      name: token?.metadata?.name ?? `Cat #${token.metadata?.edition}`,
       //backstory: token?.metadata?.description,
       playerCharacter: true,
       ap: 10,
       hp: 10,
       race: race,
-      skin: token.metadata.attributes.find((a) => a.trait_type == "Body").value,
-      eyes: token.metadata.attributes.find((a) => a.trait_type == "Eyes").value,
+      skin: token.metadata.attributes?.find((a) => a.trait_type == "Body")?.value,
+      //eyes: token.metadata.attributes?.find((a) => a.trait_type == "Eyes")?.value,
     };
 
     return output;
@@ -198,5 +124,4 @@ module.exports = {
     token = getMergedMetadata(token, character);
     return token;
   },
- 
 };

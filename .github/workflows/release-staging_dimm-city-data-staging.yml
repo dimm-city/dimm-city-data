@@ -27,11 +27,13 @@ jobs:
       #     npm run build --if-present
       #     npm run test --if-present
 
+      # add a step to archive the app code
+      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: dimm-city-data-staging
-          path: .
+          path: .          
 
   deploy:
     runs-on: ubuntu-latest

@@ -16,8 +16,7 @@
         "**/node_modules/@strapi": false,
         "**/node_modules": false,
         "**/.cache": true,
-        "**/.tmp": true,
-        "**/build": true
+        "**/.tmp": true
     },
     "cSpell.words": [
         "Dimm",

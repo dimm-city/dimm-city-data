@@ -28,13 +28,13 @@ jobs:
       
       - name: Create Archive of application code
         run: |
-          tar -czf app-code.tar.gz --exclude=app-code.tar.gz .
+          tar -czf ../app-code.tar.gz --exclude=app-code.tar.gz .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: dimm-city-data
-          path: app-code.tar.gz 
+          path: ../app-code.tar.gz 
 
   deploy:
     runs-on: ubuntu-latest

@@ -57,4 +57,4 @@ jobs:
           app-name: 'dimm-city-data'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F0A9A41E165C449CBF7EBD24164791AA }}
-          package: .
+          package: app-code.tar.gz

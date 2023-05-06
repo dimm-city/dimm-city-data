@@ -16,20 +16,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js version
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
+      # - name: Set up Node.js version
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 16
 
-      - name: npm install, build, and test
-        run: |
-          npm ci
-          npm run build:prod --if-present
+      # - name: npm install, build, and test
+      #   run: |
+      #     npm ci
+      #     npm run build:prod --if-present
       
       - name: Create Archive of application code
         run: |
           mkdir -p zip
-          zip  -r zip/app.zip . -x "zip/*" ".tokens/*" "./*.sql" ".env*" ".git/*" ".vscode/*" ".tmp/*" ".github/*" "README.md" ".eslint*"
+          zip  -r zip/app.zip . -x@.zipignore
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3

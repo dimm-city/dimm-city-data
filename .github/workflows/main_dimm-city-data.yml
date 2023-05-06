@@ -29,7 +29,7 @@ jobs:
       - name: Create Archive of application code
         run: |
           mkdir -p zip
-          zip -q -r zip/app.zip -x zip/app.zip .
+          zip -q -r zip/app.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3

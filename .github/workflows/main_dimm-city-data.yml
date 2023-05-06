@@ -29,7 +29,7 @@ jobs:
       - name: Create Archive of application code
         run: |
           mkdir -p zip
-          zip -q -r zip/app.zip .
+          zip  -r zip/app.zip . -x "zip/*" ".tokens/*" "./*.sql" ".env*" ".git/*" ".vscode/*" ".tmp/*" ".github/*" "README.md" ".eslint*"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -54,7 +54,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'dimm-city-data-v2'
+          app-name: 'dimm-city-data'
           slot-name: 'Production'
           publish-profile: ${{ secrets.PROD_DEPLOY_KEY }}
           package: app.zip

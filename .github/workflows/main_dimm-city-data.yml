@@ -17,19 +17,19 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Set up Node.js version
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: 16
 
       - name: npm install, build, and test
         run: |
-          npm install
-          npm run build:prod --if-present          
+          npm ci
+          npm run build:prod --if-present
       
       - name: Create Archive of application code
         run: |
           mkdir -p zip
-          zip -r zip/app.zip .
+          zip -q -r zip/app.zip -x zip/app.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'dimm-city-data-v2'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7EDC24C3A1164B7EA8B550AB87613E3A }}
+          publish-profile: ${{ secrets.PROD_DEPLOY_KEY }}
           package: app.zip

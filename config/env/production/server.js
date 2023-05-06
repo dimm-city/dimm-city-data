@@ -1,6 +1,6 @@
 module.exports = ({ env }) => ({
     port: env.int('PORT', 8080),
-    url:  env('SITE_URL', 'https://data.dimm.city'),
+    url:  env('SITE_URL', 'https://dimm-city-data-v2.azurewebsites.net'), // 'https://data.dimm.city'),
     production: true,
     proxy: {
         enabled: false

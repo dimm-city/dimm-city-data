@@ -23,7 +23,7 @@ jobs:
 
       - name: npm install, build, and test
         env:
-          NODE_ENV: production
+          NODE_ENV: staging
         run: |
           npm install
           npm run build

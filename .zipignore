@@ -9,7 +9,6 @@ zip/*
 .github/*
 README.md
 .eslint*
-node_modules/*
 .cache/*
 migrate.sh
 .gitignore

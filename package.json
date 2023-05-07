@@ -9,7 +9,8 @@
     "build": "strapi build",
     "strapi": "strapi",
     "start:prod": "NODE_ENV=production npx pm2 start server.js --no-daemon",
-    "build:prod": "NODE_ENV=production strapi build"   
+    "build:prod": "NODE_ENV=production strapi build",
+    "build:staging": "NODE_ENV=staging strapi build"   
   },
   "dependencies": {
     "@azure/storage-blob": "^12.14.0",

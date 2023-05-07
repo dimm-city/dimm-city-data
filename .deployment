@@ -1,3 +1,4 @@
 [config]
+SCM_DO_BUILD_DURING_DEPLOYMENT = false
 NODE_ENV = production
-command = bash deploy.sh
+; command = bash deploy.sh

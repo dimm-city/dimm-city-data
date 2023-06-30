@@ -1,9 +1,9 @@
 module.exports = ({ env }) => ({
   "chain-wallets": {
     enabled: true,
-    resolve: '../strapi-plugin-chain-wallets',
+    resolve: "../strapi-plugin-chain-wallets",
     config: {
-      assetPath: ".tokens"
+      assetPath: ".tokens",
     },
   },
   "users-permissions": {
@@ -11,11 +11,15 @@ module.exports = ({ env }) => ({
       jwtSecret: env("JWT_SECRET"),
     },
   },
+  "dimm-city": {
+    enabled: true,
+    resolve: "./src/plugins/dimm-city",
+  },
   upload: {
-    config: {      
+    config: {
       providerOptions: {
         localServer: {
-          maxage: 300000
+          maxage: 300000,
         },
       },
     },

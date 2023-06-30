@@ -8,6 +8,10 @@ module.exports = ({ env }) => ({
       infuraProjectId: "0b07f1a101f54ca6b9e12334f21df3ba"
     },
   },
+  'dimm-city': {
+    enabled: true,
+    resolve: './src/plugins/dimm-city'
+  },
   "users-permissions": {
     config: {
       jwtSecret: env("JWT_SECRET"),

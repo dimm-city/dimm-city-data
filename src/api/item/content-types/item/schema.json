@@ -4,7 +4,8 @@
   "info": {
     "singularName": "item",
     "pluralName": "items",
-    "displayName": "Item"
+    "displayName": "Item",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,7 +24,8 @@
       },
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": true,
+      "maxLength": 100
     },
     "slug": {
       "pluginOptions": {
@@ -33,6 +35,65 @@
       },
       "type": "uid",
       "targetField": "name"
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "richtext",
+      "maxLength": 500
+    },
+    "imageUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "modelUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "videoUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "shortDescription": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "type": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "weapon",
+        "armor",
+        "cybernetics",
+        "tools",
+        "clothing",
+        "misc"
+      ],
+      "required": true,
+      "default": "misc"
     }
   }
 }

@@ -2,7 +2,7 @@
  * Module dependencies
  */
 const { sanitizeEntity } = require("@strapi/utils");
-const { sanitize } = require('@strapi/utils')
+const { sanitize } = require("@strapi/utils");
 const { contentAPI } = sanitize;
 
 const availableTypes = [
@@ -70,18 +70,24 @@ module.exports = {
    * @return {Array} An array of items.
    */
   async search(ctx) {
-    // List of available content types in the system
-
+    const params = ctx.request.body;
     // Get the list of types to search from the request
-    let requestedTypes = ctx.request.body.types;
+    let requestedTypes = params.types;
 
     // Filter out any types that are not available
     let typesToSearch = availableTypes.filter((type) =>
       requestedTypes.includes(type.key)
     );
+    if (typesToSearch.length === 0) typesToSearch = availableTypes;
 
     // Query parameter
-    const query = ctx.request.body.query;
+    const query = params.query;
+
+    const { page = 1, pageSize = 10 } = params.pagination ?? {
+      page: 1,
+      pageSize: 10,
+    };
+    const start = (page - 1) * pageSize;
 
     // Initialize results array
     let results = [];
@@ -98,7 +104,9 @@ module.exports = {
           filters: {
             $or: [{ name: { $containsi: query } }],
           },
-         // _where: [{ name_contains: query }, { description_contains: query }],
+          sort: ["name"],
+          start: start,
+          limit: pageSize,
         });
 
         // Loop through each entity and add it to the results

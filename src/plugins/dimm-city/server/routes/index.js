@@ -4,6 +4,14 @@ module.exports = {
     routes: [
       {
         method: "GET",
+        path: "/stats",
+        handler: "stats.getStats",
+        config: {
+          policies: [],
+        },
+      },
+      {
+        method: "GET",
         path: "/archives/item-types",
         handler: "archives.getItemTypes",
         config: {

@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-const archives = require('./archives');
-
-
+const archives = require("./archives");
+const stats = require("./stats");
 
 module.exports = {
-  archives
+  archives,
+  stats,
 };

@@ -1,8 +1,17 @@
+const faction = require("./faction");
 module.exports =
 {
   "content-api": {
     type: "content-api",
     routes: [
+      {
+        method: "GET",
+        path: "/factions",
+        handler: "faction.find",
+        config: {
+          policies: [],
+        },
+      },
       {
         method: "GET",
         path: "/stats",

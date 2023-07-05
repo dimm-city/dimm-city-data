@@ -1,4 +1,3 @@
-const faction = require("./faction");
 module.exports =
 {
   "content-api": {
@@ -8,6 +7,14 @@ module.exports =
         method: "GET",
         path: "/factions",
         handler: "faction.find",
+        config: {
+          policies: [],
+        },
+      },
+      {
+        method: "GET",
+        path: "/races",
+        handler: "race.find",
         config: {
           policies: [],
         },

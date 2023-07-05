@@ -1,0 +1,110 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-races",
+  "info": {
+    "singularName": "race",
+    "pluralName": "races",
+    "displayName": "Race",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "playable": {
+      "type": "boolean",
+      "required": false
+    },
+    "hp": {
+      "type": "integer",
+      "max": 20,
+      "required": true
+    },
+    "atk": {
+      "type": "integer",
+      "min": 0,
+      "required": true
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "occupations": {
+      "type": "text"
+    },
+    "appearance": {
+      "type": "text",
+      "required": true
+    },
+    "ideals": {
+      "type": "text"
+    },
+    "flaws": {
+      "type": "text"
+    },
+    "desires": {
+      "type": "text"
+    },
+    "problems": {
+      "type": "text"
+    },
+    "allies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.race"
+    },
+    "enemies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.race"
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::location.location",
+      "inversedBy": "races"
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "additionalImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "abilities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ability.ability"
+    },
+    "characterReleases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::character-release.character-release",
+      "mappedBy": "races"
+    }
+  }
+}

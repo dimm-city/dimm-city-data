@@ -1,0 +1,94 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-locations",
+  "info": {
+    "singularName": "location",
+    "pluralName": "locations",
+    "displayName": "DC: Locations",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "pluginOptions": {},
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "pluginOptions": {},
+      "type": "richtext"
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "pluginOptions": {}
+    },
+    "shortDescription": {
+      "pluginOptions": {},
+      "type": "text"
+    },
+    "races": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.race",
+      "mappedBy": "locations"
+    },
+    "regions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.location",
+      "mappedBy": "region"
+    },
+    "region": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::dimm-city.location",
+      "inversedBy": "regions"
+    },
+    "world": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::dimm-city.world",
+      "inversedBy": "locations"
+    },
+    "factions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.faction",
+      "mappedBy": "location"
+    },
+    "historicalEvents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::historical-event.historical-event",
+      "mappedBy": "location"
+    },
+    "slug": {
+      "pluginOptions": {},
+      "type": "uid",
+      "targetField": "name"
+    },
+    "imageUrl": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "thumbnailUrl": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "videoUrl": {
+      "pluginOptions": {},
+      "type": "string"
+    }
+  }
+}

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "worlds",
+  "collectionName": "dc-worlds",
   "info": {
     "singularName": "world",
     "pluralName": "worlds",
-    "displayName": "World",
+    "displayName": "DC: Worlds",
     "description": ""
   },
   "options": {

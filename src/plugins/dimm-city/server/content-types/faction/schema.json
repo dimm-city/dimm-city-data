@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "factions",
+  "collectionName": "dc-factions",
   "info": {
     "singularName": "faction",
     "pluralName": "factions",
-    "displayName": "Faction",
+    "displayName": "DC: Factions",
     "description": ""
   },
   "options": {

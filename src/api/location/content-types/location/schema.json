@@ -58,13 +58,13 @@
     "world": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::world.world",
+      "target": "plugin::dimm-city.world",
       "inversedBy": "locations"
     },
     "factions": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::faction.faction",
+      "target": "plugin::dimm-city.faction",
       "mappedBy": "location"
     },
     "historicalEvents": {

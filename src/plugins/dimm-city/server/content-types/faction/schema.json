@@ -11,17 +11,9 @@
     "draftAndPublish": true
   },
   "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
   },
   "attributes": {
-    "name": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+    "name": {      
       "type": "string",
       "unique": true,
       "required": true

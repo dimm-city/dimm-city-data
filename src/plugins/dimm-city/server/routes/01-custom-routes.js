@@ -1,4 +1,5 @@
-module.exports = {
+module.exports =
+{
   "content-api": {
     type: "content-api",
     routes: [

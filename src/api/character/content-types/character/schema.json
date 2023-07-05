@@ -64,7 +64,7 @@
     "faction": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::faction.faction",
+      "target": "plugin::dimm-city.faction",
       "inversedBy": "members"
     },
     "playerCharacter": {

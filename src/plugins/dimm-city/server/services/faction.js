@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * faction service.
+ *  service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::faction.faction');
+module.exports = createCoreService('plugin::dimm-city.faction');

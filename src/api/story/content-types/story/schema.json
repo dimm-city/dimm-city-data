@@ -91,7 +91,7 @@
     "factions": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::faction.faction"
+      "target": "plugin::dimm-city.faction"
     },
     "historicalEvents": {
       "type": "relation",

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * faction router.
+ *  router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::faction.faction');
+module.exports = createCoreRouter('plugin::dimm-city.faction');

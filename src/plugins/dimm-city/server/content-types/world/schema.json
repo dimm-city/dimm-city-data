@@ -10,21 +10,13 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
+  "pluginOptions": {   
   },
   "attributes": {
     "name": {
       "type": "string",
       "required": true,
-      "unique": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      "unique": true      
     },
     "locations": {
       "type": "relation",

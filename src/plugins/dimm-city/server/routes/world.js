@@ -6,4 +6,4 @@
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::world.world');
+module.exports = createCoreRouter('plugin::dimm-city.world');

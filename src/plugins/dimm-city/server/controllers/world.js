@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- *  faction controller
+ *  world controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::faction.faction');
+module.exports = createCoreController('plugin::dimm-city.world');

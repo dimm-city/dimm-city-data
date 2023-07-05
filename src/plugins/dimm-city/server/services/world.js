@@ -6,4 +6,4 @@
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::world.world');
+module.exports = createCoreService('plugin::dimm-city.world');

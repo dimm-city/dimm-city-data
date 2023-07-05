@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-factions",
+  "collectionName": "dc-historical_events",
   "info": {
-    "singularName": "faction",
-    "pluralName": "factions",
-    "displayName": "DC: Factions",
+    "singularName": "historical-event",
+    "pluralName": "historical-events",
+    "displayName": "DC: Historical Events",
     "description": ""
   },
   "options": {
@@ -14,19 +14,24 @@
   "attributes": {
     "name": {
       "type": "string",
-      "unique": true,
-      "required": true
+      "required": true,
+      "unique": true
     },
     "slug": {
       "type": "uid",
       "targetField": "name",
       "required": true
     },
+    "date": {
+      "type": "date"
+    },
     "shortDescription": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "description": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "mainImage": {
       "allowedTypes": [
@@ -42,22 +47,17 @@
       ],
       "multiple": false
     },
-    "members": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::dimm-city.character",
-      "mappedBy": "faction"
-    },
-    "leaders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::dimm-city.character"
-    },
     "location": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::dimm-city.location",
-      "inversedBy": "factions"
+      "inversedBy": "historicalEvents"
+    },
+    "characters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.character",
+      "mappedBy": "historicalEvents"
     }
   }
 }

@@ -6,11 +6,11 @@ const { sanitize } = require("@strapi/utils");
 const { contentAPI } = sanitize;
 
 const availableTypes = [
-  { key: "location", value: "api::location.location" },
-  { key: "specialty", value: "api::specialty.specialty" },
-  { key: "journalEntry", value: "api::journal-entry.journal-entry" },
-  { key: "citizen", value: "api::character.character" },
-  { key: "item", value: "api::item.item" },
+  { key: "location", value: "plugin::dimm-city.location" },
+  { key: "specialty", value: "plugin::dimm-city.specialty" },
+  { key: "journalEntry", value: "plugin::dimm-city.journal-entry" },
+  { key: "citizen", value: "plugin::dimm-city.character" },
+  { key: "item", value: "plugin::dimm-city.item" },
 ];
 
 // Parsing strategies

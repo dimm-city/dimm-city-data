@@ -1,0 +1,196 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-characters",
+  "info": {
+    "singularName": "character",
+    "pluralName": "characters",
+    "displayName": "DC: Characters",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "pluginOptions": {},
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "tokenId": {
+      "pluginOptions": {},
+      "type": "uid"
+    },
+    "hp": {
+      "pluginOptions": {},
+      "type": "integer",
+      "min": 0
+    },
+    "ap": {
+      "pluginOptions": {},
+      "type": "integer",
+      "min": 0
+    },
+    "race": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::dimm-city.race"
+    },
+    "faction": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::dimm-city.faction",
+      "inversedBy": "members"
+    },
+    "height": {
+      "pluginOptions": {},
+      "type": "decimal",
+      "min": 0
+    },
+    "weight": {
+      "pluginOptions": {},
+      "type": "decimal",
+      "min": 0
+    },
+    "age": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "pronouns": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "eyes": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "skin": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "hair": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "vibe": {
+      "pluginOptions": {},
+      "type": "text"
+    },
+    "noticeableTraits": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "backstory": {
+      "pluginOptions": {},
+      "type": "richtext"
+    },
+    "beliefs": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "flaws": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "dreams": {
+      "pluginOptions": {},
+      "type": "text"
+    },
+    "clothing": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "movementDescription": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "cybernetics": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.ability"
+    },
+    "items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.item"
+    },
+    "imageUrl": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "mainImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": [
+        "videos"
+      ],
+      "multiple": false
+    },
+    "mainModel": {
+      "type": "media",
+      "multiple": false
+    },
+    "specialties": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.specialty",
+      "inversedBy": "characters"
+    },
+    "selectedAbilities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.ability"
+    },
+    "selectedSkillTrees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.skill-tree"
+    },
+    "originLocation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::dimm-city.location"
+    },
+    "currentLocation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::dimm-city.location"
+    },
+    "historicalEvents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.historical-event",
+      "inversedBy": "characters"
+    },
+    "token": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::chain-wallets.chain-token",
+      "mappedBy": "character"
+    },
+    "playerUpdated": {
+      "pluginOptions": {},
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "playerCharacter": {
+      "pluginOptions": {},
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

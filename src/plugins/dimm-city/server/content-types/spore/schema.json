@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-spores",
+  "info": {
+    "singularName": "spore",
+    "pluralName": "spores",
+    "displayName": "DC: Spores",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "introduction": {
+      "type": "richtext"
+    },
+    "customCss": {
+      "type": "richtext"
+    },
+    "villains": {
+      "type": "component",
+      "repeatable": true,
+      "component": "lists.lists"
+    },
+    "plots": {
+      "type": "component",
+      "repeatable": true,
+      "component": "lists.lists"
+    },
+    "goals": {
+      "type": "component",
+      "repeatable": true,
+      "component": "lists.lists"
+    },
+    "twists": {
+      "type": "component",
+      "repeatable": true,
+      "component": "lists.list100"
+    },
+    "mainImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": [
+        "videos"
+      ],
+      "multiple": false
+    },
+    "mainAudio": {
+      "allowedTypes": [
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

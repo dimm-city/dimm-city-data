@@ -1,31 +1,41 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-worlds",
+  "collectionName": "dc-specialties",
   "info": {
-    "singularName": "world",
-    "pluralName": "worlds",
-    "displayName": "DC: Worlds",
+    "singularName": "specialty",
+    "pluralName": "specialties",
+    "displayName": "DC: Specialties",
     "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {   
-  },
+  "pluginOptions": {},
   "attributes": {
+  
     "name": {
+      "pluginOptions": {},
       "type": "string",
-      "required": true,
-      "unique": true      
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "name",
       "required": true
     },
-    "description": {
-      "type": "richtext"     
+    "slug": {
+      "pluginOptions": {},
+      "type": "uid",
+      "targetField": "name"
     },
+    "shortDescription": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "description": {
+      "pluginOptions": {},
+      "type": "richtext"
+    },
+    "skillTrees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.skill-tree"
+    },  
     "mainImage": {
       "allowedTypes": [
         "images"
@@ -53,13 +63,12 @@
       ],
       "type": "media",
       "multiple": false
-    },
-    "locations": {
+    },  
+    "characters": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::dimm-city.location",
-      "mappedBy": "world"
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.character",
+      "mappedBy": "specialties"
     }
-   
   }
 }

@@ -17,25 +17,18 @@
       "type": "string",
       "required": true
     },
-    "description": {
+    "slug": {
       "pluginOptions": {},
-      "type": "richtext"
-    },
-    "mainImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {}
+      "type": "uid",
+      "targetField": "name"
     },
     "shortDescription": {
       "pluginOptions": {},
       "type": "text"
+    },
+    "description": {
+      "pluginOptions": {},
+      "type": "richtext"
     },
     "races": {
       "type": "relation",
@@ -70,25 +63,36 @@
     "historicalEvents": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::historical-event.historical-event",
+      "target": "plugin::dimm-city.historical-event",
       "mappedBy": "location"
     },
-    "slug": {
-      "pluginOptions": {},
-      "type": "uid",
-      "targetField": "name"
+    "mainImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     },
-    "imageUrl": {
-      "pluginOptions": {},
-      "type": "string"
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": [
+        "videos"
+      ],
+      "multiple": false
     },
-    "thumbnailUrl": {
-      "pluginOptions": {},
-      "type": "string"
+    "mainModel": {
+      "allowedTypes": [        
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
     },
-    "videoUrl": {
-      "pluginOptions": {},
-      "type": "string"
+    "mainAudio": {
+      "allowedTypes": [
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

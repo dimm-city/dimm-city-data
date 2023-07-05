@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-factions",
+  "collectionName": "dc-skill_trees",
   "info": {
-    "singularName": "faction",
-    "pluralName": "factions",
-    "displayName": "DC: Factions",
+    "singularName": "skill-tree",
+    "pluralName": "skill-trees",
+    "displayName": "DC: Skill Trees",
     "description": ""
   },
   "options": {
@@ -19,14 +19,20 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "name",
-      "required": true
+      "targetField": "name"
+    },
+    "specialty": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::dimm-city.specialty",
+      "inversedBy": "skillTrees"
     },
     "shortDescription": {
       "type": "text"
     },
     "description": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "mainImage": {
       "allowedTypes": [
@@ -42,22 +48,11 @@
       ],
       "multiple": false
     },
-    "members": {
+    "abilities": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::dimm-city.character",
-      "mappedBy": "faction"
-    },
-    "leaders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::dimm-city.character"
-    },
-    "location": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::dimm-city.location",
-      "inversedBy": "factions"
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.ability",
+      "inversedBy": "skillTrees"
     }
   }
 }

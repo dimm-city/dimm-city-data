@@ -17,6 +17,10 @@
       "required": true,
       "unique": true
     },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
     "playable": {
       "type": "boolean",
       "required": false
@@ -33,9 +37,6 @@
     },
     "shortDescription": {
       "type": "text"
-    },
-    "description": {
-      "type": "richtext"
     },
     "occupations": {
       "type": "text"
@@ -56,6 +57,20 @@
     "problems": {
       "type": "text"
     },
+    "description": {
+      "type": "richtext"
+    },
+    "abilities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.ability"
+    },
+    "characterReleases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.character-release",
+      "mappedBy": "races"
+    },
     "allies": {
       "type": "relation",
       "relation": "oneToMany",
@@ -69,19 +84,29 @@
     "locations": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::location.location",
+      "target": "plugin::dimm-city.location",
       "inversedBy": "races"
     },
     "mainImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": [
+        "videos"
+      ],
+      "multiple": false
+    },
+    "mainModel": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
     },
     "additionalImages": {
       "type": "media",
@@ -90,21 +115,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
-    },
-    "abilities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::ability.ability"
-    },
-    "characterReleases": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::character-release.character-release",
-      "mappedBy": "races"
     }
   }
 }

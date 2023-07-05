@@ -1,10 +1,10 @@
 "use strict";
 const availableTypes = [
-  { key: "location", value: "api::location.location" },
-  { key: "specialty", value: "api::specialty.specialty" },
-  { key: "journalEntry", value: "api::journal-entry.journal-entry" },
-  { key: "citizen", value: "api::character.character" },
-  { key: "item", value: "api::item.item" },
+  { key: "location", value: "plugin::dimm-city.location" },
+  { key: "specialty", value: "plugin::dimm-city.specialty" },
+  { key: "journalEntry", value: "plugin::dimm-city.journal-entry" },
+  { key: "citizen", value: "plugin::dimm-city.character" },
+  { key: "item", value: "plugin::dimm-city.item" },
 ];
 const { version } = require("../../package.json");
 
@@ -12,11 +12,11 @@ module.exports = {
   // GET /stats
   getStats: async (ctx) => {
     const contentTypes = [
-      "api::character.character",
-      "api::location.location",
-      "api::specialty.specialty",
-      "api::journal-entry.journal-entry",
-      "api::item.item",
+      "plugin::dimm-city.character",
+      "plugin::dimm-city.location",
+      "plugin::dimm-city.specialty",
+      "plugin::dimm-city.journal-entry",
+      "plugin::dimm-city.item",
     ]; 
 
     const result = {version};

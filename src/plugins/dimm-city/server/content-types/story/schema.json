@@ -1,0 +1,95 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-stories",
+  "info": {
+    "singularName": "story",
+    "pluralName": "stories",
+    "displayName": "DC: Stories",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "shortDescription": {
+      "type": "text",
+      "required": true
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "html": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "characters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.character"
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.location"
+    },
+    "factions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.faction"
+    },
+    "historicalEvents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.historical-event"
+    },
+    "races": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.race"
+    },
+    "system": {
+      "type": "enumeration",
+      "enum": [
+        "SugarCube2",
+        "WAA",
+        "Quest",
+        "Ink"
+      ]
+    },
+    "configuration": {
+      "type": "json"
+    }
+  }
+}

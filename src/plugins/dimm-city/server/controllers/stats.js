@@ -21,12 +21,15 @@ module.exports = {
 
     const result = {version};
     for (let contentType of contentTypes) {
-      const repository = strapi.query(contentType);
-      if (!repository) {
+      const entities = await strapi.entityService.findMany(contentType, {
+        fields: ['id'], 
+        publicationState: 'live',
+      });
+      if (!entities) {
         console.error(`Invalid content type: ${contentType}`);
         continue;
       }
-      const count = await repository.count();
+      const count = await entities.length;
       result[contentType.split(".").at(-1)] = count;
     }
 

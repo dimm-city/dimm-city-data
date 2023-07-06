@@ -4,6 +4,20 @@
  * historical-event router.
  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+const { info } = require("../content-types/historical-event/schema.json");
 
-module.exports = createCoreRouter('plugin::dimm-city.historical-event');
+module.exports = [
+  {
+    method: "GET",
+    path: `/${info.pluralName}`,
+    handler: `historicalEvent.find`,
+    config: {
+    },
+  },
+  {
+    method: "GET",
+    path: `/${info.pluralName}/:id`,
+    handler: `historicalEvent.findOne`,
+    config: {},
+  },
+];

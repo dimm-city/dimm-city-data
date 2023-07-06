@@ -4,6 +4,19 @@
  * character-release router.
  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+const { info } = require("../content-types/character-release/schema.json");
 
-module.exports = createCoreRouter('plugin::dimm-city.character-release');
+module.exports = [
+  {
+    method: "GET",
+    path: `/${info.pluralName}`,
+    handler: `characterRelease.find`,
+    config: {},
+  },
+  {
+    method: "GET",
+    path: `/${info.pluralName}/:id`,
+    handler: `characterRelease.findOne`,
+    config: {},
+  },
+];

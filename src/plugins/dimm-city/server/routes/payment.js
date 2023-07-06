@@ -1,9 +1,14 @@
-'use strict';
-
-/**
- * payment router
- */
-
-const { createCoreRouter } = require('@strapi/strapi').factories;
-
-module.exports = createCoreRouter('plugin::dimm-city.payment');
+module.exports = [
+  {
+    // Path defined with an URL parameter
+    method: "POST",
+    path: "/payments/begin",
+    handler: "payment.createPaymentIntent",
+  },
+  {
+    // Path defined with an URL parameter
+    method: "POST",
+    path: "/payments/purchased/:paymentId",
+    handler: "payment.purchaseCompleted",
+  },
+];

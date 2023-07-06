@@ -1,3 +1,5 @@
 'use strict';
 
-module.exports = {};
+module.exports = {
+    "owns-token": require('./owns-token')
+};

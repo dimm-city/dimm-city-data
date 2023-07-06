@@ -4,6 +4,20 @@
  * skill-tree router.
  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+const { info } = require("../content-types/skill-tree/schema.json");
 
-module.exports = createCoreRouter('plugin::dimm-city.skill-tree');
+module.exports = [
+  {
+    method: "GET",
+    path: `/${info.pluralName}`,
+    handler: `skillTree.find`,
+    config: {
+    },
+  },
+  {
+    method: "GET",
+    path: `/${info.pluralName}/:id`,
+    handler: `skillTree.findOne`,
+    config: {},
+  },
+];

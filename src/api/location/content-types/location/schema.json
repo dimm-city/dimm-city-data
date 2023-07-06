@@ -4,7 +4,7 @@
   "info": {
     "singularName": "location",
     "pluralName": "locations",
-    "displayName": "Location",
+    "displayName": "Old: Location",
     "description": ""
   },
   "options": {
@@ -70,7 +70,7 @@
     "historicalEvents": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::historical-event.historical-event",
+      "target": "plugin::dimm-city.historical-event",
       "mappedBy": "location"
     },
     "slug": {

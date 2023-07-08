@@ -88,11 +88,7 @@
       },
       "type": "string"
     },
-    "contract": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::chain-wallets.chain-contract"
-    },
+
     "icon": {
       "pluginOptions": {
         "i18n": {

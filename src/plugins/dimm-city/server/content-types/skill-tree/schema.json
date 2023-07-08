@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-skill_trees",
+  "collectionName": "dc-skill-trees",
   "info": {
     "singularName": "skill-tree",
     "pluralName": "skill-trees",

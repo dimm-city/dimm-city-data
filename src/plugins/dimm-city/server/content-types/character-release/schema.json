@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-character_releases",
+  "collectionName": "dc-character-releases",
   "info": {
     "singularName": "character-release",
     "pluralName": "character-releases",

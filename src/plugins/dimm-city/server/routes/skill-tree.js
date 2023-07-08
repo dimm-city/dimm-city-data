@@ -10,14 +10,14 @@ module.exports = [
   {
     method: "GET",
     path: `/${info.pluralName}`,
-    handler: `skillTree.find`,
+    handler: `skill-tree.find`,
     config: {
     },
   },
   {
     method: "GET",
     path: `/${info.pluralName}/:id`,
-    handler: `skillTree.findOne`,
+    handler: `skill-tree.findOne`,
     config: {},
   },
 ];

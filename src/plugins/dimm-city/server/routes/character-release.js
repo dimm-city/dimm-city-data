@@ -10,13 +10,13 @@ module.exports = [
   {
     method: "GET",
     path: `/${info.pluralName}`,
-    handler: `characterRelease.find`,
+    handler: `character-release.find`,
     config: {},
   },
   {
     method: "GET",
     path: `/${info.pluralName}/:id`,
-    handler: `characterRelease.findOne`,
+    handler: `character-release.findOne`,
     config: {},
   },
 ];

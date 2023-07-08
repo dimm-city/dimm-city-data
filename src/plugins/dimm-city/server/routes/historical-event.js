@@ -10,14 +10,14 @@ module.exports = [
   {
     method: "GET",
     path: `/${info.pluralName}`,
-    handler: `historicalEvent.find`,
+    handler: `historical-event.find`,
     config: {
     },
   },
   {
     method: "GET",
     path: `/${info.pluralName}/:id`,
-    handler: `historicalEvent.findOne`,
+    handler: `historical-event.findOne`,
     config: {},
   },
 ];

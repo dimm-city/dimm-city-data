@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-journal_entries",
+  "collectionName": "dc-journal-entries",
   "info": {
     "singularName": "journal-entry",
     "pluralName": "journal-entries",
@@ -12,12 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "name": {
       "type": "string"
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "name"
     },
     "type": {
       "type": "enumeration",

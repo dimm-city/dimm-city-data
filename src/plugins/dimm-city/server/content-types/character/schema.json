@@ -37,12 +37,6 @@
       "relation": "oneToOne",
       "target": "plugin::dimm-city.race"
     },
-    "faction": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::dimm-city.faction",
-      "inversedBy": "members"
-    },
     "height": {
       "pluginOptions": {},
       "type": "decimal",
@@ -81,6 +75,24 @@
       "pluginOptions": {},
       "type": "string"
     },
+    "originLocation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::dimm-city.location"
+    },
+    "currentLocation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::dimm-city.location"
+    },
+
+    "faction": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::dimm-city.faction",
+      "inversedBy": "members"
+    },
+
     "backstory": {
       "pluginOptions": {},
       "type": "richtext"
@@ -105,6 +117,23 @@
       "pluginOptions": {},
       "type": "string"
     },
+    "specialties": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.specialty",
+      "inversedBy": "characters"
+    },
+    "selectedAbilities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.ability"
+    },
+    "selectedSkillTrees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.skill-tree"
+    },
+   
     "cybernetics": {
       "type": "relation",
       "relation": "oneToMany",
@@ -137,32 +166,7 @@
       "type": "media",
       "multiple": false
     },
-    "specialties": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::dimm-city.specialty",
-      "inversedBy": "characters"
-    },
-    "selectedAbilities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::dimm-city.ability"
-    },
-    "selectedSkillTrees": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::dimm-city.skill-tree"
-    },
-    "originLocation": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::dimm-city.location"
-    },
-    "currentLocation": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::dimm-city.location"
-    },
+   
     "historicalEvents": {
       "type": "relation",
       "relation": "manyToMany",
@@ -173,7 +177,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::chain-wallets.chain-token",
-      "mappedBy": "character"
+      "mappedBy": "dc_character"
     },
     "playerUpdated": {
       "pluginOptions": {},
@@ -186,11 +190,6 @@
       "type": "boolean",
       "default": false,
       "required": true
-    },
-    "user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
     }
   }
 }

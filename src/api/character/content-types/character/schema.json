@@ -61,12 +61,7 @@
       "relation": "oneToOne",
       "target": "api::race.race"
     },
-    "faction": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::dimm-city.faction",
-      "inversedBy": "members"
-    },
+
     "playerCharacter": {
       "pluginOptions": {},
       "type": "boolean",

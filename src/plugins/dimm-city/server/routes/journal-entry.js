@@ -10,14 +10,14 @@ module.exports = [
   {
     method: "GET",
     path: `/${info.pluralName}`,
-    handler: `journalEntry.find`,
+    handler: `journal-entry.find`,
     config: {
     },
   },
   {
     method: "GET",
     path: `/${info.pluralName}/:id`,
-    handler: `journalEntry.findOne`,
+    handler: `journal-entry.findOne`,
     config: {},
   },
 ];

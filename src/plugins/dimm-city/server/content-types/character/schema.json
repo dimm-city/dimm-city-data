@@ -48,8 +48,17 @@
       "min": 0
     },
     "age": {
-      "pluginOptions": {},
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "Childhood",
+        "Adolescence",
+        "Young Adulthood",
+        "Adulthood",
+        "Middle-Age",
+        "Old Age",
+        "Ancient"
+      ],
+      "default": "Young Adulthood"
     },
     "pronouns": {
       "pluginOptions": {},
@@ -133,7 +142,7 @@
       "relation": "oneToMany",
       "target": "plugin::dimm-city.skill-tree"
     },
-   
+
     "cybernetics": {
       "type": "relation",
       "relation": "oneToMany",
@@ -166,7 +175,7 @@
       "type": "media",
       "multiple": false
     },
-   
+
     "historicalEvents": {
       "type": "relation",
       "relation": "manyToMany",

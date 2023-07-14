@@ -46,6 +46,12 @@
       "relation": "oneToOne",
       "target": "api::character.character",
       "inversedBy": "token"
+    },
+    "dc_character": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::dimm-city.character",
+      "inversedBy": "token"
     }
   }
 }

@@ -19,4 +19,16 @@ module.exports = [
     handler: `character-release.findOne`,
     config: {},
   },
+  {
+    method: "POST",
+    path: `/${info.pluralName}`,
+    handler: `${info.singularName}.create`,
+    config: {},
+  },
+  {
+    method: "PUT",
+    path: `/${info.pluralName}/:id`,
+    handler: `${info.singularName}.update`,
+    config: {},
+  },
 ];

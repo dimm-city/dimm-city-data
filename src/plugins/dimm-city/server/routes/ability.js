@@ -20,4 +20,18 @@ module.exports = [
     handler: `${info.singularName}.findOne`,
     config: {},
   },
+    {
+    method: "POST",
+    path: `/${info.pluralName}`,
+    handler: `${info.singularName}.create`,
+    config: {},
+  },
+  {
+    method: "PUT",
+    path: `/${info.pluralName}/:id`,
+    handler: `${info.singularName}.update`,
+    config: {
+
+    }
+  }
 ];

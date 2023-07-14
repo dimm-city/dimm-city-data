@@ -5,7 +5,7 @@ import path from "path";
 const your_api_key =
   process.argv[2] ??
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY4OTMwOTg1NCwiZXhwIjoxNjkxOTAxODU0fQ.wg1rIOCq9_ttzUjcvscOpEjG-RCW07qEBbVvVOaPrpo";
-const directoryPath = path.join("./output");
+const directoryPath = path.join("../../extract-output");
 
 const postEntity = (entity, contentType) => {
   const recordData = { data: { ...entity.attributes } };

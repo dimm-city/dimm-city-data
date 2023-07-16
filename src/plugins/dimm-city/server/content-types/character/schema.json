@@ -186,7 +186,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::chain-wallets.chain-token",
-      "mappedBy": "dc_character"
+      "mappedBy": "character"
     },
     "playerUpdated": {
       "pluginOptions": {},

@@ -22,28 +22,18 @@ async function getMergedMetadata(token, character) {
   let output = token.metadata ?? { attributes: [] };
 
   output.external_url = `https://dimm.city/citizens/${token.contract.slug}-${token.tokenId}`;
-  output.image = formatMediaUrl(
-    mediaTypes.images,
-    token.contract.slug,
-    token.tokenId
-  );
 
-  output.fullresolution_uri = output.image;
+  output.image =
+    character.attributes.mainImage.data.attributes.formats.medium.url;
 
-  output.thumbnail_url = formatMediaUrl(
-    mediaTypes.thumbnails,
-    token.contract.slug,
-    token.tokenId
-  );
+  output.fullresolution_uri =
+    character.attributes.mainImage.data.attributes.formats.large.url;
 
-  if (output.animation_url) {
-    output.animation_url = formatMediaUrl(
-      mediaTypes.mp4,
-      token.contract.slug,
-      token.tokenId
-    );
-  }
+  output.thumbnail_url =
+    character.attributes.mainImage.data.attributes.formats.thumbnail.url;
 
+  output.animation_url =
+    character.attributes.mainVideo.data.attributes.url;
 
   if (character && character.publishedAt && character.playerUpdated) {
     output.name = character.name;
@@ -173,6 +163,9 @@ module.exports = {
       ap: 10,
       hp: 10,
       race: race,
+      mainImage: token.mainImage?.id,
+      mainVideo: token.mainVideo?.id,
+      mainModel: token.mainModel?.id,
       skin: token.metadata.attributes.find((a) => a.trait_type == "Body").value,
       eyes: token.metadata.attributes.find((a) => a.trait_type == "Eyes").value,
     };
@@ -198,5 +191,4 @@ module.exports = {
     token = getMergedMetadata(token, character);
     return token;
   },
- 
 };

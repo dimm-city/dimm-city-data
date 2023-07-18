@@ -4,6 +4,7 @@ module.exports = ({ env }) => ({
     resolve: "../strapi-plugin-chain-wallets",
     config: {
       assetPath: ".tokens",
+      enableCron: false
     },
   },
   "users-permissions": {

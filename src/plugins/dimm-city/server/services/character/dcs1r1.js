@@ -157,6 +157,7 @@ module.exports = {
       },
     });
     let output = {
+      token: token,
       name: token?.metadata?.name,
       //backstory: token?.metadata?.description,
       playerCharacter: true,

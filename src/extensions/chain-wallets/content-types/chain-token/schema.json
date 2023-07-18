@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chain-tokens",
+  "info": {
+    "singularName": "chain-token",
+    "pluralName": "chain-tokens",
+    "displayName": "Chain Token",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true,
+    "privateAttributes": [
+      "createdAt",
+      "updatedAt",
+      "createdBy",
+      "updatedBy"
+    ]
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tokenId": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "mainImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": [
+        "videos"
+      ],
+      "multiple": false
+    },
+    "mainModel": {
+      "type": "media",
+      "multiple": false
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "contract": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::chain-wallets.chain-contract",
+      "inversedBy": "tokens"
+    },
+    "wallet": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::chain-wallets.chain-wallet",
+      "inversedBy": "tokens"
+    },
+    "character": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::dimm-city.character",
+      "inversedBy": "token"
+    }
+  }
+}

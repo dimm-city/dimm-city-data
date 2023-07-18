@@ -94,14 +94,12 @@
       "relation": "oneToOne",
       "target": "plugin::dimm-city.location"
     },
-
     "faction": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::dimm-city.faction",
       "inversedBy": "members"
     },
-
     "backstory": {
       "pluginOptions": {},
       "type": "richtext"
@@ -142,7 +140,6 @@
       "relation": "oneToMany",
       "target": "plugin::dimm-city.skill-tree"
     },
-
     "cybernetics": {
       "type": "relation",
       "relation": "oneToMany",
@@ -158,24 +155,22 @@
       "type": "string"
     },
     "mainImage": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
     },
     "mainVideo": {
       "type": "media",
-      "allowedTypes": [
-        "videos"
-      ],
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["videos"]
     },
     "mainModel": {
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false
     },
-
     "historicalEvents": {
       "type": "relation",
       "relation": "manyToMany",
@@ -186,7 +181,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::chain-wallets.chain-token",
-      "mappedBy": "character"
+      "inversedBy": "character"
     },
     "playerUpdated": {
       "pluginOptions": {},

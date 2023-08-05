@@ -63,16 +63,17 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "settings": {
-      "type": "component",
-      "repeatable": false,
-      "component": "users.user-settings"
-    },
     "wallets": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::chain-wallets.chain-wallet",
       "mappedBy": "user"
+    },
+    "profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::dimm-city.profile",
+      "inversedBy": "user"
     }
   }
 }

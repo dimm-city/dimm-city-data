@@ -9,6 +9,7 @@ const item = require("./item");
 const journalEntry = require("./journal-entry");
 const location = require("./location");
 const payment = require("./payment");
+const profile = require("./profile");
 const race = require("./race");
 const skillTree = require("./skill-tree");
 const specialty = require("./specialty");
@@ -28,6 +29,7 @@ module.exports = {
   "journal-entry":journalEntry,
   location,
   payment,
+  profile,
   race,
   "skill-tree": skillTree,
   specialty,

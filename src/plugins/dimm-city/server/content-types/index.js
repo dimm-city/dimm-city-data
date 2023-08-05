@@ -26,6 +26,9 @@ module.exports = {
   payment: {
     schema: require("./payment/schema.json"),
   },
+  profile: {
+    schema: require("./profile/schema.json"),
+  },
   race: {
     schema: require("./race/schema.json"),
   },

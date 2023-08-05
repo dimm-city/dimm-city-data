@@ -16,6 +16,7 @@ const specialty = require("./specialty");
 const spore = require("./spore");
 const story = require("./story");
 const world = require("./world");
+const profile = require("./profile");
 
 module.exports = {
   "content-api": {
@@ -30,6 +31,7 @@ module.exports = {
       ...journalEntry,
       ...location,
       ...payment,
+      ...profile,
       ...race,
       ...skillTree,
       ...specialty,

@@ -26,6 +26,12 @@
     "notifications": {
       "type": "boolean",
       "default": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "profile"
     }
   }
 }

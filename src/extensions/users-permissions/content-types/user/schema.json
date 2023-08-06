@@ -72,8 +72,7 @@
     "profile": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::dimm-city.profile",
-      "inversedBy": "user"
+      "target": "plugin::dimm-city.profile"
     }
   }
 }

@@ -25,9 +25,9 @@ jobs:
         env:
           NODE_ENV: staging
         run: |
-          npm install
+          npm ci
           npm run build
-      
+
       - name: Create Archive of application code
         run: |
           mkdir -p zip
@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dimm-city-data
-          path: zip/app.zip 
+          path: zip/app.zip
 
   deploy:
     runs-on: ubuntu-latest

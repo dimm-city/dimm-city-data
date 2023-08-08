@@ -16,17 +16,19 @@ const specialty = require("./specialty");
 const spore = require("./spore");
 const story = require("./story");
 const world = require("./world");
+const galleryItem = require("./gallery-item");
 
 module.exports = {
   stats,
   archives,
   ability,
   character,
- "character-release":  characterRelease,
+  "character-release": characterRelease,
   faction,
+  "gallery-item":galleryItem,
   "historical-event": historicalEvent,
   item,
-  "journal-entry":journalEntry,
+  "journal-entry": journalEntry,
   location,
   payment,
   profile,

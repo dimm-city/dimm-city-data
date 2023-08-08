@@ -14,6 +14,9 @@ module.exports = {
   "historical-event": {
     schema: require("./historical-event/schema.json"),
   },
+  "gallery-item": {
+    schema: require("./gallery-item/schema.json"),
+  },
   item: {
     schema: require("./item/schema.json"),
   },

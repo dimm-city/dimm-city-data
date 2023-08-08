@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-gallery-items",
+  "info": {
+    "singularName": "gallery-item",
+    "pluralName": "gallery-items",
+    "displayName": "Gallery Items"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "caption": {
+      "type": "richtext",
+      "maxLength": 500
+    },
+    "height": {
+      "type": "string"
+    },
+    "width": {
+      "type": "string"
+    },
+    "mainVideo": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "mainImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    }
+  }
+}

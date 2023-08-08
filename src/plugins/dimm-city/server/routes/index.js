@@ -17,6 +17,7 @@ const spore = require("./spore");
 const story = require("./story");
 const world = require("./world");
 const profile = require("./profile");
+const galleryItem = require("./gallery-item");
 
 module.exports = {
   "content-api": {
@@ -26,6 +27,7 @@ module.exports = {
       ...character,
       ...characterRelease,
       ...faction,
+      ...galleryItem,
       ...historicalEvent,
       ...item,
       ...journalEntry,

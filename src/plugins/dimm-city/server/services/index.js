@@ -27,6 +27,7 @@ module.exports = {
   "character-release": characterRelease,
   faction,
   "historical-event": historicalEvent,
+  "gallery-item": require("./gallery-item"),
   item,
   "journal-entry": journalEntry,
   location,

@@ -11,7 +11,6 @@
     "draftAndPublish": true
   },
   "attributes": {
-
     "name": {
       "type": "string",
       "required": true,
@@ -20,6 +19,13 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "tags": {
+      "type": "string",
+      "required": false,
+      "maxLength": 250,
+      "minLength": 3,
+      "regex": "^\\w+(\\s*,\\s*\\w+)*$"
     },
     "playable": {
       "type": "boolean",
@@ -88,23 +94,17 @@
       "inversedBy": "races"
     },
     "mainImage": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     },
     "mainVideo": {
       "type": "media",
-      "allowedTypes": [
-        "videos"
-      ],
+      "allowedTypes": ["videos"],
       "multiple": false
     },
     "mainModel": {
-      "allowedTypes": [
-        "files"
-      ],
+      "allowedTypes": ["files"],
       "type": "media",
       "multiple": false
     },
@@ -112,9 +112,7 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     }
   }
 }

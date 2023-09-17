@@ -23,31 +23,27 @@
       "type": "uid",
       "targetField": "name"
     },
+    "tags": {
+      "type": "string",
+      "required": false,
+      "maxLength": 250,
+      "minLength": 3,
+      "regex": "^\\w+(\\s*,\\s*\\w+)*$"
+    },
     "type": {
       "type": "enumeration",
-      "enum": [
-        "weapon",
-        "armor",
-        "cybernetics",
-        "tools",
-        "clothing",
-        "misc"
-      ],
+      "enum": ["weapon", "armor", "cybernetics", "tools", "clothing", "misc"],
       "required": true,
       "default": "misc"
     },
     "mainImage": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     },
     "mainVideo": {
       "type": "media",
-      "allowedTypes": [
-        "videos"
-      ],
+      "allowedTypes": ["videos"],
       "multiple": false
     },
     "mainModel": {

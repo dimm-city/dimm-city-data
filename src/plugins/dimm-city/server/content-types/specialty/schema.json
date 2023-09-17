@@ -12,7 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-  
     "name": {
       "pluginOptions": {},
       "type": "string",
@@ -22,6 +21,13 @@
       "pluginOptions": {},
       "type": "uid",
       "targetField": "name"
+    },
+    "tags": {
+      "type": "string",
+      "required": false,
+      "maxLength": 250,
+      "minLength": 3,
+      "regex": "^\\w+(\\s*,\\s*\\w+)*$"
     },
     "shortDescription": {
       "pluginOptions": {},
@@ -35,35 +41,27 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::dimm-city.skill-tree"
-    },  
+    },
     "mainImage": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     },
     "mainVideo": {
       "type": "media",
-      "allowedTypes": [
-        "videos"
-      ],
+      "allowedTypes": ["videos"],
       "multiple": false
     },
     "mainModel": {
-      "allowedTypes": [
-        "files"
-      ],
+      "allowedTypes": ["files"],
       "type": "media",
       "multiple": false
     },
     "mainAudio": {
-      "allowedTypes": [
-        "audios"
-      ],
+      "allowedTypes": ["audios"],
       "type": "media",
       "multiple": false
-    },  
+    },
     "characters": {
       "type": "relation",
       "relation": "manyToMany",

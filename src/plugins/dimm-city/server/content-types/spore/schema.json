@@ -22,12 +22,23 @@
       "targetField": "name",
       "required": true
     },
+    "tags": {
+      "type": "string",
+      "required": false,
+      "maxLength": 250,
+      "minLength": 3,
+      "regex": "^\\w+(\\s*,\\s*\\w+)*$"
+    },
     "subtitle": {
       "type": "string"
     },
     "description": {
       "type": "string",
       "maxLength": 500
+    },
+    "shortDescription": {
+      "type": "text",
+      "maxLength": 150
     },
     "introduction": {
       "type": "richtext"
@@ -56,23 +67,17 @@
       "component": "lists.list100"
     },
     "mainImage": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     },
     "mainVideo": {
       "type": "media",
-      "allowedTypes": [
-        "videos"
-      ],
+      "allowedTypes": ["videos"],
       "multiple": false
     },
     "mainAudio": {
-      "allowedTypes": [
-        "audios"
-      ],
+      "allowedTypes": ["audios"],
       "type": "media",
       "multiple": false
     }

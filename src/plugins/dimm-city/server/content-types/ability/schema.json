@@ -47,13 +47,16 @@
       "default": false,
       "required": true
     },
+    "external": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
     "mainImage": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "description": {
       "type": "richtext"

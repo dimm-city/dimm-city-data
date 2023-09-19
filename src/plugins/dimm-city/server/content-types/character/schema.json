@@ -120,6 +120,10 @@
       "pluginOptions": {},
       "type": "string"
     },
+    "playerNotes": {
+      "pluginOptions": {},
+      "type": "string"
+    },
     "movementDescription": {
       "pluginOptions": {},
       "type": "string"

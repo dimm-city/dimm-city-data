@@ -1,0 +1,84 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-journal-entries",
+  "info": {
+    "singularName": "journal-entry",
+    "pluralName": "journal-entries",
+    "displayName": "Journal Entries",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "text",
+        "content",
+        "media"
+      ],
+      "default": "text",
+      "required": true
+    },
+    "recordedAt": {
+      "type": "datetime",
+      "required": false,
+      "default": "2022-10-31T05:00:00.000Z"
+    },
+    "shortDescription": {
+      "type": "text",
+      "maxLength": 500
+    },
+    "description": {
+      "type": "richtext",
+      "maxLength": 5000
+    },
+    "mainImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": [
+        "videos"
+      ],
+      "multiple": false
+    },
+    "mainModel": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "mainAudio": {
+      "allowedTypes": [
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "tags": {
+      "type": "string",
+      "required": false,
+      "maxLength": 250,
+      "minLength": 3,
+      "regex": "^\\w+(\\s*,\\s*\\w+)*$"
+    },
+    "metadata": {
+      "type": "json"
+    }
+  }
+}

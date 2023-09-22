@@ -2,16 +2,18 @@
 const schema = require("./schema.json");
 
 module.exports = {
-  schema,
-  lifecycles: {
-    async afterCreate(event) {
-      const { result } = event;
-      try {
-        const walletSvc = strapi.service("plugin::chain-wallets.chain-wallet");
-        walletSvc.createUserWallet(1, result);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
+  schema
+  //,
+  // lifecycles: {
+  //   async afterCreate(event) {
+  //     const { result } = event;
+  //     try {
+  //       await strapi.plugins["chain-wallets"].services[
+  //         "chain-wallet"
+  //       ].createManagedUserWallet(result, "mainnet");
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   },
+  // },
 };

@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-items",
+  "info": {
+    "singularName": "item",
+    "pluralName": "items",
+    "displayName": "Items",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "pluginOptions": {},
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 100
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "tags": {
+      "type": "string",
+      "required": false,
+      "maxLength": 250,
+      "minLength": 3,
+      "regex": "^\\w+(\\s*,\\s*\\w+)*$"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["weapon", "armor", "cybernetics", "tools", "clothing", "misc"],
+      "required": true,
+      "default": "misc"
+    },
+    "mainImage": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": ["videos"],
+      "multiple": false
+    },
+    "mainModel": {
+      "type": "media",
+      "multiple": false
+    },
+    "shortDescription": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext",
+      "maxLength": 500
+    }
+  }
+}

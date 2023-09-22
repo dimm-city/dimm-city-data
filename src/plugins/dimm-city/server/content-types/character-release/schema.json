@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-character-releases",
+  "info": {
+    "singularName": "character-release",
+    "pluralName": "character-releases",
+    "displayName": "Character Releases",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {  
+  },
+  "attributes": {
+    "name": {      
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "icon": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "mainImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": [
+        "videos"
+      ],
+      "multiple": false
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "races": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.race",
+      "inversedBy": "characterReleases"
+    },
+    "contract": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::chain-wallets.chain-contract"
+    },
+    "tags": {
+      "type": "string"
+    }
+  }
+}

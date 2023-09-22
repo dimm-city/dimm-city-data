@@ -4,7 +4,7 @@
   "info": {
     "singularName": "character",
     "pluralName": "characters",
-    "displayName": "Character",
+    "displayName": "Old: Character",
     "description": ""
   },
   "options": {
@@ -61,12 +61,7 @@
       "relation": "oneToOne",
       "target": "api::race.race"
     },
-    "faction": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::faction.faction",
-      "inversedBy": "members"
-    },
+
     "playerCharacter": {
       "pluginOptions": {},
       "type": "boolean",
@@ -86,7 +81,7 @@
     "historicalEvents": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::historical-event.historical-event",
+      "target": "plugin::dimm-city.historical-event",
       "inversedBy": "characters"
     },
     "selectedSkillTrees": {
@@ -146,7 +141,7 @@
     "items": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::item.item"
+      "target": "plugin::dimm-city.item"
     },
     "imageUrl": {
       "pluginOptions": {},

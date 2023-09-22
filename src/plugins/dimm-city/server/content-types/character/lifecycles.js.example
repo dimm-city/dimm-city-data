@@ -1,0 +1,16 @@
+module.exports = {
+  async beforeCreate(event) {
+    const { data, where, select, populate } = event.params;
+    
+    //Example of how to do something with the associated token before creating the entity
+    const svc = strapi.service("plugin::chain-wallets.chain-token");
+
+    if (data.token.connect.length > 0) {
+      const token = await svc.findOne(data.token.connect[0]?.id);
+
+      data.eyes = token.metadata.attributes.find(
+        (v) => v.trait_type == "Eyes"
+      ).value;
+    }
+  },
+};

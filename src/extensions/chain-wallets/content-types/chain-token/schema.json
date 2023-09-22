@@ -26,6 +26,24 @@
       "type": "uid",
       "required": true
     },
+    "mainImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": [
+        "videos"
+      ],
+      "multiple": false
+    },
+    "mainModel": {
+      "type": "media",
+      "multiple": false
+    },
     "metadata": {
       "type": "json"
     },
@@ -44,7 +62,7 @@
     "character": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::character.character",
+      "target": "plugin::dimm-city.character",
       "inversedBy": "token"
     }
   }

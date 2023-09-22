@@ -1,0 +1,118 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-races",
+  "info": {
+    "singularName": "race",
+    "pluralName": "races",
+    "displayName": "Races",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "tags": {
+      "type": "string",
+      "required": false,
+      "maxLength": 250,
+      "minLength": 3,
+      "regex": "^\\w+(\\s*,\\s*\\w+)*$"
+    },
+    "playable": {
+      "type": "boolean",
+      "required": false
+    },
+    "hp": {
+      "type": "integer",
+      "max": 20,
+      "required": true
+    },
+    "atk": {
+      "type": "integer",
+      "min": 0,
+      "required": true
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "occupations": {
+      "type": "text"
+    },
+    "appearance": {
+      "type": "text",
+      "required": true
+    },
+    "ideals": {
+      "type": "text"
+    },
+    "flaws": {
+      "type": "text"
+    },
+    "desires": {
+      "type": "text"
+    },
+    "problems": {
+      "type": "text"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "abilities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.ability"
+    },
+    "characterReleases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.character-release",
+      "mappedBy": "races"
+    },
+    "allies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.race"
+    },
+    "enemies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.race"
+    },
+    "locations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.location",
+      "inversedBy": "races"
+    },
+    "mainImage": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": ["videos"],
+      "multiple": false
+    },
+    "mainModel": {
+      "allowedTypes": ["files"],
+      "type": "media",
+      "multiple": false
+    },
+    "additionalImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

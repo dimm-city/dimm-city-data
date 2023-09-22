@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-specialties",
+  "info": {
+    "singularName": "specialty",
+    "pluralName": "specialties",
+    "displayName": "Specialties",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "pluginOptions": {},
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "pluginOptions": {},
+      "type": "uid",
+      "targetField": "name"
+    },
+    "tags": {
+      "type": "string",
+      "required": false,
+      "maxLength": 250,
+      "minLength": 3,
+      "regex": "^\\w+(\\s*,\\s*\\w+)*$"
+    },
+    "shortDescription": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "description": {
+      "pluginOptions": {},
+      "type": "richtext"
+    },
+    "skillTrees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.skill-tree"
+    },
+    "mainImage": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": ["videos"],
+      "multiple": false
+    },
+    "mainModel": {
+      "allowedTypes": ["files"],
+      "type": "media",
+      "multiple": false
+    },
+    "mainAudio": {
+      "allowedTypes": ["audios"],
+      "type": "media",
+      "multiple": false
+    },
+    "characters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.character",
+      "mappedBy": "specialties"
+    }
+  }
+}

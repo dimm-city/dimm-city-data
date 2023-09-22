@@ -1,0 +1,97 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc-locations",
+  "info": {
+    "singularName": "location",
+    "pluralName": "locations",
+    "displayName": "Locations",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "pluginOptions": {},
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "pluginOptions": {},
+      "type": "uid",
+      "targetField": "name"
+    },
+    "tags": {
+      "type": "string",
+      "required": false,
+      "maxLength": 250,
+      "minLength": 3,
+      "regex": "^\\w+(\\s*,\\s*\\w+)*$"
+    },
+    "shortDescription": {
+      "pluginOptions": {},
+      "type": "text"
+    },
+    "description": {
+      "pluginOptions": {},
+      "type": "richtext"
+    },
+    "races": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.race",
+      "mappedBy": "locations"
+    },
+    "regions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.location",
+      "mappedBy": "region"
+    },
+    "region": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::dimm-city.location",
+      "inversedBy": "regions"
+    },
+    "world": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::dimm-city.world",
+      "inversedBy": "locations"
+    },
+    "factions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.faction",
+      "mappedBy": "location"
+    },
+    "historicalEvents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::dimm-city.historical-event",
+      "mappedBy": "location"
+    },
+    "mainImage": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": false
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": ["videos"],
+      "multiple": false
+    },
+    "mainModel": {
+      "allowedTypes": ["files"],
+      "type": "media",
+      "multiple": false
+    },
+    "mainAudio": {
+      "allowedTypes": ["audios"],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

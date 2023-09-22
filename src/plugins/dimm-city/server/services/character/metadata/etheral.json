@@ -1,0 +1,11 @@
+{
+    "description": "Currently in an ethereal state...",   
+    "attributes": [
+        {
+            "trait_type": "State",
+            "value": "Ethereal"
+        }
+    ],
+    "compiler": "Daemon",
+    "artist": "Scott Georges"
+  }

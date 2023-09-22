@@ -22,14 +22,16 @@ jobs:
           node-version: 16
 
       - name: npm install, build, and test
+        env:
+          NODE_ENV: production
         run: |
-          npm ci
-          npm run build:prod --if-present
+          npm install
+          npm run build
       
       - name: Create Archive of application code
         run: |
           mkdir -p zip
-          zip  -r zip/app.zip . -x "zip/*" ".tokens/*" "./*.sql" ".env*" ".git/*" ".vscode/*" ".tmp/*" ".github/*" "README.md" ".eslint*"
+          zip  -r zip/app.zip . -x@.zipignore
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -46,7 +48,7 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: dimm-city-data
 

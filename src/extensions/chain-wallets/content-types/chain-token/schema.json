@@ -63,7 +63,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::dimm-city.character",
-      "inversedBy": "token"
+      "mappedBy": "token"
     }
   }
 }

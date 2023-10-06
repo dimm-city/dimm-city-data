@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-payments",
+  "collectionName": "dc_payments",
   "info": {
     "singularName": "payment",
     "pluralName": "payments",

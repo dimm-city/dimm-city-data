@@ -3,6 +3,7 @@ module.exports = ({ env }) => ({
     enabled: true,
     resolve: "./node_modules/strapi-plugin-chain-wallets",
     config: {
+      enableCron: env("ENABLE_CRON") || true,
       assetPath: "/home/site/tokens",
       verificationMessage: "sign into dimm city",
       infuraProjectId: "0b07f1a101f54ca6b9e12334f21df3ba"

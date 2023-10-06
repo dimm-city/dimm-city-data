@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-factions",
+  "collectionName": "dc_factions",
   "info": {
     "singularName": "faction",
     "pluralName": "factions",

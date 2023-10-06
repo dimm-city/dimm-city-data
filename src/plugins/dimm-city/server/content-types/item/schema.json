@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-items",
+  "collectionName": "dc_items",
   "info": {
     "singularName": "item",
     "pluralName": "items",

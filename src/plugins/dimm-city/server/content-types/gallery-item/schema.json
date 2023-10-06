@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-gallery-items",
+  "collectionName": "dc_gallery_items",
   "info": {
     "singularName": "gallery-item",
     "pluralName": "gallery-items",

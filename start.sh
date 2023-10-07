@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if the node_modules folder contains any files or folders
-if [ -z "$(ls -A build)" ]; then
+if [ ! -d "build" ]; then
   echo "Running strapi build"
   node node_modules/@strapi/strapi/bin/strapi.js build
   echo "Finished strapi build"

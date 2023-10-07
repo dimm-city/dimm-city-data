@@ -3,7 +3,7 @@
 # Check if the node_modules folder contains any files or folders
 if [ -z "$(ls -A node_modules)" ]; then
   echo "Missing node dependencies, running npm install"
-  npm install
+  npm ci
   echo "Running strapi build"
   node node_modules/@strapi/strapi/bin/strapi.js build
   echo "Strapi build complete, starting server"

@@ -70,7 +70,7 @@ module.exports = {
           }
 
           newEntity.data.name = entity[0].name;
-          
+
           newEntity.data.mainImage = data.mainImage;
           newEntity.data.mainVideo = data.mainVideo;
           newEntity.data.mainModel = data.mainModel;
@@ -91,8 +91,10 @@ module.exports = {
           if (contract.metadataService) {
             const metaSvc = strapi.services[contract.metadataService];
 
-            if (metaSvc && metaSvc[NAME_ENTITY_INIT] instanceof Function)
+            if (metaSvc && metaSvc[NAME_ENTITY_INIT] instanceof Function){
               updatedEntity.data = await metaSvc[NAME_ENTITY_INIT](result);
+              updatedEntity.data.name = entity[0].attributes?.name;
+            }
           }
 
           updatedEntity.data.mainImage = data.mainImage;

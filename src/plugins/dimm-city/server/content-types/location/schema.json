@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-locations",
+  "collectionName": "dc_locations",
   "info": {
     "singularName": "location",
     "pluralName": "locations",

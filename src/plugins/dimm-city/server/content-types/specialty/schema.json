@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-specialties",
+  "collectionName": "dc_specialties",
   "info": {
     "singularName": "specialty",
     "pluralName": "specialties",

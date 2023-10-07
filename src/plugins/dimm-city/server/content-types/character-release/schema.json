@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-character-releases",
+  "collectionName": "dc_character_releases",
   "info": {
     "singularName": "character-release",
     "pluralName": "character-releases",
@@ -10,10 +10,10 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {  
+  "pluginOptions": {
   },
   "attributes": {
-    "name": {      
+    "name": {
       "type": "string",
       "required": true
     },

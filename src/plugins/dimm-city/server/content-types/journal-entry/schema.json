@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-journal-entries",
+  "collectionName": "dc_journal_entries",
   "info": {
     "singularName": "journal-entry",
     "pluralName": "journal-entries",

@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-characters",
+  "collectionName": "dc_characters",
   "info": {
     "singularName": "character",
     "pluralName": "characters",

@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-races",
+  "collectionName": "dc_races",
   "info": {
     "singularName": "race",
     "pluralName": "races",

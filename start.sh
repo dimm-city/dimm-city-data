@@ -4,6 +4,7 @@
 if [ -z "$(ls -A build)" ]; then
   echo "Running strapi build"
   node node_modules/@strapi/strapi/bin/strapi.js build
-  echo "Strapi build complete, starting server"
+  echo "Finished strapi build"
 fi
+echo "Strapi Admin built, starting server"
 pm2 start server.js --no-daemon

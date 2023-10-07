@@ -1,15 +1,10 @@
-# cp package.json /node_modules
-# echo "copied package.json"
-# npm install --prefix /node_modules
+#! /bin/bash
 
-
-#npm install
-#npm run build
-node --version
-npm --version
-echo $DEPLOYMENT_SOURCE
-echo $DEPLOYMENT_TARGET
+# node --version
+# npm --version
+echo "Removing $DEPLOYMENT_TARGET"
 rm -rf "$DEPLOYMENT_TARGET"
+echo "Copying $DEPLOYMENT_SOURCE to $DEPLOYMENT_TARGET"
 mkdir "$DEPLOYMENT_TARGET"
 cp -r "$DEPLOYMENT_SOURCE"/* "$DEPLOYMENT_TARGET"
-#mv node_modules/ /node_modules
+echo "Copy complete, make sure the admin app is rebuilt during startup"

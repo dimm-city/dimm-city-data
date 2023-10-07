@@ -4,7 +4,7 @@ module.exports = ({ env }) => ({
     resolve: "./src/plugins/chain-wallets",
     config: {
       assetPath: ".tokens",
-      enableCron: true
+      enableCron: false
     },
   },
   "users-permissions": {

@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "chain-wallets",
+  "collectionName": "cw_wallets",
   "info": {
     "singularName": "chain-wallet",
     "pluralName": "chain-wallets",

@@ -483,7 +483,7 @@ export interface PluginUploadFolder extends Schema.CollectionType {
 }
 
 export interface PluginChainWalletsChainToken extends Schema.CollectionType {
-  collectionName: 'chain-tokens';
+  collectionName: 'cw_tokens';
   info: {
     singularName: 'chain-token';
     pluralName: 'chain-tokens';
@@ -733,7 +733,7 @@ export interface PluginChainWalletsChainContract extends Schema.CollectionType {
 }
 
 export interface PluginChainWalletsChainWallet extends Schema.CollectionType {
-  collectionName: 'chain-wallets';
+  collectionName: 'cw_wallets';
   info: {
     singularName: 'chain-wallet';
     pluralName: 'chain-wallets';

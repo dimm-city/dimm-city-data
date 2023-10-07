@@ -1,7 +1,7 @@
 module.exports = ({ env }) => ({
   "chain-wallets": {
     enabled: true,
-    resolve: "../strapi-plugin-chain-wallets",
+    resolve: "./src/plugins/chain-wallets",
     config: {
       assetPath: ".tokens",
       enableCron: false

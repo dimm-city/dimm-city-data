@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "strapi-plugin-chain-wallets",
+  "version": "0.3.0",
+  "description": "Chain Wallets is a plugin for Strapi v4 that allows EVM smart contracts to be easily associated with a content-type.",
+  "keywords": [
+    "metadata",
+    "ethersjs",
+    "ethers",
+    "ipfs",
+    "web3",
+    "strapi"
+  ],
+  "homepage": "https://github.com/dimm-city/strapi-plugin-chain-wallets",
+  "bugs": {
+    "url": "https://github.com/dimm-city/strapi-plugin-chain-wallets/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dimm-city/strapi-plugin-chain-wallets.git"
+  },
+  "strapi": {
+    "name": "chain-wallets",
+    "description": "Chain Wallets is a plugin for Strapi v4 that allows EVM smart contracts to be easily associated with a content-type.",
+    "kind": "plugin",
+    "displayName": "Chain Wallets"
+  },
+  "dependencies": {
+    "ethers": "^5.7.2",
+    "unzipper": "^0.10.14"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^4.13.6"
+  },
+  "author": {
+    "name": "founder3",
+    "url": "https://dimm.city"
+  },
+  "maintainers": [
+    {
+      "name": "founder3",
+      "url": "https://dimm.city"
+    }
+  ],
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

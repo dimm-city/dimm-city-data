@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-worlds",
+  "collectionName": "dc_worlds",
   "info": {
     "singularName": "world",
     "pluralName": "worlds",
@@ -10,13 +10,13 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {   
+  "pluginOptions": {
   },
   "attributes": {
     "name": {
       "type": "string",
       "required": true,
-      "unique": true      
+      "unique": true
     },
     "slug": {
       "type": "uid",
@@ -24,7 +24,7 @@
       "required": true
     },
     "description": {
-      "type": "richtext"     
+      "type": "richtext"
     },
     "mainImage": {
       "allowedTypes": [
@@ -60,6 +60,6 @@
       "target": "plugin::dimm-city.location",
       "mappedBy": "world"
     }
-   
+
   }
 }

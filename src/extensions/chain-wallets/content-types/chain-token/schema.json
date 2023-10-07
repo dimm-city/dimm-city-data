@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "chain-tokens",
+  "collectionName": "cw_tokens",
   "info": {
     "singularName": "chain-token",
     "pluralName": "chain-tokens",
@@ -9,12 +9,7 @@
   },
   "options": {
     "draftAndPublish": true,
-    "privateAttributes": [
-      "createdAt",
-      "updatedAt",
-      "createdBy",
-      "updatedBy"
-    ]
+    "privateAttributes": ["createdAt", "updatedAt", "createdBy", "updatedBy"]
   },
   "pluginOptions": {},
   "attributes": {
@@ -27,17 +22,13 @@
       "required": true
     },
     "mainImage": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     },
     "mainVideo": {
       "type": "media",
-      "allowedTypes": [
-        "videos"
-      ],
+      "allowedTypes": ["videos"],
       "multiple": false
     },
     "mainModel": {

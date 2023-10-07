@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-stories",
+  "collectionName": "dc_stories",
   "info": {
     "singularName": "story",
     "pluralName": "stories",

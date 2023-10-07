@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-spores",
+  "collectionName": "dc_spores",
   "info": {
     "singularName": "spore",
     "pluralName": "spores",

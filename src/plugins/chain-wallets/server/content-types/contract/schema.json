@@ -1,0 +1,227 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cw_contracts",
+  "info": {
+    "singularName": "chain-contract",
+    "pluralName": "chain-contracts",
+    "displayName": "Chain Contract",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true,
+    "privateAttributes": [
+      "createdAt",
+      "updatedAt",
+      "createdBy",
+      "updatedBy",
+      "entityType",
+      "metadataExtender",
+      "entityInitializer"
+    ]
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    },
+    "content-manager": {
+      "visible": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "required": true
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    },
+    "address": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "chain": {
+      "type": "enumeration",
+      "enum": [
+        "homestead",
+        "goerli",
+        "sepolia",
+        "arbitrum",
+        "arbitrum-goerli",
+        "avalanche-mainnet",
+        "avalanche-fuji",
+        "matic",
+        "maticmum",
+        "optimism",
+        "optimism-goerli"
+      ],
+      "default": "homestead",
+      "required": true
+    },
+    "tokens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::chain-wallets.chain-token",
+      "mappedBy": "contract"
+    },
+    "metadata": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "json"
+    },
+    "abi": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "json"
+    },
+    "totalSupply": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer"
+    },
+    "maxSupply": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer"
+    },
+    "price": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "decimal"
+    },
+    "imageUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "videoUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "thumbnailUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "tags": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::chain-wallets.chain-wallet"
+    },
+    "admin": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::chain-wallets.chain-wallet"
+    },
+    "metadataBaseUri": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "lastSynced": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer"
+    },
+    "enableSync": {
+      "type": "boolean",
+      "default": false,
+      "private": true
+    },
+    "replaceMediaUrls": {
+      "type": "boolean",
+      "default": false,
+      "private": true
+    },
+    "autoPublishEntity": {
+      "type": "boolean",
+      "default": true,
+      "private": true
+    },
+    "entityType": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "metadataService": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    },
+    "contractService": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
+    }
+  }
+}

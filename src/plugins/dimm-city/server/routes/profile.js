@@ -15,6 +15,12 @@ module.exports = [
   },
   {
     method: "GET",
+    path: `/${info.pluralName}/tokens`,
+    handler: `${info.singularName}.tokens`,
+    config: {},
+  },
+  {
+    method: "GET",
     path: `/${info.pluralName}/:id`,
     handler: `${info.singularName}.findOne`,
     config: {},
@@ -30,7 +36,7 @@ module.exports = [
     path: `/${info.pluralName}/:id`,
     handler: `${info.singularName}.update`,
     config: {
-      policies:['owns-profile']
+      policies: ["owns-profile"],
     },
   },
 ];

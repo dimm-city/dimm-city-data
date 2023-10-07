@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-abilities",
+  "collectionName": "dc_abilities",
   "info": {
     "singularName": "ability",
     "pluralName": "abilities",

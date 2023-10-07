@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-historical-events",
+  "collectionName": "dc_historical_events",
   "info": {
     "singularName": "historical-event",
     "pluralName": "historical-events",

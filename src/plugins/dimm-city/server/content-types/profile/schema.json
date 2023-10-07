@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "dc-profiles",
+  "collectionName": "dc_profiles",
   "info": {
     "singularName": "profile",
     "pluralName": "profiles",

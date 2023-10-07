@@ -13,3 +13,4 @@ README.md
 migrate.sh
 .gitignore
 .editorconfig
+build/*

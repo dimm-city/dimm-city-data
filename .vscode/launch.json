@@ -14,7 +14,8 @@
             "env": {
                 "NODE_ENV": "development"
             },
-            "program": "${workspaceFolder}/server.js"
+            "program": "${workspaceFolder}/server.js",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

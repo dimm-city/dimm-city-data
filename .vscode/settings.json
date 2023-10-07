@@ -1,10 +1,18 @@
 {
     "appService.zipIgnorePattern": [
-        "node_modules{,/**}",
         ".vscode{,/**}",
+        ".docker{,/**}",
+        ".github{,/**}",
+        "build{,/**}",
+        "tools{,/**}",
         "Dockerfile",
-        ".env.example",
-        "eslint*"
+        ".env.*",
+        ".env",
+        "eslint*",
+        ".strapi-updater.json",
+        "install_startup.sh",
+        "migrate.sh",
+        "README.md"
     ],
     "files.exclude": {
         "**/.git": true,
@@ -22,5 +30,6 @@
         "Dimm",
         "Sporos",
         "strapi"
-    ]
+    ],
+
 }

@@ -4,16 +4,19 @@
         ".docker{,/**}",
         ".git{,/**}",
         ".github{,/**}",
-        "build{,/**}",
         "tools{,/**}",
-        "Dockerfile",
+        "*ignore*",
+        ".editorconfig",
+        ".es*",
         ".env.*",
         ".env",
-        "eslint*",
+        "*eslint*",
         ".strapi-updater.json",
         "install_startup.sh",
         "migrate.sh",
-        "README.md"
+        "README.md",
+        "build",
+        "node_modules"
     ],
     "files.exclude": {
         "**/.git": true,
@@ -24,7 +27,7 @@
         "**/Thumbs.db": true,
         "**/node_modules/@strapi": false,
         "**/node_modules": false,
-        "**/.cache": true,
+        "**/.cache": false,
         "**/.tmp": true
     },
     "cSpell.words": [

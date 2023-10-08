@@ -3,6 +3,7 @@
 # Check if the node_modules folder contains any files or folders
 if [ ! -d "build" ]; then
   echo "Running strapi build"
+  npm install
   node node_modules/@strapi/strapi/bin/strapi.js build
   echo "Finished strapi build"
 fi

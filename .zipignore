@@ -11,6 +11,7 @@
 .vscode/*
 .zipignore
 build/*
+node_modules/*
 README.md
 tools/*
 zip/*

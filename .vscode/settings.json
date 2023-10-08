@@ -2,6 +2,7 @@
     "appService.zipIgnorePattern": [
         ".vscode{,/**}",
         ".docker{,/**}",
+        ".git{,/**}",
         ".github{,/**}",
         "build{,/**}",
         "tools{,/**}",

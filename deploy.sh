@@ -20,7 +20,7 @@ if [[ $(echo -e "$CURRENT_NODE_VERSION\nv$NODE_VERSION" | sort -V | head -n1) !=
   ls -la | grep node.tar
   tar -xf node.tar.xz
   rm node.tar.xz
-  echo "Node installed"
+  echo "Node install complete"
 fi
 TMP_NV=$(node --version)
 TMP_NPM=$(npm --version)
@@ -46,10 +46,11 @@ echo "Node: $TMP_NV | NPM: $TMP_NPM"
 # rsync -arv --no-o --no-g --delete --ignore-existing --size-only --exclude ".deployment" --exclude "deploy.sh" --exclude "node*" --exclude "build" ./ /home/site/wwwroot
 # echo "Source code sync complete"
 
-echo "Syncing node_modules and build directories"
+echo "Syncing source code to wwwroot"
 rsync -arv --no-o --no-g --ignore-existing --size-only --exclude ".deployment" --exclude "deploy.sh" --exclude "node-*" ./ /home/site/wwwroot
 
-echo "Installing packages and build admin UI"
+echo "Running install and build"
 cd /home/site/wwwroot
+rm package-lock.json
 npm install
 npm run build

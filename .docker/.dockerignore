@@ -1,7 +1,0 @@
-Dockerfile
-migrate.sh
-.env.*
-.git
-.github
-.vscode
-tools

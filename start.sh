@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Check if the node_modules folder contains any files or folders
-if [ -z "$(ls -A node_modules)" ]; then
-  echo "Missing node dependencies, running npm install"
-  npm ci
+if [ ! -d "build" ]; then
   echo "Running strapi build"
+  npm install
   node node_modules/@strapi/strapi/bin/strapi.js build
-  echo "Strapi build complete, starting server"
+  echo "Finished strapi build"
 fi
+echo "Strapi Admin built, starting server"
 pm2 start server.js --no-daemon

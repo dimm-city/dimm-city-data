@@ -16,18 +16,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js version
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
+      # - name: Set up Node.js version
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18
 
-      - name: npm install, build, and test
-        env:
-          NODE_ENV: production
-        run: |
-          npm install
-          npm run build
-      
+      # - name: npm install, build, and test
+      #   env:
+      #     NODE_ENV: production
+      #   run: |
+      #     npm install
+      #     npm run build
+
       - name: Create Archive of application code
         run: |
           mkdir -p zip
@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dimm-city-data
-          path: zip/app.zip 
+          path: zip/app.zip
 
   deploy:
     runs-on: ubuntu-latest

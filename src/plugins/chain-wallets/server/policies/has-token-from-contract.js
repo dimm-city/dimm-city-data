@@ -12,12 +12,12 @@ module.exports = async (policyContext, config, { strapi }) => {
     const entity = await strapi.query(entityName).findOne({ id: entityId });
 
     // Get the value of the policy_string field
-    const contractSlug = entity.policy_string;
+    const contractId = entity.attributes?.contract?.id;
 
     // Query the wallets, tokens, and contracts tables in a single operation
     const wallets = await strapi.query("wallet").find({
       "user.id": userId,
-      "tokens.contract.slug": contractSlug,
+      "tokens.contract.id": contractId,
     });
 
     // If a wallet is found that satisfies the conditions, allow the request to proceed

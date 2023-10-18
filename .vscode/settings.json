@@ -1,10 +1,22 @@
 {
     "appService.zipIgnorePattern": [
-        "node_modules{,/**}",
         ".vscode{,/**}",
-        "Dockerfile",
-        ".env.example",
-        "eslint*"
+        ".docker{,/**}",
+        ".git{,/**}",
+        ".github{,/**}",
+        "tools{,/**}",
+        "*ignore*",
+        ".editorconfig",
+        ".es*",
+        ".env.*",
+        ".env",
+        "*eslint*",
+        ".strapi-updater.json",
+        "migrate.sh",
+        "README.md",
+        ".cache",
+        "build",
+        "node_modules"
     ],
     "files.exclude": {
         "**/.git": true,
@@ -13,14 +25,15 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "**/node_modules/@strapi": false,
-        "**/node_modules": false,
+        "**/node_modules": true,
         "**/.cache": true,
+        "**/build":true,
         "**/.tmp": true
     },
     "cSpell.words": [
         "Dimm",
         "Sporos",
         "strapi"
-    ]
+    ],
+
 }

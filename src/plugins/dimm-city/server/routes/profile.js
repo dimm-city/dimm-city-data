@@ -15,8 +15,8 @@ module.exports = [
   },
   {
     method: "GET",
-    path: `/${info.pluralName}/tokens`,
-    handler: `${info.singularName}.tokens`,
+    path: `/my/characters`,
+    handler: `${info.singularName}.characters`,
     config: {},
   },
   {

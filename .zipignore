@@ -1,4 +1,3 @@
-.cache/*
 .editorconfig
 .env*
 .eslint*
@@ -10,8 +9,6 @@
 .tmp/*
 .vscode/*
 .zipignore
-build/*
-node_modules/*
 README.md
 tools/*
 zip/*

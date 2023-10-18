@@ -9,8 +9,10 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController(
   "plugin::dimm-city.profile",
   ({ strapi }) => ({
-    async tokens(ctx) {
-         const characters = await strapi.service("plugin::dimm-city.character").find({
+    async characters(ctx) {
+      const characters = await strapi
+        .service("plugin::dimm-city.character")
+        .find({
           filters: {
             token: {
               wallet: {
@@ -18,21 +20,21 @@ module.exports = createCoreController(
               },
             },
           },
-          populate: "*",
-        }      );
+        });
 
-        console.log(characters)
       ctx.query = {
-          filters: {
-            id: {
-              $in: characters.results.map(c => c.id),
-            },
+        filters: {
+          id: {
+            $in: characters.results.map((c) => c.id),
           },
-          populate: "*",
-        };
-      const results = await strapi.controller("plugin::dimm-city.character").find(ctx      );
+        },
+        populate: "*",
+      };
+      const results = await strapi
+        .controller("plugin::dimm-city.character")
+        .find(ctx);
 
-      ctx.body = results.data;
+      ctx.body = results;
     },
   })
 );

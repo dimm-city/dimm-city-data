@@ -27,25 +27,6 @@ TMP_NPM=$(npm --version)
 echo "Node: $TMP_NV | NPM: $TMP_NPM"
 
 
-
-# echo "Syncing source code from $DEPLOYMENT_SOURCE to $DEPLOYMENT_TARGET"
-
-# # # Count of files existing in source but not target
-# # echo "Count of files existing in source but not target:"
-# # rsync -n -i -a -r --no-o --no-g --delete ./ /home/site/wwwroot | grep -c '^\.'
-
-# # # Count of files existing in target but not source
-# # echo "Count of files existing in target but not source:"
-# # rsync -n -i -a -r /home/site/wwwroot/ ./ | grep -c '^\.'
-
-# # # Count of files that are newer in source than in target
-# # echo "Count of files that are newer in source than in target:"
-
-# # rsync -n -i -a -r --delete ./ /home/site/wwwroot | grep -c '^>'
-
-# rsync -arv --no-o --no-g --delete --ignore-existing --size-only --exclude ".deployment" --exclude "deploy.sh" --exclude "node*" --exclude "build" ./ /home/site/wwwroot
-# echo "Source code sync complete"
-
 echo "Syncing source code to wwwroot"
 rsync -arv --no-o --no-g --ignore-existing --size-only --exclude ".deployment" --exclude "deploy.sh" --exclude "node-*" ./ /home/site/wwwroot
 

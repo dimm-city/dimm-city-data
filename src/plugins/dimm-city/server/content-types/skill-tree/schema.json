@@ -35,17 +35,13 @@
       "required": true
     },
     "mainImage": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     },
     "mainVideo": {
       "type": "media",
-      "allowedTypes": [
-        "videos"
-      ],
+      "allowedTypes": ["videos"],
       "multiple": false
     },
     "abilities": {

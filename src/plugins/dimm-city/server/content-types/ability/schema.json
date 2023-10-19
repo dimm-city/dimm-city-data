@@ -64,6 +64,18 @@
     "shortDescription": {
       "type": "text",
       "required": false
+    },
+    "children": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.ability",
+      "inversedBy": "parents"
+    },
+    "parents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::dimm-city.ability",
+      "inversedBy": "children"
     }
   }
 }

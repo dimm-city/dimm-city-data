@@ -13,10 +13,7 @@
         "*eslint*",
         ".strapi-updater.json",
         "migrate.sh",
-        "README.md",
-        ".cache",
-        "build",
-        "node_modules"
+        "README.md"
     ],
     "files.exclude": {
         "**/.git": true,

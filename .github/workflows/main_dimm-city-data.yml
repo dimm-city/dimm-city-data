@@ -33,6 +33,11 @@ jobs:
           mkdir -p zip
           zip  -r zip/app.zip . -x@.zipignore
 
+      - name: 🔍 Diagnostics
+        run: |
+          ls ./node_modules
+          ls ./build
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:

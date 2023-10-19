@@ -24,6 +24,7 @@ jobs:
       - name: npm install, build, and test
         env:
           NODE_ENV: production
+          SITE_URL: https://data.dimm.city
         run: |
           npm install
           npm run build

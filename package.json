@@ -10,7 +10,7 @@
     "strapi": "strapi",
     "start:prod": "NODE_ENV=production npx pm2 start server.js --no-daemon",
     "start:azure": "node /node_modules/@strapi/strapi/bin/strapi.js start",
-    "build:prod": "NODE_ENV=production strapi build",
+    "build:prod": "NODE_ENV=production node node_modules/@strapi/strapi/bin/strapi.js build",
     "build:staging": "NODE_ENV=staging strapi build"
   },
   "dependencies": {

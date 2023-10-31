@@ -94,25 +94,33 @@
       "inversedBy": "races"
     },
     "mainImage": {
-      "allowedTypes": ["images"],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
     },
     "mainVideo": {
       "type": "media",
-      "allowedTypes": ["videos"],
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["videos"]
     },
     "mainModel": {
-      "allowedTypes": ["files"],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["files"]
     },
     "additionalImages": {
       "type": "media",
       "multiple": true,
       "required": false,
       "allowedTypes": ["images"]
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": ["Tiny", "Small", "Medium", "Big", "Huge", "Colossal"],
+      "default": "Medium"
     }
   }
 }

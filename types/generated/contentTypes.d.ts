@@ -1541,6 +1541,10 @@ export interface PluginDimmCityRace extends Schema.CollectionType {
     mainVideo: Attribute.Media;
     mainModel: Attribute.Media;
     additionalImages: Attribute.Media;
+    size: Attribute.Enumeration<
+      ['Tiny', 'Small', 'Medium', 'Big', 'Huge', 'Colossal']
+    > &
+      Attribute.DefaultTo<'Medium'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

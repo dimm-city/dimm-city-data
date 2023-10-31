@@ -1438,19 +1438,29 @@ export interface PluginDimmCityPage extends Schema.CollectionType {
     singularName: 'page';
     pluralName: 'pages';
     displayName: 'Pages';
+    description: '';
   };
   options: {
     draftAndPublish: true;
-    comment: '';
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+        maxLength: 500;
+      }>;
     content: Attribute.RichText;
     styles: Attribute.Text;
     tags: Attribute.String;
     description: Attribute.Text;
     mainImage: Attribute.Media;
-    public: Attribute.Boolean;
+    mainVideo: Attribute.Media;
+    mainModel: Attribute.Media;
+    mainAudio: Attribute.Media;
+    public: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    slug: Attribute.UID<'plugin::dimm-city.page', 'title'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

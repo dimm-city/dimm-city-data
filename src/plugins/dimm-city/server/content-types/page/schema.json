@@ -4,15 +4,19 @@
   "info": {
     "singularName": "page",
     "pluralName": "pages",
-    "displayName": "Pages"
+    "displayName": "Pages",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true,
-    "comment": ""
+    "draftAndPublish": true
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 500,
+      "minLength": 2
     },
     "content": {
       "type": "richtext"
@@ -28,16 +32,34 @@
     },
     "mainImage": {
       "type": "media",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "mainVideo": {
+      "type": "media",
+      "allowedTypes": ["videos"],
+      "multiple": false
+    },
+    "mainModel": {
+      "allowedTypes": ["files"],
+      "type": "media",
+      "multiple": false
+    },
+    "mainAudio": {
+      "allowedTypes": ["audios"],
+      "type": "media",
       "multiple": false
     },
     "public": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }

@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc_pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Pages"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "styles": {
+      "type": "text"
+    },
+    "tags": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "mainImage": {
+      "type": "media",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "multiple": false
+    },
+    "public": {
+      "type": "boolean"
+    }
+  }
+}

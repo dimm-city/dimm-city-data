@@ -29,6 +29,9 @@ module.exports = {
   payment: {
     schema: require("./payment/schema.json"),
   },
+  page: {
+    schema: require("./page/schema.json"),
+  },
   profile: {
     schema: require("./profile/schema.json"),
   },
@@ -47,7 +50,7 @@ module.exports = {
   story: {
     schema: require("./story/schema.json"),
   },
-  term:{
+  term: {
     schema: require("./term/schema.json"),
   },
   world: {

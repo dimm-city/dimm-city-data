@@ -16,6 +16,7 @@ const specialty = require("./specialty");
 const spore = require("./spore");
 const story = require("./story");
 const world = require("./world");
+const page = require("./page");
 const profile = require("./profile");
 const galleryItem = require("./gallery-item");
 const terms = require("./term");
@@ -33,6 +34,7 @@ module.exports = {
       ...item,
       ...journalEntry,
       ...location,
+      ...page,
       ...payment,
       ...profile,
       ...race,

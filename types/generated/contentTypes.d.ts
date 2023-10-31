@@ -1432,6 +1432,43 @@ export interface PluginDimmCityPayment extends Schema.CollectionType {
   };
 }
 
+export interface PluginDimmCityPage extends Schema.CollectionType {
+  collectionName: 'dc_pages';
+  info: {
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'Pages';
+  };
+  options: {
+    draftAndPublish: true;
+    comment: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+    styles: Attribute.Text;
+    tags: Attribute.String;
+    description: Attribute.Text;
+    mainImage: Attribute.Media;
+    public: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::dimm-city.page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::dimm-city.page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginDimmCityProfile extends Schema.CollectionType {
   collectionName: 'dc_profiles';
   info: {
@@ -2084,6 +2121,7 @@ declare module '@strapi/types' {
       'plugin::dimm-city.journal-entry': PluginDimmCityJournalEntry;
       'plugin::dimm-city.location': PluginDimmCityLocation;
       'plugin::dimm-city.payment': PluginDimmCityPayment;
+      'plugin::dimm-city.page': PluginDimmCityPage;
       'plugin::dimm-city.profile': PluginDimmCityProfile;
       'plugin::dimm-city.race': PluginDimmCityRace;
       'plugin::dimm-city.skill-tree': PluginDimmCitySkillTree;

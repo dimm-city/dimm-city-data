@@ -31,6 +31,7 @@ module.exports = {
   item,
   "journal-entry": journalEntry,
   location,
+  page: require("./page"),
   payment,
   profile,
   race,

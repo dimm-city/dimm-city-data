@@ -47,6 +47,9 @@ module.exports = {
   story: {
     schema: require("./story/schema.json"),
   },
+  term:{
+    schema: require("./term/schema.json"),
+  },
   world: {
     schema: require("./world/schema.json"),
   },

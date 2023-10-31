@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc_terms",
+  "info": {
+    "singularName": "term",
+    "pluralName": "terms",
+    "displayName": "Terms"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": ""
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "word",
+      "required": true
+    },
+    "word": {
+      "type": "string"
+    },
+    "definition": {
+      "type": "richtext"
+    }
+  }
+}

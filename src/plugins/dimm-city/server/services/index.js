@@ -38,5 +38,6 @@ module.exports = {
   specialty,
   spore,
   story,
+  term: require("./term"),
   world,
 };

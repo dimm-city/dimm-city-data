@@ -1780,6 +1780,39 @@ export interface PluginDimmCityStory extends Schema.CollectionType {
   };
 }
 
+export interface PluginDimmCityTerm extends Schema.CollectionType {
+  collectionName: 'dc_terms';
+  info: {
+    singularName: 'term';
+    pluralName: 'terms';
+    displayName: 'Terms';
+  };
+  options: {
+    draftAndPublish: true;
+    comment: '';
+  };
+  attributes: {
+    slug: Attribute.UID<'plugin::dimm-city.term', 'word'> & Attribute.Required;
+    word: Attribute.String;
+    definition: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::dimm-city.term',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::dimm-city.term',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginDimmCityWorld extends Schema.CollectionType {
   collectionName: 'dc_worlds';
   info: {
@@ -2057,6 +2090,7 @@ declare module '@strapi/types' {
       'plugin::dimm-city.specialty': PluginDimmCitySpecialty;
       'plugin::dimm-city.spore': PluginDimmCitySpore;
       'plugin::dimm-city.story': PluginDimmCityStory;
+      'plugin::dimm-city.term': PluginDimmCityTerm;
       'plugin::dimm-city.world': PluginDimmCityWorld;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;

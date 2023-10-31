@@ -18,6 +18,7 @@ const story = require("./story");
 const world = require("./world");
 const profile = require("./profile");
 const galleryItem = require("./gallery-item");
+const terms = require("./term");
 
 module.exports = {
   "content-api": {
@@ -41,6 +42,7 @@ module.exports = {
       ...story,
       ...world,
       ...archive,
+      ...terms,
       ...stats,
     ],
   },

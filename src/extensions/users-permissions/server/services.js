@@ -7,12 +7,12 @@ const role = require("@strapi/plugin-users-permissions/server/services/role");
 const usersPermissions = require("@strapi/plugin-users-permissions/server/services/users-permissions");
 const permission = require("@strapi/plugin-users-permissions/server/services/permission");
 
-const providersRegistry = require("./providers-registry");
+const providersRegistryWrapper = require("./providers-registry-wrapper");
 
 module.exports = {
   jwt,
   providers,
-  "providers-registry": providersRegistry,
+  "providers-registry": providersRegistryWrapper,
   role,
   user,
   "users-permissions": usersPermissions,

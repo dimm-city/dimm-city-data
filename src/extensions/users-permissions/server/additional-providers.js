@@ -1,50 +1,47 @@
 const { strict: assert } = require("assert");
 const jwt = require("jsonwebtoken");
 
-
 const getAdditionalGrantConfigs = (baseURL) => ({
   itchio: {
     enabled: true,
     icon: "itchio",
     key: "",
     secret: "",
-    callback: `${baseURL}/itchio/callback`,
+    oauth: 2,
+    custom_params: {
+      response_type: "token",
+      redirect_uri: "http://localhost:5173/connect/redirect/itchio",
+    },
+    authorize_url: "https://itch.io/user/oauth",
+    redirect_uri: "http://localhost:5173/connect/redirect/itchio",
+    callback: `http://localhost:5173/connect/redirect/itchio`,
     scope: ["profile:me"],
   },
 });
 
-
 const getAdditionalProviders = ({ purest }) => ({
   async itchio({ accessToken }) {
-    const itchio = purest({
-      provider: "itchio",
-      config: {
-        reddit: {
-          default: {
-            origin: "https://itch.io/",
-            path: "user/oauth",
-            version: "v1",
-            headers: {
-              Authorization: "Bearer {auth}",
-              "user-agent": "strapi",
-            },
-          },
-        },
+
+    const response = await fetch("https://itch.io/api/1/key/me", {
+      headers: {
+        Authorization: "Bearer " + accessToken,
       },
     });
 
-    return itchio
-      .get("me")
-      .auth(accessToken)
-      .request()
-      .then(({ body }) => ({
-        username: body.user.username + "_itchio",
-        email: `${body.user.username}@itchio.io`, // dummy email as itchio does not provide user email
-      }));
+    if (response.ok) {
+      const data = await response.json();
+      return {
+        username: data.user.username,
+        email: data.user.username + "@itch.io",
+        displayName: data.user.display_name,
+      };
+    } else{
+      return {};
+    }
   },
 });
 
 module.exports = {
   getAdditionalGrantConfigs,
   getAdditionalProviders,
-}
+};

@@ -1,7 +1,7 @@
 const { strict: assert } = require("assert");
 const jwt = require("jsonwebtoken");
 
-const frontEndUrl = strapi.config.server.get('frontEndUrl', '');
+//const frontEndUrl = strapi.config.server.get('frontEndUrl', '');
 
 const getAdditionalGrantConfigs = (baseURL) => ({
   itchio: {

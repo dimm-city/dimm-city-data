@@ -1,5 +1,6 @@
 module.exports = ({ env }) => ({
   port: env.int("PORT", 8080),
+  frontEndUrl: "https://dimm.city",
   production: true,
   proxy: {
     enabled: false,

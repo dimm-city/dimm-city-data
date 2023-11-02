@@ -1,6 +1,8 @@
 const { strict: assert } = require("assert");
 const jwt = require("jsonwebtoken");
 
+const frontEndUrl = strapi.config.server.get('frontEndUrl', '');
+
 const getAdditionalGrantConfigs = (baseURL) => ({
   itchio: {
     enabled: true,
@@ -10,11 +12,9 @@ const getAdditionalGrantConfigs = (baseURL) => ({
     oauth: 2,
     custom_params: {
       response_type: "token",
-      redirect_uri: "http://localhost:5173/connect/redirect/itchio",
+      redirect_uri: frontEndUrl + "/connect/redirect/itchio",
     },
     authorize_url: "https://itch.io/user/oauth",
-    redirect_uri: "http://localhost:5173/connect/redirect/itchio",
-    callback: `http://localhost:5173/connect/redirect/itchio`,
     scope: ["profile:me"],
   },
 });

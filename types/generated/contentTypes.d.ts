@@ -492,6 +492,7 @@ export interface PluginChainWalletsChainToken extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    privateAttributes: ['createdAt', 'updatedAt', 'createdBy', 'updatedBy'];
   };
   attributes: {
     tokenId: Attribute.String & Attribute.Required;

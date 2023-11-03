@@ -492,7 +492,6 @@ export interface PluginChainWalletsChainToken extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
-    privateAttributes: ['createdAt', 'updatedAt', 'createdBy', 'updatedBy'];
   };
   attributes: {
     tokenId: Attribute.String & Attribute.Required;
@@ -1461,6 +1460,8 @@ export interface PluginDimmCityPage extends Schema.CollectionType {
     mainAudio: Attribute.Media;
     public: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
     slug: Attribute.UID<'plugin::dimm-city.page', 'title'> & Attribute.Required;
+    author: Attribute.String;
+    downloads: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -60,6 +60,21 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": false
+    },
+     "downloads": {
+      
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

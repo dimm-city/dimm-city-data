@@ -1,15 +1,13 @@
-const user = require("./content-types/user");
-
 module.exports = (plugin) => {
-  plugin.contentTypes.user = user;
+  plugin.contentTypes.user = require("./content-types/user");
+  plugin.contentTypes.profile = require("./content-types/profile");
   plugin.bootstrap = require("./server/bootstrap-wrapper");
   plugin.services = require("./server/services");
-  plugin.controllers.profiles = require("./server/controllers/profiles");
+  plugin.controllers.profile = require("./server/controllers/profile");
 
-  plugin.routes["content-api"].routes.push({
-    method: "POST",
-    path: "/profiles/associate",
-    handler: "profiles.associateLogin",
-  });
+  const routes = require("./server/routes/profile");
+  plugin.routes["content-api"].routes.push(...routes);
+  plugin.policies = require("./server/policies");
+
   return plugin;
 };

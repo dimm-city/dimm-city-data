@@ -17,4 +17,5 @@ module.exports = {
   user,
   "users-permissions": usersPermissions,
   permission,
+  profile: require("./profile"),
 };

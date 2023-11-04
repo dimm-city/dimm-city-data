@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "up_profiles",
+  "info": {
+    "singularName": "profile",
+    "pluralName": "profiles",
+    "displayName": "Profile",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "displayName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "configurable": false,
+      "required": true
+    },
+    "bio": {
+      "type": "richtext"
+    },
+    "notifications": {
+      "type": "boolean",
+      "default": true
+    },
+    "users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "profile"
+    },
+    "wallets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::chain-wallets.chain-wallet",
+      "mappedBy": "profile"
+    }
+  }
+}

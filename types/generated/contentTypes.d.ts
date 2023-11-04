@@ -785,10 +785,10 @@ export interface PluginChainWalletsChainWallet extends Schema.CollectionType {
       'oneToMany',
       'plugin::chain-wallets.chain-token'
     >;
-    user: Attribute.Relation<
+    profile: Attribute.Relation<
       'plugin::chain-wallets.chain-wallet',
       'manyToOne',
-      'plugin::users-permissions.user'
+      'plugin::users-permissions.profile'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -2037,15 +2037,10 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    wallets: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'plugin::chain-wallets.chain-wallet'
-    >;
     profile: Attribute.Relation<
       'plugin::users-permissions.user',
       'manyToOne',
-      'plugin::dimm-city.profile'
+      'plugin::users-permissions.profile'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -2057,6 +2052,53 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::users-permissions.user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginUsersPermissionsProfile extends Schema.CollectionType {
+  collectionName: 'up_profiles';
+  info: {
+    singularName: 'profile';
+    pluralName: 'profiles';
+    displayName: 'Profile';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    displayName: Attribute.String;
+    email: Attribute.Email &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 6;
+      }>;
+    bio: Attribute.RichText;
+    notifications: Attribute.Boolean & Attribute.DefaultTo<true>;
+    users: Attribute.Relation<
+      'plugin::users-permissions.profile',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    wallets: Attribute.Relation<
+      'plugin::users-permissions.profile',
+      'oneToMany',
+      'plugin::chain-wallets.chain-wallet'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::users-permissions.profile',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::users-permissions.profile',
       'oneToOne',
       'admin::user'
     > &
@@ -2145,6 +2187,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'plugin::users-permissions.profile': PluginUsersPermissionsProfile;
       'plugin::i18n.locale': PluginI18NLocale;
     }
   }

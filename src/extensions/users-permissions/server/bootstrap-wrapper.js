@@ -2,7 +2,7 @@ const _ = require("lodash");
 const urljoin = require("url-join");
 
 const strapi_bootstrap = require("@strapi/plugin-users-permissions/server/bootstrap");
-const { getAdditionalGrantConfigs } = require("./additional-providers");
+const { getAdditionalGrantConfigs } = require("./services/additional-providers");
 
 module.exports = async ({ strapi }) => {
   const pluginStore = strapi.store({

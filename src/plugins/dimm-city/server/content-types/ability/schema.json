@@ -75,7 +75,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::dimm-city.ability",
-      "inversedBy": "children"
+      "mappedBy": "children"
     }
   }
 }

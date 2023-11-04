@@ -1,6 +1,6 @@
 "use strict";
 
-const strapi_registry = require("@strapi/plugin-users-permissions/server/services/providers-registry");
+const strapi_registry = require("@strapi/plugin-users-permissions/server/services/providers-registry")();
 const { getAdditionalProviders } = require('./additional-providers');
 
 module.exports = () => {

@@ -1,33 +1,29 @@
 const strapi_controller = require("@strapi/plugin-users-permissions/server/controllers/auth");
-const jwt = require('@strapi/plugin-users-permissions/services/jwt');
-
-const _original_callback = strapi_controller.callback;
-
-strapi_controller.callback = async function callback(ctx) {
-  const { provider } = ctx.params;
-
-  const { query } = ctx.request;
-
-  // Grab the 'state' value from the query string
-  const state = query.state;
-
-  // Execute server code based on the 'state' value
-  if (state === "value1") {
-    // Execute some server code...
-  } else if (state === "value2") {
-    // Execute some other server code...
-  }
-
-  // Call the original callback function
-  await _original_callback(ctx);
-};
+const jwt = require('@strapi/plugin-users-permissions/server/services/jwt');
 
 strapi_controller.verifyToken = async function verifyToken(ctx) {
   const { token } = ctx.request.body;
 
   try {
     const decoded = await jwt.verify(token);
-    ctx.send(decoded);
+
+    //Get the secondary user for the token
+
+    //Get the profile for the secondary user
+
+    //Get the profile for the logged in user
+
+    // Update empty fields on the primary user's profile with values from the secondary user's profile
+
+    // Add the secondary user to the primary user's profile
+
+    // Save the primary user's profile with the secondary user added
+
+    // Delete the profile that was created for the secondary user
+
+    // Return the primary user's profile and a message saying that the secondary user was added to the primary user
+
+
   } catch (err) {
     ctx.send({ message: 'Invalid token', error: err });
   }

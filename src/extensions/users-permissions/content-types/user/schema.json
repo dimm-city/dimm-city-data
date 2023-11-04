@@ -70,9 +70,9 @@
     },
     "profile": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "plugin::dimm-city.profile",
-      "inversedBy": "user"
+      "inversedBy": "users"
     }
   }
 }

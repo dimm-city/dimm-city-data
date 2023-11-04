@@ -1,7 +1,7 @@
 {
   "name": "dimm-city-data",
   "private": true,
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Dimm City Archive data",
   "scripts": {
     "dev": "strapi develop",

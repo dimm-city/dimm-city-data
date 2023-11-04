@@ -1501,9 +1501,9 @@ export interface PluginDimmCityProfile extends Schema.CollectionType {
       }>;
     bio: Attribute.RichText;
     notifications: Attribute.Boolean & Attribute.DefaultTo<true>;
-    user: Attribute.Relation<
+    users: Attribute.Relation<
       'plugin::dimm-city.profile',
-      'oneToOne',
+      'oneToMany',
       'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
@@ -2044,7 +2044,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     profile: Attribute.Relation<
       'plugin::users-permissions.user',
-      'oneToOne',
+      'manyToOne',
       'plugin::dimm-city.profile'
     >;
     createdAt: Attribute.DateTime;

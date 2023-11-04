@@ -27,9 +27,9 @@
       "type": "boolean",
       "default": true
     },
-    "user": {
+    "users": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "profile"
     }

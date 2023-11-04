@@ -1,4 +1,5 @@
 const strapi_controller = require("@strapi/plugin-users-permissions/server/controllers/auth");
+const jwt = require('@strapi/plugin-users-permissions/services/jwt');
 
 const _original_callback = strapi_controller.callback;
 
@@ -20,6 +21,18 @@ strapi_controller.callback = async function callback(ctx) {
   // Call the original callback function
   await _original_callback(ctx);
 };
+
+strapi_controller.verifyToken = async function verifyToken(ctx) {
+  const { token } = ctx.request.body;
+
+  try {
+    const decoded = await jwt.verify(token);
+    ctx.send(decoded);
+  } catch (err) {
+    ctx.send({ message: 'Invalid token', error: err });
+  }
+};
+
 module.exports = {
   ...strapi_controller,
 };

@@ -118,4 +118,3 @@ build
 .env.staging
 login.sh
 .env.old.staging
-package-lock.json

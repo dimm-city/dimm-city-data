@@ -4,8 +4,9 @@ module.exports = (plugin) => {
   plugin.bootstrap = require("./server/bootstrap-wrapper");
   plugin.services = require("./server/services");
   plugin.controllers.profile = require("./server/controllers/profile");
+  plugin.controllers.providers = require("./server/controllers/providers");
 
-  const routes = require("./server/routes/profile");
+  const routes = require("./server/routes");
   plugin.routes["content-api"].routes.push(...routes);
   plugin.policies = require("./server/policies");
 

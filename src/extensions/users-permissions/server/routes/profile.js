@@ -11,24 +11,49 @@ module.exports = [
     method: "POST",
     path: "/profiles/associate-login",
     handler: "profile.associateLogin",
+    config: {
+      prefix: "",
+    },
+  },
+  {
+    method: "POST",
+    path: "/profiles/remove-login/:id",
+    handler: "profile.removeLogin",
+    config: {
+      prefix: "",
+    },
+  },
+  {
+    method: "GET",
+    path: `/${info.pluralName}/me`,
+    handler: `${info.singularName}.getMyProfile`,
+    config: {
+      prefix: "",
+    },
   },
   {
     method: "GET",
     path: `/${info.pluralName}`,
     handler: `${info.singularName}.find`,
-    config: {},
+    config: {
+      prefix: "",
+    },
   },
   {
     method: "GET",
     path: `/${info.pluralName}/:id`,
     handler: `${info.singularName}.findOne`,
-    config: {},
+    config: {
+      prefix: "",
+    },
   },
   {
     method: "POST",
     path: `/${info.pluralName}`,
     handler: `${info.singularName}.create`,
-    config: {},
+    config: {
+      prefix: "",
+    },
   },
   {
     method: "PUT",
@@ -36,6 +61,7 @@ module.exports = [
     handler: `${info.singularName}.update`,
     config: {
       policies: ["owns-profile"],
+      prefix: "",
     },
   },
 ];

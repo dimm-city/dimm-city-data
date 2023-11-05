@@ -89,21 +89,25 @@ module.exports = createCoreService(TYPE_WALLET, (ctx) => ({
     return wallet;
   },
   async getUserWallets(user) {
-    const wallets = await super.find({
-      filters: {
-        profile: { user: { id: user.id } },
-      },
-      populate: {
-        tokens: {
-          fields: ["id", "tokenId", "metadata"],
-          populate: {
-            contract: {
-              fields: ["id", "name", "slug", "entityType", "address", "chain"],
-            },
-          },
-        },
-      },
-    });
+    const userId = user.id;
+    // const wallets  = await strapi.db.query(TYPE_WALLET).findMany({
+    //   where: {
+    //     profile: {
+    //       users: { id: userId },
+    //     },
+    //   },
+    //   populate: { tokens: true },
+    // });
+
+     const wallets = await strapi.service(TYPE_WALLET).findMany({
+       where: {
+         profile: {
+           users: { id: userId },
+         },
+       },
+       populate: { tokens: true },
+     });
+
     return wallets;
   },
 }));

@@ -23,7 +23,7 @@
     ]
   },
   "pluginOptions": {},
-  "attributes": {    
+  "attributes": {
     "address": {
       "type": "string",
       "required": true
@@ -79,10 +79,10 @@
       "target": "plugin::chain-wallets.chain-token",
       "mappedBy": "wallet"
     },
-    "user": {
+    "profile": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
+      "target": "plugin::users-permissions.profile",
       "inversedBy": "wallets"
     }
   }

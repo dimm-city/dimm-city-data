@@ -2071,12 +2071,12 @@ export interface PluginUsersPermissionsProfile extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    displayName: Attribute.String;
     email: Attribute.Email &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    displayName: Attribute.String;
     bio: Attribute.RichText;
     notifications: Attribute.Boolean & Attribute.DefaultTo<true>;
     users: Attribute.Relation<

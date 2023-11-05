@@ -91,9 +91,8 @@ module.exports = createCoreService(TYPE_WALLET, (ctx) => ({
   async getUserWallets(user) {
     const wallets = await super.find({
       filters: {
-        user: { id: user.id },
+        profile: { user: { id: user.id } },
       },
-      fields: ["id", "address", "chain", "name", "managed", "primary"],
       populate: {
         tokens: {
           fields: ["id", "tokenId", "metadata"],

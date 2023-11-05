@@ -11,14 +11,14 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "displayName": {
-      "type": "string"
-    },
     "email": {
       "type": "email",
       "minLength": 6,
       "configurable": false,
       "required": true
+    },
+    "displayName": {
+      "type": "string"
     },
     "bio": {
       "type": "richtext"

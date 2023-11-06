@@ -1,4 +1,4 @@
 [config]
 SCM_DO_BUILD_DURING_DEPLOYMENT = false
 NODE_ENV = production
-COMMAND = bash skip.sh
+COMMAND = bash strapi_deploy.sh

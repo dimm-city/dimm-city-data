@@ -4,7 +4,6 @@
  * payment controller
  */
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const { ethers } = require("ethers");
 const { createCoreController } = require("@strapi/strapi").factories;
 
 async function createPaymentIntent(ctx) {

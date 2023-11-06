@@ -5,11 +5,11 @@ const { TYPE_WALLET } = require("../consts");
 
 module.exports = createCoreService(TYPE_WALLET, (ctx) => ({
   async attachUserWallet(wallet, user) {
-    wallet.user = user;
+    wallet.profile = user.profile;
     await super.update(wallet.id, { data: wallet });
   },
   async detachUserWallet(wallet) {
-    wallet.user = null;
+    wallet.profile = null;
     await super.update(wallet.id, { data: wallet });
   },
   async createManagedUserWallet(user, chain) {
@@ -24,7 +24,7 @@ module.exports = createCoreService(TYPE_WALLET, (ctx) => ({
         seed: wallet.mnemonic.phrase,
         key: wallet.privateKey,
         encKey: wallet.privateKey,
-        user: user,
+        profile: user.profile,
         chain: network.name,
       },
     });
@@ -63,7 +63,7 @@ module.exports = createCoreService(TYPE_WALLET, (ctx) => ({
   async getOrCreateUserWallet(user, chain) {
     const wallets = await super.find({
       filters: {
-        user: { id: user.id },
+        profile: { id: user.profile.id },
         chain,
       },
       fields: ["id", "address", "chain", "name", "managed", "primary"],

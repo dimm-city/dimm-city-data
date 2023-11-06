@@ -28,6 +28,12 @@ jobs:
           npm install
           npm run build
 
+      - name: 🔍 Diagnostics
+        run: |
+          ls ./node_modules
+          ls ./build
+          ls ./src
+
       - name: Create Archive of application code
         run: |
           mkdir -p zip

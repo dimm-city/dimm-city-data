@@ -12,7 +12,7 @@ module.exports = createCoreService(TYPE_WALLET, (ctx) => ({
     wallet.profile = null;
     await super.update(wallet.id, { data: wallet });
   },
-  async createManagedUserWallet(user, chain) {
+  async createManagedUserWallet(profile, chain) {
     const network = getNetwork(chain);
     const wallet = ethers.Wallet.createRandom();
 
@@ -24,7 +24,7 @@ module.exports = createCoreService(TYPE_WALLET, (ctx) => ({
         seed: wallet.mnemonic.phrase,
         key: wallet.privateKey,
         encKey: wallet.privateKey,
-        profile: user.profile,
+        profile: profile,
         chain: network.name,
       },
     });
@@ -84,30 +84,33 @@ module.exports = createCoreService(TYPE_WALLET, (ctx) => ({
       .sort((a, b) => (a.primary ? 1 : -1))
       .at(0);
 
-    if (!wallet) wallet = await this.createManagedUserWallet(user, chain);
+    if (!wallet) wallet = await this.createManagedUserWallet(user.profile, chain);
 
     return wallet;
   },
   async getUserWallets(user) {
-    const userId = user.id;
-    // const wallets  = await strapi.db.query(TYPE_WALLET).findMany({
-    //   where: {
-    //     profile: {
-    //       users: { id: userId },
-    //     },
-    //   },
-    //   populate: { tokens: true },
-    // });
+    try {
+      const wallets = await super.find({
+        filters: {
+          profile: user.profile,
+        },
+        fields: ["id", "address", "name", "managed", "primary"],
+        populate: {
+          tokens: {
+            fields: ["id", "tokenId", "metadata"],
+            populate: {
+              profile: true,
+              contract: {
+                fields: ["id", "name", "slug", "entityType", "address"],
+              },
+            },
+          },
+        },
+      });
 
-     const wallets = await strapi.service(TYPE_WALLET).findMany({
-       where: {
-         profile: {
-           users: { id: userId },
-         },
-       },
-       populate: { tokens: true },
-     });
-
-    return wallets;
+      return wallets;
+    } catch (error) {
+      strapi.log.error("Error getting user wallets", error);
+    }
   },
 }));

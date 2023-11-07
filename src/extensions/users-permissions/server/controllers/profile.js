@@ -36,10 +36,17 @@ module.exports = createCoreController(
           .query("plugin::users-permissions.profile")
           .findOne({
             where: { users: ctx.state.user.id },
-            populate: { users: true },
+            populate: { users: true, wallets: true },
           });
 
-        if (primaryUserProfile.id === secondaryUser.profile?.id) {
+          const secondaryUserProfile = await strapi.db
+            .query("plugin::users-permissions.profile")
+            .findOne({
+              where: { users: secondaryUser.id },
+              populate: { users: true, wallets: true },
+            });
+
+        if (primaryUserProfile.id === secondaryUserProfile?.id) {
           return ctx.send({
             message:
               "Profile already associated with this user: " + secondaryUser.id,
@@ -48,10 +55,14 @@ module.exports = createCoreController(
         }
 
         // Update empty fields on the primary user's profile with values from the secondary user's profile
-        if (secondaryUser.profile) {
+        if (secondaryUserProfile) {
           for (let key in primaryUserProfile) {
             if (!primaryUserProfile[key]) {
-              primaryUserProfile[key] = secondaryUser.profile[key];
+              primaryUserProfile[key] = secondaryUserProfile[key];
+            } else if (Array.isArray(primaryUserProfile[key])) {
+              primaryUserProfile[key] = primaryUserProfile[key].concat(
+                secondaryUserProfile[key]
+              );
             }
           }
         }

@@ -3,24 +3,15 @@
 module.exports = async ({ strapi }) => {
   // bootstrap phase
   strapi.db.lifecycles.subscribe({
-    models: ["plugin::users-permissions.user"],
+    models: ["plugin::users-permissions.profile"],
 
     async afterCreate(event) {
-      const { result, params } = event;
+      const { result } = event;
 
       //Get chain-wallet service and create wallet for user
       await strapi.plugins["chain-wallets"].services[
         "chain-wallet"
       ].createManagedUserWallet(result, "mainnet");
-
-      //Create profile entity and assign it to the user
-      await strapi.plugins["dimm-city"].services.profile.create({
-        data: {
-          displayName: result.username,
-          email: result.email,
-          user: result.id,
-        },
-      });
     },
   });
 
@@ -32,11 +23,11 @@ module.exports = async ({ strapi }) => {
   });
   for (let index = 0; index < users.length; index++) {
     const element = users[index];
-    await strapi.plugins["dimm-city"].services.profile.create({
+    await strapi.plugins["users-permissions"].services.profile.create({
       data: {
         displayName: element.username,
         email: element.email,
-        user: element.id,
+        user: element,
       },
     });
   }

@@ -836,6 +836,8 @@ export interface PluginDimmCityAbility extends Schema.CollectionType {
       'manyToMany',
       'plugin::dimm-city.skill-tree'
     >;
+    level: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<1>;
+    path: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<3>;
     cybernetic: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;

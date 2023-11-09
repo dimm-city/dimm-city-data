@@ -16,7 +16,7 @@ async function attachUserWallet(ctx) {
     let result = {
       error: "Failed to attach wallet.",
     };
-    if (address) //ToDo: ensure the wallet is not attached to another account
+    if (address)
       result = await service.attachUserWallet(wallet, ctx.state.user);
 
     ctx.body = result;
@@ -58,8 +58,12 @@ async function getUserWallets(ctx) {
         "You must be logged in to retrieve the wallets for your account."
       );
     const service = strapi.service(TYPE_WALLET);
-    const wallets = await service.getUserWallets(ctx.state.user);
+    let wallets = await service.getUserWallets(ctx.state.user);
 
+    if (ctx.query.force == true && wallets.results.length < 1) {
+      service.createManagedUserWallet(ctx.state.user.profile, "mainnet");
+      wallets = await service.getUserWallets(ctx.state.user);
+    }
     return wallets;
   } catch (error) {
     ctx.body = error;

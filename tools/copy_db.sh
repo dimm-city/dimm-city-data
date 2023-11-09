@@ -1,5 +1,6 @@
 #!/bin/bash
 
+timestamp=$(date +'%Y%m%d%H%M%S')
 
 user_name="founder"
 host="data-dimm-city.mysql.database.azure.com"
@@ -30,7 +31,6 @@ echo "Testing login to ${host}..."
 # Select 1 row to test login
 mysql --ssl-ca=${cert_path} -h ${host} -u ${user_name} -p${password} -Nse 'SELECT 1'
 
-#mysql --ssl-ca=${cert_path} -h ${host} -u ${user_name} -p${password}
 if [ $? -ne 0 ]; then
   echo "Login failed. Exiting..."
   exit 1
@@ -58,13 +58,13 @@ mkdir -p output
 # Dump the source database excluding the specific tables
 echo ""
 echo "Copying data from ${source_database} to ${destination_database}..."
-filename=${source_database}_$(date +'%Y%m%d%H%M%S').sql
+filename=${timestamp}_${source_database}.sql
 echo "Dumping data to ${filename}"
 mysqldump --ssl-ca=${cert_path} -h ${host} -u ${user_name} -p${password} ${source_database}${ignore_string} >output/${filename}
 
 # Export destination database to SQL file
 echo "Backing up ${destination_database}..."
-mysqldump --ssl-ca=${cert_path} -h ${host} -u ${user_name} -p${password} ${destination_database} >output/${destination_database}_backup_$(date +'%Y%m%d%H%M%S').sql
+mysqldump --ssl-ca=${cert_path} -h ${host} -u ${user_name} -p${password} ${destination_database} >output/${timestamp}_${destination_database}_backup.sql
 
 # Import the data to the destination database
 echo "Importing data to ${destination_database}..."

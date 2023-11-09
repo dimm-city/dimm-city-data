@@ -61,28 +61,16 @@ module.exports = createCoreService(TYPE_WALLET, (ctx) => ({
     return signer;
   },
   async getOrCreateUserWallet(user, chain) {
-    const wallets = await super.find({
-      filters: {
-        profile: { id: user.profile.id },
-        chain,
-      },
-      fields: ["id", "address", "chain", "name", "managed", "primary"],
-      populate: {
-        tokens: {
-          fields: ["id", "tokenId", "metadata"],
-          populate: {
-            contract: {
-              fields: ["id", "name", "slug", "entityType", "address", "chain"],
-            },
-          },
-        },
-      },
-    });
+    const wallets = await this.getUserWallets(user);
 
-    let wallet = wallets.results
-      .filter((w) => w.chain == chain)
-      .sort((a, b) => (a.primary ? 1 : -1))
-      .at(0);
+    let wallet = null;
+
+    if (wallets?.results?.length > 0) {
+      wallet = wallets.results
+        .filter((w) => w.chain == chain)
+        .sort((a, b) => (a.primary ? 1 : -1))
+        .at(0);
+    }
 
     if (!wallet) wallet = await this.createManagedUserWallet(user.profile, chain);
 

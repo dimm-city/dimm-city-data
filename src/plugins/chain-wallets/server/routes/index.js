@@ -4,14 +4,6 @@ module.exports = {
     routes: [
       {
         method: "GET",
-        path: "/test/:id",
-        handler: "chain-token.findOne",
-        config: {
-          policies: ["owns-token"],
-        },
-      },
-      {
-        method: "GET",
         path: "/tokens",
         handler: "chain-token.find",
         config: {
@@ -121,7 +113,7 @@ module.exports = {
         config: {
           policies: ["token-exists"],
         },
-        
+
       },
       {
         method: "GET",
@@ -130,7 +122,7 @@ module.exports = {
         config: {
           policies: ["token-exists"],
         },
-        
+
       },
     ],
   },

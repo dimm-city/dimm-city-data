@@ -25,7 +25,7 @@ module.exports = [
   },
   {
     method: "GET",
-    path: `/${info.pluralName}/me`,
+    path: `/users/me/profile`,
     handler: `${info.singularName}.getMyProfile`,
     config: {
       prefix: "",

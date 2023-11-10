@@ -42,16 +42,6 @@
       "target": "plugin::dimm-city.skill-tree",
       "mappedBy": "abilities"
     },
-    "level": {
-      "type": "integer",
-      "default": 1,
-      "required": true
-    },
-    "path": {
-      "type": "integer",
-      "default": 3,
-      "required": true
-    },
     "cybernetic": {
       "type": "boolean",
       "default": false,

@@ -65,17 +65,17 @@
       "type": "text",
       "required": false
     },
-    "children": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::dimm-city.ability",
-      "inversedBy": "parents"
+    "level": {
+      "type": "integer",
+      "default": 1,
+      "min":1,
+      "max": 5
     },
-    "parents": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::dimm-city.ability",
-      "mappedBy": "children"
+    "module": {
+      "type": "integer",
+      "default": 1,
+      "min":1,
+      "max": 5
     }
   }
 }

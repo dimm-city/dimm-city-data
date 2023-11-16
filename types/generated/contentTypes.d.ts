@@ -848,13 +848,13 @@ export interface PluginDimmCityAbility extends Schema.CollectionType {
     level: Attribute.Integer &
       Attribute.SetMinMax<{
         min: 1;
-        max: 5;
+        max: 10;
       }> &
       Attribute.DefaultTo<1>;
     module: Attribute.Integer &
       Attribute.SetMinMax<{
         min: 1;
-        max: 5;
+        max: 10;
       }> &
       Attribute.DefaultTo<1>;
     createdAt: Attribute.DateTime;

@@ -845,16 +845,18 @@ export interface PluginDimmCityAbility extends Schema.CollectionType {
     mainImage: Attribute.Media;
     description: Attribute.RichText;
     shortDescription: Attribute.Text;
-    children: Attribute.Relation<
-      'plugin::dimm-city.ability',
-      'manyToMany',
-      'plugin::dimm-city.ability'
-    >;
-    parents: Attribute.Relation<
-      'plugin::dimm-city.ability',
-      'manyToMany',
-      'plugin::dimm-city.ability'
-    >;
+    level: Attribute.Integer &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 5;
+      }> &
+      Attribute.DefaultTo<1>;
+    module: Attribute.Integer &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 5;
+      }> &
+      Attribute.DefaultTo<1>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

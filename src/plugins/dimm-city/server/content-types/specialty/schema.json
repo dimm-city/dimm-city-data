@@ -40,7 +40,8 @@
     "skillTrees": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "plugin::dimm-city.skill-tree"
+      "target": "plugin::dimm-city.skill-tree",
+      "mappedBy": "specialty"
     },
     "mainImage": {
       "allowedTypes": ["images"],

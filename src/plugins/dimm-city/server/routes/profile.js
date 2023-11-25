@@ -15,12 +15,6 @@ module.exports = [
   },
   {
     method: "GET",
-    path: `/my/characters`,
-    handler: `${info.singularName}.characters`,
-    config: {},
-  },
-  {
-    method: "GET",
     path: `/${info.pluralName}/:id`,
     handler: `${info.singularName}.findOne`,
     config: {},

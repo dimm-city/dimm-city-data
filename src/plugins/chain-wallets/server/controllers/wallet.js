@@ -76,4 +76,5 @@ module.exports = {
   attachUserWallet,
   detachUserWallet,
   getUserWallets,
+  find: getUserWallets
 };

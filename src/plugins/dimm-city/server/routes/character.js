@@ -32,4 +32,10 @@ module.exports = [
       policies: ["owns-token"],
     },
   },
+  {
+    method: "GET",
+    path: `/my/characters`,
+    handler: `${info.singularName}.my`,
+    config: {},
+  },
 ];

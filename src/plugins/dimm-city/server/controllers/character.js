@@ -29,6 +29,9 @@ module.exports = createCoreController(
             token: true,
             specialties: true,
             mainImage: true,
+            currentLocation: true,
+            originLocation: true,
+            race: true
           },
         }
         return  super.find(ctx);

@@ -943,6 +943,9 @@ export interface PluginDimmCityCharacter extends Schema.CollectionType {
       'manyToOne',
       'plugin::dimm-city.faction'
     >;
+    vibes: Attribute.Text;
+    flaw: Attribute.String;
+    ideal: Attribute.String;
     backstory: Attribute.RichText;
     beliefs: Attribute.String;
     flaws: Attribute.String;

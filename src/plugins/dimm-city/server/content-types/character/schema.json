@@ -100,6 +100,18 @@
       "target": "plugin::dimm-city.faction",
       "inversedBy": "members"
     },
+    "vibes": {
+      "pluginOptions": {},
+      "type": "text"
+    },
+    "flaw": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "ideal": {
+      "pluginOptions": {},
+      "type": "string"
+    },
     "backstory": {
       "pluginOptions": {},
       "type": "richtext"
@@ -108,6 +120,7 @@
       "pluginOptions": {},
       "type": "string"
     },
+
     "flaws": {
       "pluginOptions": {},
       "type": "string"

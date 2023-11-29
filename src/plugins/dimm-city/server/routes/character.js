@@ -33,6 +33,22 @@ module.exports = [
     },
   },
   {
+    method: "PUT",
+    path: `/${info.pluralName}/:id/add-ability/:ability`,
+    handler: `${info.singularName}.addAbility`,
+    config: {
+      policies: ["owns-token"],
+    },
+  },
+  {
+    method: "PUT",
+    path: `/${info.pluralName}/:id/remove-ability/:ability`,
+    handler: `${info.singularName}.removeAbility`,
+    config: {
+      policies: ["owns-token"],
+    },
+  },
+  {
     method: "GET",
     path: `/my/characters`,
     handler: `${info.singularName}.my`,

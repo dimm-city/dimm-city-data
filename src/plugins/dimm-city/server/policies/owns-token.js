@@ -32,6 +32,7 @@ module.exports = async (ctx, config, { strapi }) => {
     const walletSvc = strapi.service("plugin::chain-wallets.chain-wallet");
     const wallets = await walletSvc.getUserWallets(ctx.state?.user);
 
+    console.log("wallets", wallets);
     const result = wallets?.results?.some((w) =>
       w.tokens.some((t) => t.id == entity?.token?.id)
     );

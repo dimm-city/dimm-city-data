@@ -1,5 +1,28 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ListsCharacterInventory extends Schema.Component {
+  collectionName: 'components_lists_character_inventories';
+  info: {
+    displayName: 'CharacterInventory';
+    icon: 'briefcase';
+  };
+  attributes: {
+    inventory_item: Attribute.Component<'selection.inventory-item', true>;
+  };
+}
+
+export interface ListsCharacterScripts extends Schema.Component {
+  collectionName: 'components_lists_character_scripts';
+  info: {
+    displayName: 'CharacterScripts';
+    icon: 'code';
+  };
+  attributes: {
+    ItemText: Attribute.String;
+    test: Attribute.String;
+  };
+}
+
 export interface ListsList100 extends Schema.Component {
   collectionName: 'components_lists_list100s';
   info: {
@@ -31,11 +54,29 @@ export interface ListsLists extends Schema.Component {
   };
 }
 
+export interface SelectionInventoryItem extends Schema.Component {
+  collectionName: 'components_selection_inventory_items';
+  info: {
+    displayName: 'InventoryItem';
+  };
+  attributes: {
+    text: Attribute.String;
+    item: Attribute.Relation<
+      'selection.inventory-item',
+      'oneToOne',
+      'plugin::dimm-city.item'
+    >;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'lists.character-inventory': ListsCharacterInventory;
+      'lists.character-scripts': ListsCharacterScripts;
       'lists.list100': ListsList100;
       'lists.lists': ListsLists;
+      'selection.inventory-item': SelectionInventoryItem;
     }
   }
 }

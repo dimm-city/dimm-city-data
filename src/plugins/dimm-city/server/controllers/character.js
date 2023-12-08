@@ -28,6 +28,11 @@ module.exports = createCoreController(
             currentLocation: true,
             originLocation: true,
             race: true,
+            inventory:{
+              populate: {
+                item: true
+              }
+            }
           },
         };
         return super.find(ctx);

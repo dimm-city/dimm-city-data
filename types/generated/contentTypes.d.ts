@@ -998,6 +998,10 @@ export interface PluginDimmCityCharacter extends Schema.CollectionType {
     playerCharacter: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
+    inventory: Attribute.Component<'selection.inventory-item', true> &
+      Attribute.SetMinMax<{
+        max: 12;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

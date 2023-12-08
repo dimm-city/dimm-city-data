@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_selection_inventory_items",
+  "info": {
+    "displayName": "InventoryItem"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "item": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::dimm-city.item"
+    }
+  }
+}

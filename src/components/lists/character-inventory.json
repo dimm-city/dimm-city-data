@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_lists_character_inventories",
+  "info": {
+    "displayName": "CharacterInventory",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "inventory_item": {
+      "displayName": "InventoryItem",
+      "type": "component",
+      "repeatable": true,
+      "component": "selection.inventory-item"
+    }
+  }
+}

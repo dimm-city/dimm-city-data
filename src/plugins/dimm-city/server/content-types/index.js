@@ -8,6 +8,9 @@ module.exports = {
   "character-release": {
     schema: require("./character-release/schema.json"),
   },
+  cybernetic: {
+    schema: require("./cybernetic/schema.json"),
+  },
   faction: {
     schema: require("./faction/schema.json"),
   },
@@ -37,6 +40,9 @@ module.exports = {
   },
   race: {
     schema: require("./race/schema.json"),
+  },
+  script: {
+    schema: require("./script/schema.json"),
   },
   "skill-tree": {
     schema: require("./skill-tree/schema.json"),

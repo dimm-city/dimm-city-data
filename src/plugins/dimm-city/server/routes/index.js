@@ -20,6 +20,8 @@ const page = require("./page");
 const profile = require("./profile");
 const galleryItem = require("./gallery-item");
 const terms = require("./term");
+const cybernetic = require("./cybernetic");
+const script = require("./script");
 
 module.exports = {
   "content-api": {
@@ -28,6 +30,7 @@ module.exports = {
       ...ability,
       ...character,
       ...characterRelease,
+      ...cybernetic,
       ...faction,
       ...galleryItem,
       ...historicalEvent,
@@ -45,6 +48,7 @@ module.exports = {
       ...world,
       ...archive,
       ...terms,
+      ...script,
       ...stats,
     ],
   },

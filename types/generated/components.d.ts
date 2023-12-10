@@ -11,18 +11,6 @@ export interface ListsCharacterInventory extends Schema.Component {
   };
 }
 
-export interface ListsCharacterScripts extends Schema.Component {
-  collectionName: 'components_lists_character_scripts';
-  info: {
-    displayName: 'CharacterScripts';
-    icon: 'code';
-  };
-  attributes: {
-    ItemText: Attribute.String;
-    test: Attribute.String;
-  };
-}
-
 export interface ListsList100 extends Schema.Component {
   collectionName: 'components_lists_list100s';
   info: {
@@ -73,7 +61,6 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'lists.character-inventory': ListsCharacterInventory;
-      'lists.character-scripts': ListsCharacterScripts;
       'lists.list100': ListsList100;
       'lists.lists': ListsLists;
       'selection.inventory-item': SelectionInventoryItem;

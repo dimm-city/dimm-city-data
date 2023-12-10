@@ -17,6 +17,8 @@ const specialty = require("./specialty");
 const spore = require("./spore");
 const story = require("./story");
 const world = require("./world");
+const cybernetic = require('./cybernetic');
+const script = require('./script');
 
 module.exports = {
   ability,
@@ -24,6 +26,7 @@ module.exports = {
   "dcs1r1-contract": dcs1r1Contract,
   dcs1r1,
   dcs2r1,
+  cybernetic,
   "character-release": characterRelease,
   faction,
   "historical-event": historicalEvent,
@@ -35,6 +38,7 @@ module.exports = {
   payment,
   profile,
   race,
+  script,
   "skill-tree": skillTree,
   specialty,
   spore,

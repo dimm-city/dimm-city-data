@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dc_cybernetics",
+  "info": {
+    "singularName": "cybernetic",
+    "pluralName": "cybernetics",
+    "displayName": "Cybernetics"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

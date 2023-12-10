@@ -362,38 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiScriptScript extends Schema.CollectionType {
-  collectionName: 'scripts';
-  info: {
-    singularName: 'script';
-    pluralName: 'scripts';
-    displayName: 'Scripts';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required & Attribute.Unique;
-    slug: Attribute.UID<'api::script.script', 'name'> & Attribute.Required;
-    description: Attribute.RichText & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::script.script',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::script.script',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -1100,6 +1068,41 @@ export interface PluginDimmCityCharacterRelease extends Schema.CollectionType {
   };
 }
 
+export interface PluginDimmCityCybernetic extends Schema.CollectionType {
+  collectionName: 'dc_cybernetics';
+  info: {
+    singularName: 'cybernetic';
+    pluralName: 'cybernetics';
+    displayName: 'Cybernetics';
+  };
+  options: {
+    draftAndPublish: true;
+    comment: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    slug: Attribute.UID<'plugin::dimm-city.cybernetic', 'name'> &
+      Attribute.Required;
+    shortDescription: Attribute.Text;
+    description: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::dimm-city.cybernetic',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::dimm-city.cybernetic',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginDimmCityFaction extends Schema.CollectionType {
   collectionName: 'dc_factions';
   info: {
@@ -1646,6 +1649,38 @@ export interface PluginDimmCityRace extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::dimm-city.race',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginDimmCityScript extends Schema.CollectionType {
+  collectionName: 'dc_scripts';
+  info: {
+    singularName: 'script';
+    pluralName: 'scripts';
+    displayName: 'Scripts';
+  };
+  options: {
+    draftAndPublish: true;
+    comment: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'plugin::dimm-city.script', 'name'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::dimm-city.script',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::dimm-city.script',
       'oneToOne',
       'admin::user'
     > &
@@ -2201,7 +2236,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::script.script': ApiScriptScript;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::chain-wallets.chain-token': PluginChainWalletsChainToken;
@@ -2210,6 +2244,7 @@ declare module '@strapi/types' {
       'plugin::dimm-city.ability': PluginDimmCityAbility;
       'plugin::dimm-city.character': PluginDimmCityCharacter;
       'plugin::dimm-city.character-release': PluginDimmCityCharacterRelease;
+      'plugin::dimm-city.cybernetic': PluginDimmCityCybernetic;
       'plugin::dimm-city.faction': PluginDimmCityFaction;
       'plugin::dimm-city.historical-event': PluginDimmCityHistoricalEvent;
       'plugin::dimm-city.gallery-item': PluginDimmCityGalleryItem;
@@ -2220,6 +2255,7 @@ declare module '@strapi/types' {
       'plugin::dimm-city.page': PluginDimmCityPage;
       'plugin::dimm-city.profile': PluginDimmCityProfile;
       'plugin::dimm-city.race': PluginDimmCityRace;
+      'plugin::dimm-city.script': PluginDimmCityScript;
       'plugin::dimm-city.skill-tree': PluginDimmCitySkillTree;
       'plugin::dimm-city.specialty': PluginDimmCitySpecialty;
       'plugin::dimm-city.spore': PluginDimmCitySpore;

@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_selection_inventory_items",
+  "collectionName": "components_selection_script_component",
   "info": {
-    "displayName": "Inventory Item"
+    "displayName": "Script Component"
   },
   "options": {},
   "attributes": {
@@ -15,7 +15,7 @@
     "item": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::dimm-city.item"
+      "target": "plugin::dimm-city.script"
     }
   }
 }

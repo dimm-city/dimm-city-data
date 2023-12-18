@@ -968,11 +968,6 @@ export interface PluginDimmCityCharacter extends Schema.CollectionType {
       'oneToMany',
       'plugin::dimm-city.skill-tree'
     >;
-    cybernetics: Attribute.Relation<
-      'plugin::dimm-city.character',
-      'oneToMany',
-      'plugin::dimm-city.ability'
-    >;
     items: Attribute.Relation<
       'plugin::dimm-city.character',
       'oneToMany',
@@ -999,6 +994,14 @@ export interface PluginDimmCityCharacter extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<false>;
     inventory: Attribute.Component<'selection.inventory-item', true> &
+      Attribute.SetMinMax<{
+        max: 12;
+      }>;
+    cybernetics: Attribute.Component<'selection.cybernetic-component', true> &
+      Attribute.SetMinMax<{
+        max: 6;
+      }>;
+    scripts: Attribute.Component<'selection.script-component', true> &
       Attribute.SetMinMax<{
         max: 12;
       }>;

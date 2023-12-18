@@ -156,11 +156,6 @@
       "relation": "oneToMany",
       "target": "plugin::dimm-city.skill-tree"
     },
-    "cybernetics": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::dimm-city.ability"
-    },
     "items": {
       "type": "relation",
       "relation": "oneToMany",
@@ -174,17 +169,13 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "mainVideo": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "videos"
-      ]
+      "allowedTypes": ["videos"]
     },
     "mainModel": {
       "type": "media",
@@ -219,6 +210,18 @@
       "type": "component",
       "repeatable": true,
       "component": "selection.inventory-item",
+      "max": 12
+    },
+    "cybernetics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "selection.cybernetic-component",
+      "max": 6
+    },
+    "scripts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "selection.script-component",
       "max": 12
     }
   }

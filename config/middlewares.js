@@ -1,4 +1,5 @@
 module.exports = [
+  "strapi::logger",
   "strapi::errors",
   {
     name: "strapi::security",
@@ -43,8 +44,7 @@ module.exports = [
       origin: "*" // ["https://dimm.city", "https://dimm.city", "https://localhost:3000", "https://localhost:1337"],
     },
   },
-  "strapi::poweredBy",
-  "strapi::logger",
+  // "strapi::poweredBy",
   "strapi::query",
   "strapi::body",
   "strapi::session",

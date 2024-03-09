@@ -11,6 +11,9 @@ const availableTypes = [
   { key: "journalEntry", value: "plugin::dimm-city.journal-entry" },
   { key: "citizen", value: "plugin::dimm-city.character" },
   { key: "item", value: "plugin::dimm-city.item" },
+  { key: "page", value: "plugin::dimm-city.page" },
+  { key: "race", value: "plugin::dimm-city.race" },
+  { key: "ability", value: "plugin::dimm-city.ability" },
 ];
 
 // Parsing strategies
@@ -102,7 +105,9 @@ module.exports = {
 
         const entities = await strapi.entityService.findMany(type.value, {
           filters: {
-            $or: [{ name: { $containsi: query } }],
+            $or: [
+              { name: { $containsi: query } },
+              { description: { $containsi: query } }],
           },
           sort: ["name"],
           start: start,

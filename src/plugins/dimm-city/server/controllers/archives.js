@@ -1,7 +1,6 @@
 /**
  * Module dependencies
  */
-const { sanitizeEntity } = require("@strapi/utils");
 const { sanitize } = require("@strapi/utils");
 const { contentAPI } = sanitize;
 
@@ -16,46 +15,71 @@ const availableTypes = [
   { key: "ability", value: "plugin::dimm-city.ability" },
 ];
 
-// Parsing strategies
-const strategies = {
-  citizen: (entity) => {
-    return {
-      id: entity.id,
-      type: "citizen",
-      name: entity.name || "",
-      description: entity.description || entity.backstory || "",
-    };
+// Table and column mappings for natural language search
+const searchConfigurations = [
+  {
+    key: "character",
+    tableName: "dc_characters",
+    searchableColumns: ["name", "backstory"], // These should have FULLTEXT indexes
+    resultColumns: [
+      "id",
+      "token_id as slug",
+      "'character' as type",
+      "name",
+      "backstory as description",
+    ],
   },
-};
+  {
+    key: "item",
+    tableName: "dc_items",
+    searchableColumns: ["name", "description", "tags", "short_description"],
+    resultColumns: ["id", "slug", "'item' as type", "name", "description"],
+  },
+  {
+    key: "location",
+    tableName: "dc_locations",
+    searchableColumns: ["name", "description", "tags", "short_description"],
+    resultColumns: ["id", "slug", "'location' as type", "name", "description"],
+  },
+  {
+    key: "race",
+    tableName: "dc_races",
+    searchableColumns: ["name", "description", "tags", "short_description"],
+    resultColumns: ["id", "slug", "'race' as type", "name", "description"],
+  },
+  {
+    key: "specialty",
+    tableName: "dc_specialties",
+    searchableColumns: ["name", "description", "tags", "short_description"],
+    resultColumns: ["id", "slug", "'specialty' as type", "name", "description"],
+  },
+  {
+    key: "journalEntry",
+    tableName: "dc_journal_entries",
+    searchableColumns: ["name", "description", "tags", "short_description"],
+    resultColumns: [
+      "id",
+      "slug",
+      "'journalEntry' as type",
+      "name",
+      "description",
+    ],
+  },
+  {
+    key: "page",
+    tableName: "dc_pages",
+    searchableColumns: ["title", "description", "tags", "content"],
+    resultColumns: ["id", "slug", "'page' as type", "title as name", "content as description"],
+  },
+  {
+    key: "ability",
+    tableName: "dc_abilities",
+    searchableColumns: ["name", "description", "short_description"],
+    resultColumns: ["id", "slug", "'ability' as type", "name", "description"],
+  },
+];
 
-/**
- * Parse and sanitize an entity.
- *
- * @param {Object} entity - The entity to parse.
- * @param {string} type - The type of the entity.
- * @param {Object} strategies - The parsing strategies.
- *
- * @return {Object} The parsed and sanitized entity.
- */
-function parseEntity(entity, type, auth) {
-  let parsedEntity;
 
-  // If a strategy is provided for the entity's type, use it
-  if (strategies[type.key]) {
-    parsedEntity = strategies[type.key](entity);
-  } else {
-    // Default implementation
-    parsedEntity = {
-      id: entity.id,
-      type: type.key,
-      name: entity.name || "",
-      description: entity.description || "",
-    };
-  }
-
-  return parsedEntity;
-  return contentAPI.output(parsedEntity, strapi.contentType(type.value)); //, { model: strapi.models[type.value] });
-}
 
 /**
  * Public Archives control interface
@@ -63,7 +87,7 @@ function parseEntity(entity, type, auth) {
 
 module.exports = {
   async getItemTypes() {
-    return availableTypes;
+    return searchConfigurations.map((config) => config.key);
   },
   /**
    * Search multiple content types.
@@ -73,65 +97,50 @@ module.exports = {
    * @return {Array} An array of items.
    */
   async search(ctx) {
-    const params = ctx.request.body;
-    // Get the list of types to search from the request
-    let requestedTypes = params.types;
+    try {
+      const params = ctx.request.body;
+      // Get the list of types to search from the request
+      let requestedTypes = params.types || [];
 
-    // Filter out any types that are not available
-    let typesToSearch = availableTypes.filter((type) =>
-      requestedTypes.includes(type.key)
-    );
-    if (typesToSearch.length === 0) typesToSearch = availableTypes;
+      let typesToSearch = searchConfigurations;
 
-    // Query parameter
-    const query = params.query;
-
-    const { page = 1, pageSize = 10 } = params.pagination ?? {
-      page: 1,
-      pageSize: 10,
-    };
-    const start = (page - 1) * pageSize;
-
-    // Initialize results array
-    let results = [];
-
-    // Loop through each type and perform the search
-    for (const type of typesToSearch) {
-      try {
-        const service = strapi.services[type.value];
-        if (!service) {
-          continue;
-        }
-
-        const entities = await strapi.entityService.findMany(type.value, {
-          filters: {
-            $or: [
-              { name: { $containsi: query } },
-              { description: { $containsi: query } }],
-          },
-          sort: ["name"],
-          start: start,
-          limit: pageSize,
-        });
-
-        // Loop through each entity and add it to the results
-        for (const entity of entities) {
-          const parsedEntity = parseEntity(entity, type, ctx.state.auth);
-          results.push(parsedEntity);
-        }
-      } catch (error) {
-        console.log(error);
-        strapi.log.error(
-          `Error searching in type ${type.key}: ${error.message}`
+      // Filter out any types that are not available
+      if (requestedTypes.length > 0) {
+        typesToSearch = searchConfigurations.filter((type) =>
+          requestedTypes.includes(type.key)
         );
       }
+
+      // Query parameter
+      const query = params.query;
+
+      const { page = 1, pageSize = 10 } = params.pagination ?? {
+        page: 1,
+        pageSize: 10,
+      };
+
+      const start = (page - 1) * pageSize;
+
+      // Building individual FULLTEXT search queries
+      const queries = typesToSearch.map((config) => {
+        const matchColumns = config.searchableColumns.join(", ");
+        const selectColumns = config.resultColumns.join(", ");
+        return `SELECT ${selectColumns} FROM ${config.tableName} `
+        + `WHERE published_at IS NOT NULL AND MATCH(${matchColumns}) AGAINST(? IN NATURAL LANGUAGE MODE)`;
+      });
+
+      // Combining queries with UNION
+      const finalQuery = queries.join(" UNION ");
+
+      // Execute the queries, be sure to pass the queries as an array of strings
+      const results = await strapi.db.connection.raw(finalQuery,
+        Array.from({length: typesToSearch.length}).map(() => query));
+
+      return results?.at(0).slice(start, start + pageSize);
+
+    } catch (error) {
+      console.log(error);
+      strapi.log.error(`Error searching archives: ${error.message}`);
     }
-
-    // Sort the results by type and then by name
-    // results.sort(
-    //   (a, b) => a.type?.localeCompare(b.type) || a.name.localeCompare(b.name)
-    // );
-
-    return results;
   },
 };
